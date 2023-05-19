@@ -348,6 +348,8 @@ visible = false
 position = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_inkn2")
 
+[node name="Dungeon" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
 [connection signal="drop_slot_data" from="UI/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
