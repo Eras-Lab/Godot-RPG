@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://de51qesdruemo"]
+[gd_scene load_steps=43 format=3 uid="uid://de51qesdruemo"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
@@ -17,6 +17,10 @@
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="14_v3f8w"]
 [ext_resource type="PackedScene" uid="uid://jc3jtaf8m0xt" path="res://item/pick_up.tscn" id="15_cccri"]
 [ext_resource type="Resource" uid="uid://c055xh5e2diru" path="res://item/items/apple.tres" id="16_o8r7m"]
+[ext_resource type="PackedScene" uid="uid://dd6vcyj08nswx" path="res://scenes/npc.tscn" id="18_x7e7u"]
+[ext_resource type="Texture2D" uid="uid://d0hc7c3uc6tga" path="res://art/characters/player.png" id="19_0dq72"]
+[ext_resource type="PackedScene" uid="uid://dodmkmlg7jmh6" path="res://scenes/buildings.tscn" id="20_4yf8u"]
+[ext_resource type="Texture2D" uid="uid://c6gqs8ap5qqny" path="res://art/objects/chest_02.png" id="21_1nohi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jy5lb"]
 texture = ExtResource("1_qal58")
@@ -109,6 +113,92 @@ script = ExtResource("14_v3f8w")
 item_data = ExtResource("16_o8r7m")
 quantity = 5
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7n3r"]
+atlas = ExtResource("19_0dq72")
+region = Rect2(0, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj0sy"]
+atlas = ExtResource("19_0dq72")
+region = Rect2(48, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6natl"]
+atlas = ExtResource("19_0dq72")
+region = Rect2(96, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mmlm"]
+atlas = ExtResource("19_0dq72")
+region = Rect2(144, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aub2g"]
+atlas = ExtResource("19_0dq72")
+region = Rect2(192, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kysy6"]
+atlas = ExtResource("19_0dq72")
+region = Rect2(240, 0, 48, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glcig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7n3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj0sy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6natl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mmlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aub2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kysy6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdaq8"]
+atlas = ExtResource("21_1nohi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghvo1"]
+atlas = ExtResource("21_1nohi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af4oo"]
+atlas = ExtResource("21_1nohi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jijj"]
+atlas = ExtResource("21_1nohi")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inkn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdaq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghvo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af4oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jijj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="world" type="Node2D"]
 position = Vector2(-1, 3)
 script = ExtResource("1_c4xv6")
@@ -133,7 +223,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(393252, 655362, 7, 589862, 655362, 7, 393254, 655362, 7, 524324, 655362, 7, 262184, 655362, 7, 196644, 655362, 7, -65501, 655362, 7, -65497, 655362, 7, 65556, 2, 5, 65559, 2, 5, 65562, 2, 5, -65510, 2, 5, -65514, 2, 5, 65574, 2, 5, -196571, 2, 5, 786462, 2, 5, 851994, 2, 5, 851988, 2, 5, 786447, 2, 5, 786467, 2, 5, 851991, 655362, 7, 786450, 655362, 7, 1114129, 655362, 7, 1048605, 655362, 7, 720929, 655362, 7, 786470, 655362, 7, 65577, 655362, 7, 655384, 524290, 6, 720924, 524290, 6, 262179, 524290, 6, 65571, 524290, 6, 327707, 393218, 7, 393237, 393218, 7, 196624, 393218, 7, 65566, 393218, 7, 917521, 524290, 6, 1114133, 393218, 7, 1114137, 393218, 7, 1048609, 393218, 7, 655401, 393218, 7, 393257, 393218, 7, 458786, 393218, 7, -196574, 524290, 6, 458770, 2, 1, 327711, 2, 1, -131041, 2, 1, -65520, 2, 1, 327704, 2, 1, 327699, 2, 1, -196577, 327682, 0, 131106, 2, 0)
+layer_2/tile_data = PackedInt32Array(262184, 655362, 7, 65556, 2, 5, 65559, 2, 5, 65562, 2, 5, -65510, 2, 5, -65514, 2, 5, 327707, 393218, 7, 393237, 393218, 7, 196624, 393218, 7, 65566, 393218, 7, -196574, 524290, 6, 458770, 2, 1, 327711, 2, 1, -131041, 2, 1, -65520, 2, 1, 327704, 2, 1, 327699, 2, 1, -196577, 327682, 0, 131106, 2, 0)
 
 [node name="player" parent="." instance=ExtResource("4_myjwg")]
 position = Vector2(524, 302)
@@ -142,7 +232,7 @@ inventory_data = ExtResource("6_1ie6q")
 equip_inventory_data = SubResource("Resource_x7yqu")
 
 [node name="slime" parent="." instance=ExtResource("5_s7rkd")]
-position = Vector2(760, 194)
+position = Vector2(673, 227)
 scale = Vector2(1.46761, 1.46761)
 
 [node name="collisions" type="StaticBody2D" parent="."]
@@ -208,6 +298,55 @@ inventory_data = SubResource("Resource_gss80")
 [node name="item" parent="." instance=ExtResource("15_cccri")]
 position = Vector2(418, 296)
 slot_data = SubResource("Resource_i5fgw")
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Npc" parent="Characters" instance=ExtResource("18_x7e7u")]
+position = Vector2(429, 302)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Characters/Npc"]
+position = Vector2(27, 11)
+sprite_frames = SubResource("SpriteFrames_glcig")
+
+[node name="Npc2" parent="Characters" instance=ExtResource("18_x7e7u")]
+position = Vector2(730, 301)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Characters/Npc2"]
+position = Vector2(27, 11)
+sprite_frames = SubResource("SpriteFrames_glcig")
+
+[node name="Npc3" parent="Characters" instance=ExtResource("18_x7e7u")]
+position = Vector2(508, 60)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Characters/Npc3"]
+position = Vector2(27, 11)
+sprite_frames = SubResource("SpriteFrames_glcig")
+
+[node name="Buildings" type="Node" parent="."]
+
+[node name="Building1" parent="Buildings" instance=ExtResource("20_4yf8u")]
+position = Vector2(265, 440)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Buildings/Building1"]
+position = Vector2(13, -5)
+sprite_frames = SubResource("SpriteFrames_inkn2")
+
+[node name="Building2" parent="Buildings" instance=ExtResource("20_4yf8u")]
+visible = false
+position = Vector2(689, 446)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Buildings/Building2"]
+visible = false
+position = Vector2(2, 1)
+sprite_frames = SubResource("SpriteFrames_inkn2")
+
+[node name="Building3" parent="Buildings" instance=ExtResource("20_4yf8u")]
+position = Vector2(234, 559)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Buildings/Building3"]
+visible = false
+position = Vector2(2, 1)
+sprite_frames = SubResource("SpriteFrames_inkn2")
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
