@@ -6,3 +6,4 @@ class_name  ItemDataConsumable
 func use(target) -> void:
 	if heal_value != 0:
 		target.heal(heal_value)
+

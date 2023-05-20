@@ -7,7 +7,13 @@ signal toggle_inventory
 
 var enemy_in_attackrange = false
 var enemy_attack_cooldown = true
+
+#player stats
 var health = 160
+var strength = 10
+var constitution = 10
+var attack_damage = 10
+
 var player_alive = true
 
 var attack_ip = false
@@ -185,3 +191,23 @@ func get_drop_position():
 
 func heal(heal_value: int) -> void:
 	health += heal_value
+
+func equip(stats) -> void:
+	if stats["attack_damage"]:
+		attack_damage += stats["attack_damage"]
+	
+	if stats["strength"]:
+		strength += stats["strength"]
+	
+	if stats["constitution"]:
+		constitution += stats["constitution"]
+
+func unequip(stats) -> void:
+	if stats["attack_damage"]:
+		attack_damage -= stats["attack_damage"]
+	
+	if stats["strength"]:
+		strength -= stats["strength"]
+	
+	if stats["constitution"]:
+		constitution -= stats["constitution"]

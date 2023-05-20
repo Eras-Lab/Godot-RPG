@@ -94,7 +94,7 @@ sources/2 = SubResource("TileSetAtlasSource_waklh")
 
 [sub_resource type="Resource" id="Resource_x7yqu"]
 script = ExtResource("7_12c1x")
-slot_datas = Array[ExtResource("14_v3f8w")]([null])
+slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxqi3"]
 size = Vector2(39, 48)

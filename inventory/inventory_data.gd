@@ -32,6 +32,20 @@ func drop_slot_data(grabbed_slot_data: SlotData, index: int):
 	inventory_updated.emit(self)
 	return return_slot_data
 
+func drop_slot_data_equip(grabbed_slot_data: SlotData, index: int):
+	var slot_data = slot_datas[index]
+	
+	var return_slot_data: SlotData
+	if slot_data and slot_data.can_fully_merge_with(grabbed_slot_data):
+		slot_data.fully_merge_with(grabbed_slot_data)
+	else:
+		slot_datas[index] = grabbed_slot_data
+		return_slot_data = slot_data
+	
+	inventory_updated.emit(self)
+	equip_slot_data(index)
+	return return_slot_data
+	
 func drop_single_slot_data(grabbed_slot_data: SlotData, index: int):
 	var slot_data = slot_datas[index]
 	
@@ -63,7 +77,20 @@ func use_slot_data(index: int) -> void:
 	PlayerManager.use_slot_data(slot_data)
 	
 	inventory_updated.emit(self)
+
+func equip_slot_data(index: int) -> void:
+	var slot_data = slot_datas[index]
 	
+	print(slot_data.item_data.name)
+	PlayerManager.equip_slot_data(slot_data)
+
+
+func unequip_slot_data(index: int) -> void:
+	var slot_data = slot_datas[index]
+	
+	print(slot_data.item_data.name)
+	PlayerManager.unequip_slot_data(slot_data)
+			
 func pick_up_slot_data(slot_data) -> bool:
 	
 	for index in slot_datas.size():
