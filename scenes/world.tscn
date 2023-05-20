@@ -350,8 +350,16 @@ sprite_frames = SubResource("SpriteFrames_inkn2")
 
 [node name="Dungeon" type="Node2D" parent="."]
 
+[node name="Button" type="Button" parent="."]
+offset_left = 421.0
+offset_top = 334.0
+offset_right = 510.0
+offset_bottom = 365.0
+text = "On clicked"
+
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
 [connection signal="drop_slot_data" from="UI/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_visibility_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
