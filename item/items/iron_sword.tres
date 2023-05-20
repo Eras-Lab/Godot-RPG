@@ -9,7 +9,9 @@ region = Rect2(32, 160, 32, 32)
 
 [resource]
 script = ExtResource("1_v5jal")
-attack = 10
+attack_damage = 10
+strength = 5
+constitution = 0
 name = "Iron Sword"
 description = "A common iron sword"
 stackable = false

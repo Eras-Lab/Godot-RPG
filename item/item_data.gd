@@ -9,3 +9,9 @@ class_name ItemData
 
 func use(target) -> void:
 	pass
+
+func equip(target) -> void:
+	pass
+
+func unequip(target) -> void:
+	pass
