@@ -13,15 +13,12 @@ var speed = 200
 var close_npcs = []
 #var NPC = preload("res://scenes/npc.gd").new()  # preload NPC script
 
-
-
 func _ready():
 	add_child(httpRequest)
 	dialogue_box = get_node("../Dialogue")
 	httpRequest.request_completed.connect(_on_request_completed)
 	dialogue = get_node("../Dialogue")
 #	generate_image(self.get_parent().description)		
-
 
 func send_request(user_input: String):
 	var headers = ["Content-Type: application/json"]

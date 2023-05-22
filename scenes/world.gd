@@ -4,14 +4,39 @@ const PickUp = preload("res://item/pick_up.tscn")
 
 @onready var player = $player
 @onready var inventory_interface = $UI/InventoryInterface
-
+@onready var player_2 = $player_2
+@onready var player_3 = $player_3
+@onready var player_4 = $player_4
+@onready var player_5 = $player_5
 
 func _ready():
 	player.toggle_inventory.connect(toggle_inventory_interface)
-	inventory_interface.set_player_inventory_data(player.inventory_data)
-	inventory_interface.set_equip_inventory_data(player.equip_inventory_data)
-	inventory_interface.force_close.connect(toggle_inventory_interface)
 	
+	inventory_interface.set_player_inventory_data(player.inventory_data, 1)
+	player.inventory_data.set_player(1)
+	player.equip_inventory_data.set_player(1)
+	inventory_interface.set_equip_inventory_data(player.equip_inventory_data, 1)
+	
+	inventory_interface.set_player_inventory_data(player_2.inventory_data, 2)
+	player_2.inventory_data.set_player(2)
+	player_2.equip_inventory_data.set_player(2)
+	inventory_interface.set_equip_inventory_data(player_2.equip_inventory_data, 2)
+	
+	inventory_interface.set_player_inventory_data(player_3.inventory_data, 3)
+	player_3.inventory_data.set_player(3)
+	player_3.equip_inventory_data.set_player(3)
+	inventory_interface.set_equip_inventory_data(player_3.equip_inventory_data, 3)
+	
+	inventory_interface.set_player_inventory_data(player_4.inventory_data, 4)
+	player_4.inventory_data.set_player(4)
+	player_4.equip_inventory_data.set_player(4)
+	inventory_interface.set_equip_inventory_data(player_4.equip_inventory_data, 4)
+	
+	inventory_interface.set_player_inventory_data(player_5.inventory_data, 5)
+	player_5.inventory_data.set_player(5)
+	player_5.equip_inventory_data.set_player(5)
+	inventory_interface.set_equip_inventory_data(player_5.equip_inventory_data, 5)
+		
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_interface)
 		

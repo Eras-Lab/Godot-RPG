@@ -1,7 +1,6 @@
 extends Control
 
 signal drop_slot_data(slot_data: SlotData)
-signal force_close()
 
 var grabbed_slot_data: SlotData
 var external_inventory_owner
@@ -10,25 +9,55 @@ var external_inventory_owner
 @onready var grabbed_slot = $GrabbedSlot
 @onready var external_inventory = $ExternalInventory
 @onready var equip_inventory = $EquipInventory
+@onready var player_inventory_2 = $PlayerInventory2
+@onready var equip_inventory_2 = $EquipInventory2
+@onready var player_inventory_3 = $PlayerInventory3
+@onready var equip_inventory_3 = $EquipInventory3
+@onready var player_inventory_4 = $PlayerInventory4
+@onready var equip_inventory_4 = $EquipInventory4
+@onready var player_inventory_5 = $PlayerInventory5
+@onready var equip_inventory_5 = $EquipInventory5
+
 
 func _physics_process(delta):
 	if grabbed_slot.visible:
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(5, 5)
 	
-	if external_inventory_owner \
-			and external_inventory_owner.global_position.distance_to(PlayerManager.get_global_position()) > 50: \
-		force_close.emit()
-	
-func set_player_inventory_data(inventory_data: InventoryData) -> void:
+func set_player_inventory_data(inventory_data: InventoryData, player) -> void:
 	inventory_data.inventory_interact.connect(on_inventory_interact)
-	player_inventory.set_inventory_data(inventory_data)
-
-func set_equip_inventory_data(inventory_data: InventoryData) -> void:
+	if player == 1:
+		player_inventory.set_inventory_data(inventory_data)
+		player_inventory.set_player(1)
+		
+	elif player == 2:
+		player_inventory_2.set_inventory_data(inventory_data)
+		player_inventory_2.set_player(2)
+	elif player == 3:
+		player_inventory_3.set_inventory_data(inventory_data)
+		player_inventory_3.set_player(3)
+	elif player == 4:
+		player_inventory_4.set_inventory_data(inventory_data)
+		player_inventory_4.set_player(4)
+	elif player == 5:
+		player_inventory_5.set_inventory_data(inventory_data)
+		player_inventory_5.set_player(5)
+		
+func set_equip_inventory_data(inventory_data: InventoryData, player: int) -> void:
 	inventory_data.inventory_interact.connect(on_inventory_interact)
-	equip_inventory.set_inventory_data(inventory_data)
-
+	if player == 1:
+		equip_inventory.set_inventory_data(inventory_data)
+	elif player == 2:
+		equip_inventory_2.set_inventory_data(inventory_data)
+	elif player == 3:
+		equip_inventory_3.set_inventory_data(inventory_data)
+	elif player == 4:
+		equip_inventory_4.set_inventory_data(inventory_data)
+	elif player == 5:
+		equip_inventory_5.set_inventory_data(inventory_data)
+		
 func on_inventory_interact(inventory_data: InventoryData, index: int, button: int) -> void:
-	
+	print("this is the inventory %s ", inventory_data.player)
+	var player = inventory_data.player
 	match [grabbed_slot_data, button]:
 		[null, MOUSE_BUTTON_LEFT]:
 			grabbed_slot_data = inventory_data.grab_slot_data(index)

@@ -5,6 +5,11 @@ signal inventory_updated(inventory_data: InventoryData)
 signal inventory_interact(inventory_data: InventoryData, index: int, button: int)
 
 @export var slot_datas: Array[SlotData]
+@export var player: int
+
+func set_player(_player: int):
+	player = _player
+	print(player)
 
 func on_slot_clicked(index: int, button: int) -> void:
 	inventory_interact.emit(self, index, button)
@@ -20,6 +25,7 @@ func grab_slot_data(index: int) -> SlotData:
 		return null
 
 func drop_slot_data(grabbed_slot_data: SlotData, index: int):
+	print("normal slot of ", player)
 	var slot_data = slot_datas[index]
 	
 	var return_slot_data: SlotData
@@ -33,6 +39,7 @@ func drop_slot_data(grabbed_slot_data: SlotData, index: int):
 	return return_slot_data
 
 func drop_slot_data_equip(grabbed_slot_data: SlotData, index: int):
+	print("slot of player %s", player)
 	var slot_data = slot_datas[index]
 	
 	var return_slot_data: SlotData
@@ -74,7 +81,8 @@ func use_slot_data(index: int) -> void:
 		
 		
 	print(slot_data.item_data.name)
-	PlayerManager.use_slot_data(slot_data)
+	print(player)
+	PlayerManager.use_slot_data(slot_data, player)
 	
 	inventory_updated.emit(self)
 
@@ -82,14 +90,15 @@ func equip_slot_data(index: int) -> void:
 	var slot_data = slot_datas[index]
 	
 	print(slot_data.item_data.name)
-	PlayerManager.equip_slot_data(slot_data)
+	print(player)
+	PlayerManager.equip_slot_data(slot_data, player)
 
 
 func unequip_slot_data(index: int) -> void:
 	var slot_data = slot_datas[index]
 	
 	print(slot_data.item_data.name)
-	PlayerManager.unequip_slot_data(slot_data)
+	PlayerManager.unequip_slot_data(slot_data, player)
 			
 func pick_up_slot_data(slot_data) -> bool:
 	
