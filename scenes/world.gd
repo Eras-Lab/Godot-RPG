@@ -9,6 +9,9 @@ const PickUp = preload("res://item/pick_up.tscn")
 @onready var player_4 = $player_4
 @onready var player_5 = $player_5
 
+@onready var dungeon_camera = $DungeonCamera
+@onready var town_camera = $TownCamera
+
 func _ready():
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	
@@ -51,10 +54,10 @@ func _ready():
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	inventory_interface.visible = not inventory_interface.visible
 	
-	if inventory_interface.visible:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+#	if inventory_interface.visible:
+#		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#	else:
+#		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if external_inventory_owner and inventory_interface.visible:
 		inventory_interface.set_external_inventory(external_inventory_owner)
@@ -96,3 +99,18 @@ func _on_button_pressed():
 	characters.add_child(character)
 	print("Number of children in 'Characters' node: ", characters.get_child_count())
 
+func _on_teleport_to_dungeon_pressed():
+	player.global_position = Vector2(4500, 30)
+	player_2.global_position = Vector2(4500, 50)
+	player_3.global_position = Vector2(4500, 70)
+	player_4.global_position = Vector2(4500, 90)
+	player_5.global_position = Vector2(4500, 110)
+	dungeon_camera.make_current()
+
+func _on_teleport_to_town_pressed():
+	player.global_position = Vector2(520, 290)
+	player_2.global_position = Vector2(520, 310)
+	player_3.global_position = Vector2(500, 270)
+	player_4.global_position = Vector2(500, 290)
+	player_5.global_position = Vector2(500, 310)
+	town_camera.make_current()
