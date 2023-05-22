@@ -43,10 +43,10 @@ func _ready():
 	for building in buildings:
 		print(building)
 		locations[building.name] = building		
-	walk_towards("Building1")		
+	walk_towards("Building2")		
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
-	send_request("Test")
+	#send_request("Test")
 	
 func _physics_process(delta):
 	player_movement(delta)
@@ -337,3 +337,23 @@ func _on_http_request_request_comspleted(result, response_code, headers, body):
 									
 			
 
+func increase_attack_damage(amount):
+	attack_damage += amount
+	print("Player", self.name)
+	print("attack increased to", self.attack_damage)
+	
+
+func increase_strength(amount):
+	strength += amount
+	print("Player", self.name)
+	print("strength increased to", self.strength)		
+	
+func increase_health(amount):
+	health += amount
+	print("Player", self.name)
+	print("health increased to", self.health)	
+
+func increase_constitution(amount):
+	constitution += amount
+	print("Player", self.name)
+	print("constitution increased to", self.constitution)		

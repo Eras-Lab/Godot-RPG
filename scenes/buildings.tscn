@@ -1,13 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dodmkmlg7jmh6"]
+[gd_scene load_steps=4 format=3 uid="uid://dodmkmlg7jmh6"]
+
+[ext_resource type="Script" path="res://scenes/Area2D.gd" id="1_hmckj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nn6au"]
-radius = 53.0992
+radius = 101.463
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hklr"]
+size = Vector2(9.66, 9.72)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 light_mask = 3
 visibility_layer = 3
-position = Vector2(-1, 0)
+position = Vector2(-2, 1)
 scale = Vector2(0.640625, 0.601449)
 shape = SubResource("CircleShape2D_nn6au")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+scale = Vector2(50, 50)
+script = ExtResource("1_hmckj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.38, -0.0999999)
+shape = SubResource("RectangleShape2D_0hklr")
+
+[node name="Timer" type="Timer" parent="Area2D"]
+wait_time = 2.0

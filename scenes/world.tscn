@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://de51qesdruemo"]
+[gd_scene load_steps=74 format=3 uid="uid://de51qesdruemo"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
@@ -40,6 +40,11 @@
 [ext_resource type="Texture2D" uid="uid://bj1im2x8rbhs1" path="res://images/treating/house/house4.png" id="32_dsnn7"]
 [ext_resource type="Texture2D" uid="uid://cyxk7240iw3o6" path="res://images/treating/house/house6.png" id="33_0cieu"]
 [ext_resource type="Texture2D" uid="uid://45glj6xxynxi" path="res://images/treating/house/house8.png" id="33_e3edt"]
+[ext_resource type="Script" path="res://scenes/Area2D.gd" id="37_upc48"]
+[ext_resource type="Script" path="res://scenes/Area2_stat2.gd" id="39_t7u33"]
+[ext_resource type="Script" path="res://scenes/Area2_stat3.gd" id="41_2wnuy"]
+[ext_resource type="Script" path="res://scenes/Area2_stat4.gd" id="43_2odqp"]
+[ext_resource type="Script" path="res://scenes/Area2_stat5.gd" id="45_4hfe0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jy5lb"]
 texture = ExtResource("1_qal58")
@@ -1662,6 +1667,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isy4e"]
+size = Vector2(9.66, 9.72)
+
 [node name="world" type="Node2D"]
 position = Vector2(-1, 3)
 script = ExtResource("1_c4xv6")
@@ -1745,6 +1753,7 @@ inventory_data = ExtResource("15_u4nf2")
 equip_inventory_data = SubResource("Resource_rik5d")
 
 [node name="slime" parent="." instance=ExtResource("5_s7rkd")]
+visible = false
 position = Vector2(673, 227)
 scale = Vector2(1.46761, 1.46761)
 
@@ -1885,8 +1894,19 @@ sprite_frames = SubResource("SpriteFrames_inkn2")
 position = Vector2(7, -13)
 texture = ExtResource("30_gljgf")
 
+[node name="Area2D2" type="Area2D" parent="Buildings/Building1"]
+scale = Vector2(50, 50)
+script = ExtResource("37_upc48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Building1/Area2D2"]
+position = Vector2(-0.38, -0.0999999)
+shape = SubResource("RectangleShape2D_isy4e")
+
+[node name="Timer" type="Timer" parent="Buildings/Building1/Area2D2"]
+wait_time = 2.0
+
 [node name="Building2" parent="Buildings" instance=ExtResource("20_4yf8u")]
-position = Vector2(676, 156)
+position = Vector2(704, 159)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Buildings/Building2"]
 position = Vector2(2, 1)
@@ -1895,6 +1915,17 @@ sprite_frames = SubResource("SpriteFrames_inkn2")
 [node name="Sprite2D" type="Sprite2D" parent="Buildings/Building2"]
 position = Vector2(2, -37)
 texture = ExtResource("33_e3edt")
+
+[node name="Area2D2" type="Area2D" parent="Buildings/Building2"]
+scale = Vector2(50, 50)
+script = ExtResource("39_t7u33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Building2/Area2D2"]
+position = Vector2(-0.38, -0.0999999)
+shape = SubResource("RectangleShape2D_isy4e")
+
+[node name="Timer" type="Timer" parent="Buildings/Building2/Area2D2"]
+wait_time = 2.0
 
 [node name="Building3" parent="Buildings" instance=ExtResource("20_4yf8u")]
 position = Vector2(129, 468)
@@ -1907,6 +1938,17 @@ sprite_frames = SubResource("SpriteFrames_inkn2")
 position = Vector2(2, -15)
 texture = ExtResource("32_dsnn7")
 
+[node name="Area2D2" type="Area2D" parent="Buildings/Building3"]
+scale = Vector2(50, 50)
+script = ExtResource("41_2wnuy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Building3/Area2D2"]
+position = Vector2(-0.38, -0.0999999)
+shape = SubResource("RectangleShape2D_isy4e")
+
+[node name="Timer" type="Timer" parent="Buildings/Building3/Area2D2"]
+wait_time = 2.0
+
 [node name="Building4" parent="Buildings" instance=ExtResource("20_4yf8u")]
 position = Vector2(345, 517)
 
@@ -1914,12 +1956,34 @@ position = Vector2(345, 517)
 position = Vector2(-8, -23)
 texture = ExtResource("33_0cieu")
 
+[node name="Area2D2" type="Area2D" parent="Buildings/Building4"]
+scale = Vector2(50, 50)
+script = ExtResource("43_2odqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Building4/Area2D2"]
+position = Vector2(-0.38, -0.0999999)
+shape = SubResource("RectangleShape2D_isy4e")
+
+[node name="Timer" type="Timer" parent="Buildings/Building4/Area2D2"]
+wait_time = 2.0
+
 [node name="Building5" parent="Buildings" instance=ExtResource("20_4yf8u")]
-position = Vector2(757, 478)
+position = Vector2(810, 507)
 
 [node name="Sprite2D" type="Sprite2D" parent="Buildings/Building5"]
 position = Vector2(10, 1)
 texture = ExtResource("31_dkrrj")
+
+[node name="Area2D2" type="Area2D" parent="Buildings/Building5"]
+scale = Vector2(50, 50)
+script = ExtResource("45_4hfe0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Building5/Area2D2"]
+position = Vector2(-0.38, -0.0999999)
+shape = SubResource("RectangleShape2D_isy4e")
+
+[node name="Timer" type="Timer" parent="Buildings/Building5/Area2D2"]
+wait_time = 2.0
 
 [node name="Dungeon" type="Node2D" parent="."]
 
