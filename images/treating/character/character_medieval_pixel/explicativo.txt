@@ -1,0 +1,26 @@
+CHARACTER SHEET 1
+
+ Esta imagem está ordenada da seguinte maneira
+
+fileira:
+
+1-parado frente
+2-parado costas
+3-parado direita
+4-parado esquerda
+5-andando para frente
+6-andando para tras
+7-andando para direita
+8-andando para esquerda
+
+CHARACTER SHEET 2
+
+ Esta imagem está ordenada da seguinte maneira
+
+fileira:
+
+1-atacando frente
+2-atacando direita
+3-atacando esquerda
+4-atacando costas
+5-morrendo
