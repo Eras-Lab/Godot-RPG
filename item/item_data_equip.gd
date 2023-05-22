@@ -6,6 +6,7 @@ class_name ItemDataEquip
 @export var constitution: int
 
 func equip(target) -> void:
+	print(target)
 	target.equip({"attack_damage": attack_damage, "strength": strength, "constitution": constitution})
 
 func unequip(target) -> void:
