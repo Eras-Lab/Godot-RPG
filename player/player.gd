@@ -44,8 +44,9 @@ func _ready():
 		print(building)
 		locations[building.name] = building		
 	walk_towards("Building1")		
-	test_http_request()		
+	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
+	send_request("Test")
 	
 func _physics_process(delta):
 	player_movement(delta)
@@ -280,7 +281,7 @@ func send_request(user_input: String):
 	#function to check nearby NPCs
 	var body = {
 		"npc_name": self.get_parent().name,
-		"npc_desc": self.get_parent().description,
+		"npc_desc": "Test",
 		"location": "park",
 		"activity": current_action,
 		"inventory": [],
@@ -306,3 +307,33 @@ func _on_http_request_request_comspleted(result, response_code, headers, body):
 	print("request completed")
 	print(self.name)
 	print(response_code)
+	#print(body)
+	print(result)
+		#If Nill or null just wait*
+	#var json = JSON.parse_string(body.get_string_from_utf8()
+	var res = str_to_var(body.get_string_from_utf8())
+	if res == null:
+		self.send_request("did nothing")
+		return
+	var response = JSON.parse_string(res)	
+	
+	#var text = response["choices"][0]["text"].strip_edges()
+	print("Who?", self.get_parent().name)
+	print("RESPONSE", response)
+	#self.get_parent().change_panel_text(response.action.thought)
+	#self.get_parent().change_emotion(response.action.feeling)
+	#self.get_node("/root/world/info_box").get_node(self.get_parent().name).get_node("thought").text = response.action.thought
+
+	if response.action.type == "walkTo":
+		current_action = "walking"
+		var location_name = response.action.where
+		print("walking to " + location_name)
+		self.walk_towards(location_name)
+		self.send_request("Just walked to " + location_name)
+				
+	elif response.action.type == "wait":
+		print("WAITING")
+		self.send_request("Just Waited")
+									
+			
+

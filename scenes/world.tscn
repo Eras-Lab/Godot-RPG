@@ -391,6 +391,12 @@ visible = false
 position = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_inkn2")
 
+[node name="Building4" parent="Buildings" instance=ExtResource("20_4yf8u")]
+position = Vector2(234, 559)
+
+[node name="Building5" parent="Buildings" instance=ExtResource("20_4yf8u")]
+position = Vector2(234, 559)
+
 [node name="Dungeon" type="Node2D" parent="."]
 
 [node name="Button" type="Button" parent="."]
