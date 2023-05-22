@@ -7,6 +7,7 @@ signal toggle_inventory
 
 var enemy_in_attackrange = false
 var enemy_attack_cooldown = true
+var walking_towards = "none"
 
 #player stats
 var health = 160
@@ -21,9 +22,30 @@ var attack_ip = false
 const speed = 100
 var current_dir = "none"
 
+var buildings = null
+var locations = null
+
+enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
+
+var current_direction = Direction.NONE
+var step_size = 1
+
+var current_action = null
+@onready var buildings_list = $"../Buildings"
+@onready var http_request = $HTTPRequest
+
+
 func _ready():
 	PlayerManager.players.push_back(self)
 	$AnimatedSprite2D.play("front_idle")
+	buildings = buildings_list.get_children()	
+	locations = {}
+	for building in buildings:
+		print(building)
+		locations[building.name] = building		
+	walk_towards("Building1")		
+	test_http_request()		
+	http_request.request_completed.connect(_on_http_request_request_comspleted)	
 	
 func _physics_process(delta):
 	player_movement(delta)
@@ -31,6 +53,11 @@ func _physics_process(delta):
 	attack()
 	pickup()
 	current_camera()
+	if walking_towards != "none":
+		walk_towards(walking_towards)
+
+		
+
 	
 	if health <= 0:
 		player_alive = false
@@ -116,7 +143,7 @@ func enemy_attack():
 		enemy_attack_cooldown = false
 		
 		$attack_cooldown.start()
-		print(health)
+		#print(health)
 	
 func player():
 	pass
@@ -211,3 +238,71 @@ func unequip(stats) -> void:
 	
 	if stats["constitution"]:
 		constitution -= stats["constitution"]
+		
+func walk_towards(location_name):
+	var location = locations[location_name]
+	if location != null:
+		var direction = location.position - position
+
+		if current_direction == Direction.NONE:
+			if abs(direction.x) > 0:
+				current_direction = Direction.RIGHT if direction.x > 0 else Direction.LEFT
+			else:
+				current_direction = Direction.UP if direction.y > 0 else Direction.DOWN
+
+		if current_direction == Direction.UP or current_direction == Direction.DOWN:
+			if direction.y > 0:
+				position.y += min(step_size, direction.y)
+				if position.y >= location.position.y:
+					current_direction = Direction.NONE
+			else:
+				position.y -= min(step_size, -direction.y)
+				if position.y <= location.position.y:
+					current_direction = Direction.NONE
+
+		elif current_direction == Direction.LEFT or current_direction == Direction.RIGHT:
+			if direction.x > 0:
+				position.x += min(step_size, direction.x)
+				if position.x >= location.position.x:
+					current_direction = Direction.NONE
+			else:
+				position.x -= min(step_size, -direction.x)
+				if position.x <= location.position.x:
+					current_direction = Direction.NONE
+
+		walking_towards = location_name
+		#Call increase_dex		
+		
+func send_request(user_input: String):
+	var headers = ["Content-Type: application/json"]
+	#var nearby_players = self.get_parent().close_npc_list
+	print("action requested")
+	#function to check nearby NPCs
+	var body = {
+		"npc_name": self.get_parent().name,
+		"npc_desc": self.get_parent().description,
+		"location": "park",
+		"activity": current_action,
+		"inventory": [],
+		"message": user_input,
+		"funds": 100
+	}
+	var body_text = JSON.stringify(body)  # use JSON.print() to convert dict to JSON string
+	if user_input == "attack":
+		print("moving to enemy")
+		self.get_parent().start_attacking()
+	
+	elif user_input == "conversation":  # Add this line
+		self.get_parent().start_walking_towards_npc()
+	else:
+		http_request.request("http://127.0.0.1:5000/chat", headers, HTTPClient.METHOD_POST, body_text)
+
+func test_http_request():
+	print("sending request")
+	var url = "https://httpbin.org/get" # Replace this with your url
+	http_request.request(url) # Send a GET request
+
+func _on_http_request_request_comspleted(result, response_code, headers, body):
+	print("request completed")
+	print(self.name)	
+	print(response_code)

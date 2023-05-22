@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://de51qesdruemo"]
+[gd_scene load_steps=46 format=3 uid="uid://de51qesdruemo"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
@@ -25,8 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://jc3jtaf8m0xt" path="res://item/pick_up.tscn" id="15_cccri"]
 [ext_resource type="Resource" uid="uid://cn8jm7m3x7vta" path="res://test_inv_5.tres" id="15_u4nf2"]
 [ext_resource type="Resource" uid="uid://c055xh5e2diru" path="res://item/items/apple.tres" id="16_o8r7m"]
-[ext_resource type="PackedScene" uid="uid://dd6vcyj08nswx" path="res://scenes/npc.tscn" id="18_x7e7u"]
-[ext_resource type="Texture2D" uid="uid://d0hc7c3uc6tga" path="res://art/characters/player.png" id="19_0dq72"]
 [ext_resource type="PackedScene" uid="uid://dodmkmlg7jmh6" path="res://scenes/buildings.tscn" id="20_4yf8u"]
 [ext_resource type="Texture2D" uid="uid://c6gqs8ap5qqny" path="res://art/objects/chest_02.png" id="21_1nohi"]
 
@@ -103,10 +101,12 @@ sources/2 = SubResource("TileSetAtlasSource_waklh")
 [sub_resource type="Resource" id="Resource_x7yqu"]
 script = ExtResource("7_12c1x")
 slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
+player = 0
 
 [sub_resource type="Resource" id="Resource_8juej"]
 script = ExtResource("7_12c1x")
 slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
+player = 0
 
 [sub_resource type="Resource" id="Resource_nnste"]
 script = ExtResource("7_12c1x")
@@ -140,56 +140,6 @@ player = 0
 script = ExtResource("14_v3f8w")
 item_data = ExtResource("16_o8r7m")
 quantity = 5
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7n3r"]
-atlas = ExtResource("19_0dq72")
-region = Rect2(0, 0, 48, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bj0sy"]
-atlas = ExtResource("19_0dq72")
-region = Rect2(48, 0, 48, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6natl"]
-atlas = ExtResource("19_0dq72")
-region = Rect2(96, 0, 48, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mmlm"]
-atlas = ExtResource("19_0dq72")
-region = Rect2(144, 0, 48, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aub2g"]
-atlas = ExtResource("19_0dq72")
-region = Rect2(192, 0, 48, 53)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kysy6"]
-atlas = ExtResource("19_0dq72")
-region = Rect2(240, 0, 48, 53)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_glcig"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i7n3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bj0sy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6natl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1mmlm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aub2g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kysy6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdaq8"]
 atlas = ExtResource("21_1nohi")
@@ -414,29 +364,6 @@ inventory_data = SubResource("Resource_gss80")
 [node name="item" parent="." instance=ExtResource("15_cccri")]
 position = Vector2(418, 296)
 slot_data = SubResource("Resource_i5fgw")
-
-[node name="Characters" type="Node" parent="."]
-
-[node name="Npc" parent="Characters" instance=ExtResource("18_x7e7u")]
-position = Vector2(429, 302)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Characters/Npc"]
-position = Vector2(27, 11)
-sprite_frames = SubResource("SpriteFrames_glcig")
-
-[node name="Npc2" parent="Characters" instance=ExtResource("18_x7e7u")]
-position = Vector2(730, 301)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Characters/Npc2"]
-position = Vector2(27, 11)
-sprite_frames = SubResource("SpriteFrames_glcig")
-
-[node name="Npc3" parent="Characters" instance=ExtResource("18_x7e7u")]
-position = Vector2(508, 60)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Characters/Npc3"]
-position = Vector2(27, 11)
-sprite_frames = SubResource("SpriteFrames_glcig")
 
 [node name="Buildings" type="Node" parent="."]
 
