@@ -22,7 +22,6 @@ const speed = 100
 var current_dir = "none"
 
 func _ready():
-	PlayerManager.player = self
 	PlayerManager.players.push_back(self)
 	$AnimatedSprite2D.play("front_idle")
 	

@@ -1,6 +1,5 @@
 extends Node
 
-var player
 var players = []
 
 func use_slot_data(slot_data: SlotData, _player) -> void:
@@ -12,6 +11,4 @@ func equip_slot_data(slot_data: SlotData, _player) -> void:
 
 func unequip_slot_data(slot_data: SlotData, _player) -> void:
 		slot_data.item_data.unequip(players[_player -1])
-			
-func get_global_position() -> Vector2:
-	return player.global_position
+		
