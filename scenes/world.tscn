@@ -231,7 +231,7 @@ animations = [{
 position = Vector2(-1, 3)
 script = ExtResource("1_c4xv6")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TownTilemap" type="TileMap" parent="."]
 position = Vector2(-392, 97)
 scale = Vector2(1.75381, 1.48779)
 tile_set = SubResource("TileSet_g3bps")
@@ -253,7 +253,7 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(262184, 655362, 7, 65556, 2, 5, 65559, 2, 5, 65562, 2, 5, -65510, 2, 5, -65514, 2, 5, 327707, 393218, 7, 393237, 393218, 7, 196624, 393218, 7, 65566, 393218, 7, -196574, 524290, 6, 458770, 2, 1, 327711, 2, 1, -131041, 2, 1, -65520, 2, 1, 327704, 2, 1, 327699, 2, 1, -196577, 327682, 0, 131106, 2, 0)
 
-[node name="TileMap2" type="TileMap" parent="."]
+[node name="DungeonTilemap" type="TileMap" parent="."]
 position = Vector2(3988, 100)
 scale = Vector2(1.75381, 1.48779)
 tile_set = SubResource("TileSet_g3bps")
