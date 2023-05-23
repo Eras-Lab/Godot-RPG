@@ -1,37 +1,29 @@
-[gd_scene load_steps=75 format=3 uid="uid://de51qesdruemo"]
+[gd_scene load_steps=75 format=3 uid="uid://c7ms6iwsp6v17"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
 [ext_resource type="Texture2D" uid="uid://covaxxotvm4lb" path="res://art/tilesets/grass.png" id="2_1p7i0"]
 [ext_resource type="Texture2D" uid="uid://xga82omnrlih" path="res://art/objects/objects.png" id="3_ekewe"]
 [ext_resource type="Texture2D" uid="uid://ccpekg2c2ntuk" path="res://images/treating/items/barrier4.png" id="4_7odid"]
-[ext_resource type="PackedScene" uid="uid://dujken35ffehd" path="res://player/player.tscn" id="4_myjwg"]
 [ext_resource type="Texture2D" uid="uid://bb2mll8a0fbww" path="res://images/treating/tileset/grass3.png" id="5_f5frp"]
 [ext_resource type="PackedScene" uid="uid://c1bf1ga70wtne" path="res://scenes/slime.tscn" id="5_s7rkd"]
 [ext_resource type="Texture2D" uid="uid://dste2laxi6oa7" path="res://images/treating/items/barrier5.png" id="5_yuyxn"]
-[ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://test_inv.tres" id="6_1ie6q"]
 [ext_resource type="Texture2D" uid="uid://u7ffn42hy0ri" path="res://images/treating/items/barrier.png" id="6_6odv4"]
 [ext_resource type="Texture2D" uid="uid://dx8dgtp2wgvy6" path="res://images/treating/tileset/road_2.png" id="6_q33dr"]
 [ext_resource type="Script" path="res://inventory/inventory_data_equip.gd" id="7_12c1x"]
 [ext_resource type="Texture2D" uid="uid://c6m5keugrbd4q" path="res://images/treating/items/water_well2.png" id="7_wq0nw"]
-[ext_resource type="Resource" uid="uid://dowuttj0uqa6r" path="res://test_inv2.tres" id="8_bevso"]
 [ext_resource type="Texture2D" uid="uid://bfuv0cqteki2v" path="res://images/treating/tileset/dungeons.png" id="8_kolx5"]
 [ext_resource type="PackedScene" uid="uid://do1yubo7ebqbh" path="res://inventory/inventory.tscn" id="8_nagpy"]
-[ext_resource type="Script" path="res://player/player_2.gd" id="8_tc0on"]
 [ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="9_t5uwm"]
-[ext_resource type="Resource" uid="uid://esyk2i3eyx16" path="res://test_inv_3.tres" id="10_nqt3i"]
-[ext_resource type="Script" path="res://player/player_3.gd" id="10_qpu22"]
 [ext_resource type="PackedScene" uid="uid://ckbkqswkaw18p" path="res://inventory/slot.tscn" id="11_2bk2p"]
 [ext_resource type="PackedScene" uid="uid://de47e8x33jfg" path="res://chest.tscn" id="11_qg5dg"]
-[ext_resource type="Script" path="res://player/player_4.gd" id="12_8cn4u"]
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="12_tr54a"]
 [ext_resource type="Texture2D" uid="uid://cv7cj7oisc245" path="res://images/treating/items/barrier3.png" id="12_ylu6b"]
-[ext_resource type="Resource" uid="uid://ib00po0dufcg" path="res://test_inv_4.tres" id="13_0tiyx"]
-[ext_resource type="Script" path="res://player/player_5.gd" id="13_3cnbv"]
+[ext_resource type="PackedScene" uid="uid://cpqxwf5njqvlc" path="res://player/Garrick_Stormwind.tscn" id="13_ii73w"]
 [ext_resource type="Resource" uid="uid://cbocr64lfia2e" path="res://item/items/blue_book.tres" id="13_tu8l2"]
+[ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="14_5mnxd"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="14_v3f8w"]
 [ext_resource type="PackedScene" uid="uid://jc3jtaf8m0xt" path="res://item/pick_up.tscn" id="15_cccri"]
-[ext_resource type="Resource" uid="uid://cn8jm7m3x7vta" path="res://test_inv_5.tres" id="15_u4nf2"]
 [ext_resource type="Resource" uid="uid://c055xh5e2diru" path="res://item/items/apple.tres" id="16_o8r7m"]
 [ext_resource type="PackedScene" uid="uid://dodmkmlg7jmh6" path="res://scenes/buildings.tscn" id="20_4yf8u"]
 [ext_resource type="Texture2D" uid="uid://c6gqs8ap5qqny" path="res://art/objects/chest_02.png" id="21_1nohi"]
@@ -45,6 +37,14 @@
 [ext_resource type="Script" path="res://scenes/Area2_stat3.gd" id="41_2wnuy"]
 [ext_resource type="Script" path="res://scenes/Area2_stat4.gd" id="43_2odqp"]
 [ext_resource type="Script" path="res://scenes/Area2_stat5.gd" id="45_4hfe0"]
+[ext_resource type="PackedScene" uid="uid://4tm460hjw0cg" path="res://player/Lyra_Shadowheart.tscn" id="47_7phof"]
+[ext_resource type="PackedScene" uid="uid://bu06evlfyo0vj" path="res://player/Morgath_Darkbane.tscn" id="47_081vx"]
+[ext_resource type="Resource" uid="uid://c1u2fbs5qcmo8" path="res://morgath_darkbane_inv.tres" id="48_7rhel"]
+[ext_resource type="Resource" uid="uid://c1n8g1btxlxvy" path="res://lyra_shadowheart_inv.tres" id="48_b4c25"]
+[ext_resource type="PackedScene" uid="uid://cgl8cs3rmtyvt" path="res://player/Freya_Swiftwind.tscn" id="49_3ji4y"]
+[ext_resource type="PackedScene" uid="uid://cxj23qoxnoqp6" path="res://player/Grimgar_Stonebeard.tscn" id="49_cj331"]
+[ext_resource type="Resource" uid="uid://deuulh41lyn3h" path="res://grimgar_stonebeard_inv.tres" id="50_5236c"]
+[ext_resource type="Resource" uid="uid://cchimnilr3uim" path="res://freya_swiftwind.tres" id="50_wmyya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jy5lb"]
 texture = ExtResource("1_qal58")
@@ -1588,31 +1588,6 @@ sources/10 = SubResource("TileSetAtlasSource_tjpfw")
 sources/11 = SubResource("TileSetAtlasSource_awidl")
 sources/12 = SubResource("TileSetAtlasSource_b682u")
 
-[sub_resource type="Resource" id="Resource_x7yqu"]
-script = ExtResource("7_12c1x")
-slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
-player = 0
-
-[sub_resource type="Resource" id="Resource_8juej"]
-script = ExtResource("7_12c1x")
-slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
-player = 0
-
-[sub_resource type="Resource" id="Resource_nnste"]
-script = ExtResource("7_12c1x")
-slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
-player = 0
-
-[sub_resource type="Resource" id="Resource_k0cd5"]
-script = ExtResource("7_12c1x")
-slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
-player = 0
-
-[sub_resource type="Resource" id="Resource_rik5d"]
-script = ExtResource("7_12c1x")
-slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
-player = 0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxqi3"]
 size = Vector2(39, 48)
 
@@ -1672,6 +1647,31 @@ size = Vector2(9.66, 9.72)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mpdbe"]
 
+[sub_resource type="Resource" id="Resource_lefkm"]
+script = ExtResource("7_12c1x")
+slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
+player = 0
+
+[sub_resource type="Resource" id="Resource_45wn7"]
+script = ExtResource("7_12c1x")
+slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
+player = 0
+
+[sub_resource type="Resource" id="Resource_wlly2"]
+script = ExtResource("7_12c1x")
+slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
+player = 0
+
+[sub_resource type="Resource" id="Resource_j7hpl"]
+script = ExtResource("7_12c1x")
+slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
+player = 0
+
+[sub_resource type="Resource" id="Resource_47lym"]
+script = ExtResource("7_12c1x")
+slot_datas = Array[ExtResource("14_v3f8w")]([null, null, null, null])
+player = 0
+
 [node name="world" type="Node2D"]
 position = Vector2(-1, 3)
 script = ExtResource("1_c4xv6")
@@ -1719,40 +1719,6 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(1441647, 1114121, 5, 1507183, 1114121, 6, 1572719, 1114121, 7, 1441648, 1179657, 5, 1507184, 1179657, 6, 1572720, 1179657, 7, 1441649, 1245193, 5, 1507185, 1245193, 6, 1572721, 1245193, 7, 1441650, 1310729, 5, 1507186, 1310729, 6, 1572722, 1310729, 7)
-
-[node name="player" parent="." groups=["players"] instance=ExtResource("4_myjwg")]
-position = Vector2(524, 302)
-scale = Vector2(1.64243, 1.90337)
-inventory_data = ExtResource("6_1ie6q")
-equip_inventory_data = SubResource("Resource_x7yqu")
-
-[node name="player_2" parent="." groups=["players"] instance=ExtResource("4_myjwg")]
-position = Vector2(525, 244)
-scale = Vector2(1.64243, 1.90337)
-script = ExtResource("8_tc0on")
-inventory_data = ExtResource("8_bevso")
-equip_inventory_data = SubResource("Resource_8juej")
-
-[node name="player_3" parent="." groups=["players"] instance=ExtResource("4_myjwg")]
-position = Vector2(521, 183)
-scale = Vector2(1.64243, 1.90337)
-script = ExtResource("10_qpu22")
-inventory_data = ExtResource("10_nqt3i")
-equip_inventory_data = SubResource("Resource_nnste")
-
-[node name="player_4" parent="." groups=["players"] instance=ExtResource("4_myjwg")]
-position = Vector2(473, 182)
-scale = Vector2(1.64243, 1.90337)
-script = ExtResource("12_8cn4u")
-inventory_data = ExtResource("13_0tiyx")
-equip_inventory_data = SubResource("Resource_k0cd5")
-
-[node name="player_5" parent="." groups=["players"] instance=ExtResource("4_myjwg")]
-position = Vector2(466, 227)
-scale = Vector2(1.64243, 1.90337)
-script = ExtResource("13_3cnbv")
-inventory_data = ExtResource("15_u4nf2")
-equip_inventory_data = SubResource("Resource_rik5d")
 
 [node name="slime" parent="." instance=ExtResource("5_s7rkd")]
 visible = false
@@ -2034,6 +2000,36 @@ polygon = PackedVector2Array(5165, 179, 5234, 178, 5243, 199, 5240, 236, 5166, 2
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="DungeonCollisions"]
 position = Vector2(-111, 237)
 polygon = PackedVector2Array(5165, 179, 5234, 178, 5243, 199, 5240, 236, 5166, 240, 5158, 194, 5168, 221, 5225, 221, 5223, 186, 5171, 192)
+
+[node name="LyraShadowheart" parent="." instance=ExtResource("47_7phof")]
+position = Vector2(520.073, 310.618)
+scale = Vector2(1.642, 1.642)
+inventory_data = ExtResource("48_b4c25")
+equip_inventory_data = SubResource("Resource_lefkm")
+
+[node name="GrimgarStonebeard" parent="." instance=ExtResource("49_cj331")]
+position = Vector2(515.146, 377.236)
+scale = Vector2(1.642, 1.642)
+inventory_data = ExtResource("50_5236c")
+equip_inventory_data = SubResource("Resource_45wn7")
+
+[node name="MorgathDarkbane" parent="." instance=ExtResource("47_081vx")]
+position = Vector2(468.073, 248.618)
+scale = Vector2(1.642, 1.642)
+inventory_data = ExtResource("48_7rhel")
+equip_inventory_data = SubResource("Resource_wlly2")
+
+[node name="FreyaSwiftwind" parent="." instance=ExtResource("49_3ji4y")]
+position = Vector2(468.073, 248.618)
+scale = Vector2(1.642, 1.642)
+inventory_data = ExtResource("50_wmyya")
+equip_inventory_data = SubResource("Resource_j7hpl")
+
+[node name="GarrickStormwind" parent="." instance=ExtResource("13_ii73w")]
+position = Vector2(545, 245)
+scale = Vector2(1.642, 1.642)
+inventory_data = ExtResource("14_5mnxd")
+equip_inventory_data = SubResource("Resource_47lym")
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]

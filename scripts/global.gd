@@ -1,5 +1,9 @@
 extends Node
 
+signal changing_scenes
+
+var player_1_inventory: InventoryData
+
 var player_current_attack = false
 var player_current_pickup = false
 
@@ -17,6 +21,7 @@ var player_message = ""
 var player_talking = false
 
 func finish_changescenes():
+	changing_scenes.emit()
 	if transition_scene == true:
 		transition_scene = false
 		if current_scene == "world":
