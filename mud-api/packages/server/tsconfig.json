@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": false,
+    "target": "ES2020",
+    "isolatedModules": true,
+    "types": []
+  },
+  "include": ["index.ts", "lib/**/*"],
+  "exclude": ["node_modules/*"]
+}
