@@ -4,53 +4,47 @@ const PickUp = preload("res://item/pick_up.tscn")
 
 @onready var player = $player
 @onready var inventory_interface = $UI/InventoryInterface
-@onready var player_2 = $player_2
-@onready var player_3 = $player_3
-@onready var player_4 = $player_4
-@onready var player_5 = $player_5
+@onready var garrick_stormwind = $GarrickStormwind
+@onready var lyra_shadowheart = $LyraShadowheart
+@onready var grimgar_stonebeard = $GrimgarStonebeard
+@onready var morgath_darkbane = $MorgathDarkbane
+@onready var freya_swiftwind = $FreyaSwiftwind
 
 @onready var dungeon_camera = $DungeonCamera
 @onready var town_camera = $TownCamera
 
 func _ready():
-	player.toggle_inventory.connect(toggle_inventory_interface)
+	town_camera.make_current()
+	garrick_stormwind.toggle_inventory.connect(toggle_inventory_interface)
 	
-	inventory_interface.set_player_inventory_data(player.inventory_data, 1)
-	player.inventory_data.set_player(1)
-	player.equip_inventory_data.set_player(1)
-	inventory_interface.set_equip_inventory_data(player.equip_inventory_data, 1)
+	inventory_interface.set_player_inventory_data(garrick_stormwind.inventory_data, 1)
+	garrick_stormwind.inventory_data.set_player(1)
+	garrick_stormwind.equip_inventory_data.set_player(1)
+	inventory_interface.set_equip_inventory_data(garrick_stormwind.equip_inventory_data, 1)
 	
-	inventory_interface.set_player_inventory_data(player_2.inventory_data, 2)
-	player_2.inventory_data.set_player(2)
-	player_2.equip_inventory_data.set_player(2)
-	inventory_interface.set_equip_inventory_data(player_2.equip_inventory_data, 2)
+	inventory_interface.set_player_inventory_data(lyra_shadowheart.inventory_data, 2)
+	lyra_shadowheart.inventory_data.set_player(2)
+	lyra_shadowheart.equip_inventory_data.set_player(2)
+	inventory_interface.set_equip_inventory_data(lyra_shadowheart.equip_inventory_data, 2)
 	
-	inventory_interface.set_player_inventory_data(player_3.inventory_data, 3)
-	player_3.inventory_data.set_player(3)
-	player_3.equip_inventory_data.set_player(3)
-	inventory_interface.set_equip_inventory_data(player_3.equip_inventory_data, 3)
+	inventory_interface.set_player_inventory_data(grimgar_stonebeard.inventory_data, 3)
+	grimgar_stonebeard.inventory_data.set_player(3)
+	grimgar_stonebeard.equip_inventory_data.set_player(3)
+	inventory_interface.set_equip_inventory_data(grimgar_stonebeard.equip_inventory_data, 3)
 	
-	inventory_interface.set_player_inventory_data(player_4.inventory_data, 4)
-	player_4.inventory_data.set_player(4)
-	player_4.equip_inventory_data.set_player(4)
-	inventory_interface.set_equip_inventory_data(player_4.equip_inventory_data, 4)
+	inventory_interface.set_player_inventory_data(morgath_darkbane.inventory_data, 4)
+	morgath_darkbane.inventory_data.set_player(4)
+	morgath_darkbane.equip_inventory_data.set_player(4)
+	inventory_interface.set_equip_inventory_data(morgath_darkbane.equip_inventory_data, 4)
 	
-	inventory_interface.set_player_inventory_data(player_5.inventory_data, 5)
-	player_5.inventory_data.set_player(5)
-	player_5.equip_inventory_data.set_player(5)
-	inventory_interface.set_equip_inventory_data(player_5.equip_inventory_data, 5)
+	inventory_interface.set_player_inventory_data(freya_swiftwind.inventory_data, 5)
+	freya_swiftwind.inventory_data.set_player(5)
+	freya_swiftwind.equip_inventory_data.set_player(5)
+	inventory_interface.set_equip_inventory_data(freya_swiftwind.equip_inventory_data, 5)
 		
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_interface)
 		
-	if global.game_first_loadin == true:
-		$player.position.x = global.player_start_posx
-		$player.position.y = global.player_start_posy
-	else:
-		$player.position.x = global.player_exit_cliffside_posx
-		$player.position.y = global.player_exit_cliffside_posy
-		
-
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	inventory_interface.visible = not inventory_interface.visible
 	
@@ -100,17 +94,27 @@ func _on_button_pressed():
 	print("Number of children in 'Characters' node: ", characters.get_child_count())
 
 func _on_teleport_to_dungeon_pressed():
-	player.global_position = Vector2(4500, 30)
-	player_2.global_position = Vector2(4500, 50)
-	player_3.global_position = Vector2(4500, 70)
-	player_4.global_position = Vector2(4500, 90)
-	player_5.global_position = Vector2(4500, 110)
+	if is_instance_valid(garrick_stormwind):
+		garrick_stormwind.global_position = Vector2(4500, 30)
+	if is_instance_valid(lyra_shadowheart):
+		lyra_shadowheart.global_position = Vector2(4500, 50)
+	if is_instance_valid(grimgar_stonebeard):
+		grimgar_stonebeard.global_position = Vector2(4500, 70)
+	if is_instance_valid(morgath_darkbane):
+		morgath_darkbane.global_position = Vector2(4500, 90)
+	if is_instance_valid(freya_swiftwind):
+		freya_swiftwind.global_position = Vector2(4500, 110)
 	dungeon_camera.make_current()
 
 func _on_teleport_to_town_pressed():
-	player.global_position = Vector2(520, 290)
-	player_2.global_position = Vector2(520, 310)
-	player_3.global_position = Vector2(500, 270)
-	player_4.global_position = Vector2(500, 290)
-	player_5.global_position = Vector2(500, 310)
+	if is_instance_valid(garrick_stormwind):
+		garrick_stormwind.global_position = Vector2(520, 290)
+	if is_instance_valid(lyra_shadowheart):
+		lyra_shadowheart.global_position = Vector2(520, 310)
+	if is_instance_valid(grimgar_stonebeard):
+		grimgar_stonebeard.global_position = Vector2(500, 270)
+	if is_instance_valid(morgath_darkbane):
+		morgath_darkbane.global_position = Vector2(500, 290)
+	if is_instance_valid(freya_swiftwind):
+		freya_swiftwind.global_position = Vector2(500, 310)
 	town_camera.make_current()

@@ -4,13 +4,17 @@ signal toggle_inventory
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
+@onready var health_bar = $HealthBar
 
 var enemy_in_attackrange = false
 var enemy_attack_cooldown = true
 var walking_towards = "none"
 
+var player_name = "Grimgar Stonebeard"
+
 #player stats
-var health = 160
+var max_health = 100
+var health = 100
 var attack_damage = 10
 var defense = 10
 var stamina = 10
@@ -41,13 +45,14 @@ var current_action = null
 
 func _ready():
 	PlayerManager.players.push_back(self)
+	health_bar.max_value = max_health
 	$AnimatedSprite2D.play("front_idle")
 	buildings = buildings_list.get_children()	
 	locations = {}
 	for building in buildings:
 		print(building)
 		locations[building.name] = building		
-	walk_towards("Building2")		
+	walk_towards("Building3")		
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
 	#send_request("Test")
@@ -58,6 +63,7 @@ func _physics_process(delta):
 	attack()
 	pickup()
 	current_camera()
+	update_healthbar()
 	if walking_towards != "none":
 		walk_towards(walking_towards)
 
@@ -340,7 +346,9 @@ func _on_http_request_request_comspleted(result, response_code, headers, body):
 		self.send_request("Just Waited")
 									
 			
-
+func update_healthbar():
+	health_bar.value = health
+	
 func increase_attack_damage(amount):
 	attack_damage += amount
 	print("Player", self.name)
