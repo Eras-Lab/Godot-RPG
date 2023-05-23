@@ -465,7 +465,7 @@ shape = SubResource("CircleShape2D_sdljw")
 position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"side_walk"
-frame_progress = 0.36526
+frame_progress = 0.353355
 
 [node name="detection_area" type="Area2D" parent="AnimatedSprite2D"]
 collision_layer = 2
