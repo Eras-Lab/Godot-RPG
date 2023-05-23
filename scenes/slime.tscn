@@ -167,11 +167,23 @@ wait_time = 0.5
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="Label" type="Label" parent="HTTPRequest"]
-offset_left = -19.0
-offset_top = -44.0
-offset_right = 21.0
-offset_bottom = -21.0
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.188235, 0.67451, 0, 1)
+offset_left = -16.0
+offset_top = -18.0
+offset_right = 149.0
+offset_bottom = 9.0
+scale = Vector2(0.2, 0.2)
+fill_mode = 1
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = -12.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = -5.0
+scale = Vector2(0.6, 0.6)
+text = "Slime"
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_exited"]
