@@ -11,9 +11,13 @@ var walking_towards = "none"
 
 #player stats
 var health = 160
+var attack_damage = 10
+var defense = 10
+var stamina = 10
 var strength = 10
 var constitution = 10
-var attack_damage = 10
+var dexterity = 10
+var intelligence = 10
 
 var player_alive = true
 
