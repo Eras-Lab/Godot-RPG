@@ -6,12 +6,18 @@ var player = null
 
 var player_in_attackzone = false
 var player_in_talkrange = false
+var max_health = 100
 var health = 100
 
 var can_take_damage = true
+@onready var health_bar = $HealthBar
+
+func _ready():
+	health_bar.max_value = max_health
 
 func _physics_process(delta):
 	deal_with_damage()
+	update_healthbar()
 	
 	if player_chase:
 		position += (player.position - position)/speed
@@ -38,6 +44,8 @@ func _on_detection_area_body_exited(body):
 func enemy():
 	pass
 
+func update_healthbar():
+	health_bar.value = health
 
 func _on_slime_hitbox_body_entered(body):
 	if body.has_method("player"):
