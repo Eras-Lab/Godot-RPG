@@ -13,7 +13,9 @@ const PickUp = preload("res://item/pick_up.tscn")
 @onready var dungeon_camera = $DungeonCamera
 @onready var town_camera = $TownCamera
 
+
 func _ready():
+	global.current_location = global.Location.TOWN
 	town_camera.make_current()
 	garrick_stormwind.toggle_inventory.connect(toggle_inventory_interface)
 	
@@ -94,6 +96,7 @@ func _on_button_pressed():
 	print("Number of children in 'Characters' node: ", characters.get_child_count())
 
 func _on_teleport_to_dungeon_pressed():
+	global.current_location = global.Location.DUNGEON
 	if is_instance_valid(garrick_stormwind):
 		garrick_stormwind.global_position = Vector2(4500, 30)
 	if is_instance_valid(lyra_shadowheart):
@@ -107,6 +110,7 @@ func _on_teleport_to_dungeon_pressed():
 	dungeon_camera.make_current()
 
 func _on_teleport_to_town_pressed():
+	global.current_location = global.Location.TOWN
 	if is_instance_valid(garrick_stormwind):
 		garrick_stormwind.global_position = Vector2(520, 290)
 	if is_instance_valid(lyra_shadowheart):

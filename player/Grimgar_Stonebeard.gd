@@ -6,15 +6,19 @@ signal toggle_inventory
 @export var equip_inventory_data: InventoryDataEquip
 @onready var health_bar = $HealthBar
 
+var monster_chase = false
+var enemy
+
+var monsters_defeated = false
 var enemy_in_attackrange = false
 var enemy_attack_cooldown = true
 var walking_towards = "none"
 
-var player_name = "Grimgar Stonebeard"
+var player_name = "Garrick Stormwind"
 
 #player stats
-var max_health = 100
-var health = 100
+var max_health = 300
+var health = 300
 var attack_damage = 10
 var defense = 10
 var stamina = 10
@@ -22,6 +26,7 @@ var strength = 10
 var constitution = 10
 var dexterity = 10
 var intelligence = 10
+
 
 var player_alive = true
 
@@ -32,6 +37,7 @@ var current_dir = "none"
 
 var buildings = null
 var locations = null
+var monsters = null
 
 enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
 
@@ -40,36 +46,52 @@ var step_size = 1
 
 var current_action = null
 @onready var buildings_list = $"../Buildings"
+@onready var monsters_list = $"../DungeonMonsters"
 @onready var http_request = $HTTPRequest
+@onready var chain_http_req = HTTPRequest.new()
 
 
 func _ready():
 	PlayerManager.players.push_back(self)
 	health_bar.max_value = max_health
 	$AnimatedSprite2D.play("front_idle")
-	buildings = buildings_list.get_children()	
+	buildings = buildings_list.get_children()
+	monsters = monsters_list.get_children()
 	locations = {}
 	for building in buildings:
 		print(building)
 		locations[building.name] = building		
-	walk_towards("Building3")		
+	walk_towards("Building2")		
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
 	#send_request("Test")
 	
+	# set up http req object for on-chain syncs
+	chain_http_req.request_completed.connect(_on_req_completed)
+	self.add_child(chain_http_req) 	
+	
+	# do on-chain init of attributes
+	update_attribute_on_chain("health", health)
+	update_attribute_on_chain("attack", attack_damage)
+	update_attribute_on_chain("defense", defense)
+	update_attribute_on_chain("stamina", stamina)
+	update_attribute_on_chain("strength", strength)
+	update_attribute_on_chain("constitution", constitution)
+	update_attribute_on_chain("dexterity", dexterity)
+	update_attribute_on_chain("intelligence", intelligence)
+	
 func _physics_process(delta):
+	update_healthbar()
 	player_movement(delta)
 	enemy_attack()
-	attack()
 	pickup()
 	current_camera()
-	update_healthbar()
-	if walking_towards != "none":
+	if walking_towards != "none" and monster_chase == false and global.current_location == global.Location.TOWN:
 		walk_towards(walking_towards)
-
-		
-
 	
+	if global.current_location == global.Location.DUNGEON:
+		go_and_attack()
+			
 	if health <= 0:
 		player_alive = false
 		health = 0
@@ -106,31 +128,31 @@ func player_movement(delta):
 	move_and_slide()
 
 func play_anim(movement):
-	var dir = current_dir
+	var dir = current_direction
 	var anim = $AnimatedSprite2D
 	
-	if dir == "right":
+	if dir == Direction.RIGHT:
 		anim.flip_h = false
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
 			if attack_ip == false:
 				anim.play("side_idle")
-	if dir == "left":
+	if dir == Direction.LEFT:
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("side_walk")
 		elif movement == 0:
 			if attack_ip == false:
 				anim.play("side_idle")
-	if dir == "down":
+	if dir == Direction.UP:
 		anim.flip_h = false
 		if movement == 1:
 			anim.play("front_walk")
 		elif movement == 0:
 			if attack_ip == false:
 				anim.play("front_idle")
-	if dir == "up":
+	if dir == Direction.DOWN:
 		anim.flip_h = false
 		if movement == 1:
 			anim.play("back_walk")
@@ -163,25 +185,25 @@ func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 
 func attack():
-	var dir = current_dir
+	var dir = current_direction
 	
-	if Input.is_action_just_pressed("attack"):
-		global.player_current_attack = true
-		attack_ip = true
-		if dir == "right":
-			$AnimatedSprite2D.flip_h = false
-			$AnimatedSprite2D.play("side_attack")
-			$deal_attack_timer.start()
-		if dir == "left":
-			$AnimatedSprite2D.flip_h = true
-			$AnimatedSprite2D.play("side_attack")
-			$deal_attack_timer.start()
-		if dir == "down":
-			$AnimatedSprite2D.play("front_attack")
-			$deal_attack_timer.start()
-		if dir == "up":
-			$AnimatedSprite2D.play("back_attack")
-			$deal_attack_timer.start()
+	
+	global.player_current_attack = true
+	attack_ip = true
+	if dir == Direction.RIGHT:
+		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.play("side_attack")
+		$deal_attack_timer.start()
+	if dir == Direction.LEFT:
+		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.play("side_attack")
+		$deal_attack_timer.start()
+	if dir == Direction.DOWN:
+		$AnimatedSprite2D.play("front_attack")
+		$deal_attack_timer.start()
+	if dir == Direction.UP:
+		$AnimatedSprite2D.play("back_attack")
+		$deal_attack_timer.start()
 
 func pickup():
 	if Input.is_action_just_pressed("interact"):
@@ -229,26 +251,33 @@ func get_drop_position():
 
 func heal(heal_value: int) -> void:
 	health += heal_value
+	update_attribute_on_chain("health", health)
 
 func equip(stats) -> void:
 	if stats["attack_damage"]:
 		attack_damage += stats["attack_damage"]
+		update_attribute_on_chain("attack", attack_damage)
 	
 	if stats["strength"]:
 		strength += stats["strength"]
+		update_attribute_on_chain("strength", strength)
 	
 	if stats["constitution"]:
 		constitution += stats["constitution"]
+		update_attribute_on_chain("constitution", constitution)
 
 func unequip(stats) -> void:
 	if stats["attack_damage"]:
 		attack_damage -= stats["attack_damage"]
+		update_attribute_on_chain("attack", attack_damage)
 	
 	if stats["strength"]:
 		strength -= stats["strength"]
+		update_attribute_on_chain("strength", strength)
 	
 	if stats["constitution"]:
 		constitution -= stats["constitution"]
+		update_attribute_on_chain("constitution", constitution)
 		
 func walk_towards(location_name):
 	var location = locations[location_name]
@@ -283,7 +312,7 @@ func walk_towards(location_name):
 
 		walking_towards = location_name
 		#Call increase_dex		
-		
+
 func send_request(user_input: String):
 	var headers = ["Content-Type: application/json"]
 	#var nearby_players = self.get_parent().close_npc_list
@@ -325,6 +354,8 @@ func _on_http_request_request_comspleted(result, response_code, headers, body):
 	if res == null:
 		self.send_request("did nothing")
 		return
+	print("=====response")
+	print(res)
 	var response = JSON.parse_string(res)	
 	
 	#var text = response["choices"][0]["text"].strip_edges()
@@ -353,19 +384,94 @@ func increase_attack_damage(amount):
 	attack_damage += amount
 	print("Player", self.name)
 	print("attack increased to", self.attack_damage)
-	
+	update_attribute_on_chain("attack", attack_damage)
 
 func increase_strength(amount):
 	strength += amount
 	print("Player", self.name)
-	print("strength increased to", self.strength)		
+	print("strength increased to", self.strength)	
+	update_attribute_on_chain("strength", strength)	
 	
 func increase_health(amount):
 	health += amount
 	print("Player", self.name)
 	print("health increased to", self.health)	
+	update_attribute_on_chain("health", health)
 
 func increase_constitution(amount):
 	constitution += amount
 	print("Player", self.name)
-	print("constitution increased to", self.constitution)		
+	print("constitution increased to ", self.constitution)
+	update_attribute_on_chain("constitution", constitution)		
+
+
+#func _on_detection_area_body_entered(body):
+#	print("BODY ENTERED", body)
+#	if body.is_in_group("dungeon_monsters"):
+#		print("MONSTER ENTERED", body)
+#		monster_chase = true
+#		enemy = body
+#
+#func _on_detection_area_body_exited(body):
+#	if body.is_in_group("dungeon_monsters"):
+#		monster_chase = false
+	
+func go_and_attack():
+	for monster in monsters:
+		if is_instance_valid(monster):
+			enemy = monster
+			monster_chase = true
+			break
+			
+	
+	if enemy != null:
+		position += (enemy.position - position)/speed
+		var direction = enemy.position - position
+
+		if current_direction == Direction.NONE:
+			if abs(direction.x) > 0:
+				current_direction = Direction.RIGHT if direction.x > 0 else Direction.LEFT
+			else:
+				current_direction = Direction.UP if direction.y > 0 else Direction.DOWN
+
+		if current_direction == Direction.UP or current_direction == Direction.DOWN:
+			if direction.y > 0:
+				position.y += min(step_size, direction.y)
+				if position.y >= enemy.position.y:
+					current_direction = Direction.NONE
+			else:
+				position.y -= min(step_size, -direction.y)
+				if position.y <= enemy.position.y:
+					current_direction = Direction.NONE
+
+		elif current_direction == Direction.LEFT or current_direction == Direction.RIGHT:
+			if direction.x > 0:
+				position.x += min(step_size, direction.x)
+				if position.x >= enemy.position.x:
+					current_direction = Direction.NONE
+			else:
+				position.x -= min(step_size, -direction.x)
+				if position.x <= enemy.position.x:
+					current_direction = Direction.NONE
+					
+		if enemy_in_attackrange and enemy.health > 0:
+			attack()
+
+func _on_req_completed(result, response_code, headers, body):
+	pass
+
+func update_attribute_on_chain(attribute, value):
+	var headers = ["Content-Type: application/json"]
+	var body = {
+		"player": self.name,
+		"attribute": attribute,
+		"value": value
+	}
+	var body_text = JSON.stringify(body)  
+
+	var error = chain_http_req.request("http://127.0.0.1:3000/attribute", headers, HTTPClient.METHOD_POST, body_text)
+	if error != OK:
+		print("An error occurred in the HTTP request")	
+	else:
+		print("===== On-chain update result: " + attribute + " updated for " + self.name)
+

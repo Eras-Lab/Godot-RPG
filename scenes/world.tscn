@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://c7ms6iwsp6v17"]
+[gd_scene load_steps=74 format=3 uid="uid://c7ms6iwsp6v17"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
@@ -1588,9 +1588,6 @@ sources/10 = SubResource("TileSetAtlasSource_tjpfw")
 sources/11 = SubResource("TileSetAtlasSource_awidl")
 sources/12 = SubResource("TileSetAtlasSource_b682u")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxqi3"]
-size = Vector2(39, 48)
-
 [sub_resource type="Resource" id="Resource_tkty2"]
 script = ExtResource("14_v3f8w")
 item_data = ExtResource("13_tu8l2")
@@ -1724,12 +1721,6 @@ layer_2/tile_data = PackedInt32Array(1441647, 1114121, 5, 1507183, 1114121, 6, 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(0, 2, 371, 2, 511, 2, 510, -46, 550, -46, 552, -3, 556, 2, 902, 3, 900, 629, -4, 624, -2, 197, -2, 33, -49, -27, -460, 37, -456, 842, 1514, 789, 1370, -231, 115, -215)
-
-[node name="cliffside_transition_point" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
-position = Vector2(531.5, -21)
-shape = SubResource("RectangleShape2D_lxqi3")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -2028,28 +2019,28 @@ equip_inventory_data = SubResource("Resource_47lym")
 
 [node name="DungeonMonsters" type="Node" parent="."]
 
-[node name="slime" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(4408, 513)
 scale = Vector2(1.46761, 1.46761)
+collision_layer = 3
+collision_mask = 3
 
-[node name="slime2" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime2" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(5174, 317)
 scale = Vector2(1.46761, 1.46761)
 
-[node name="slime3" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime3" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(5203, 524)
 scale = Vector2(1.46761, 1.46761)
 
-[node name="slime4" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime4" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(4803, 531)
 scale = Vector2(1.46761, 1.46761)
 
-[node name="slime5" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime5" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(5182, 69)
 scale = Vector2(1.46761, 1.46761)
 
-[connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
-[connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
 [connection signal="drop_slot_data" from="UI/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_visibility_changed"]
