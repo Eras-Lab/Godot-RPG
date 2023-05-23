@@ -10,7 +10,7 @@ func _ready():
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 
 func _on_body_entered(body):
-	if body.name.begins_with("player"):
+	if body.is_in_group("characters"):
 		print("player ", body.name)
 		print("entered area 2d")      
 		players_in_area.append(body)
