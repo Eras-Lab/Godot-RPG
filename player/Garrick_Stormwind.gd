@@ -9,6 +9,7 @@ signal toggle_inventory
 var monster_chase = false
 var enemy
 
+var monsters_defeated = false
 var enemy_in_attackrange = false
 var enemy_attack_cooldown = true
 var walking_towards = "none"
@@ -55,6 +56,7 @@ func _ready():
 	health_bar.max_value = max_health
 	$AnimatedSprite2D.play("front_idle")
 	buildings = buildings_list.get_children()
+	monsters = monsters_list.get_children()
 	locations = {}
 	for building in buildings:
 		print(building)
@@ -87,11 +89,9 @@ func _physics_process(delta):
 	if walking_towards != "none" and monster_chase == false and global.current_location == global.Location.TOWN:
 		walk_towards(walking_towards)
 	
-	if monster_chase == true:
-		go_and_attack(enemy)
-		
-
-	
+	if global.current_location == global.Location.DUNGEON:
+		go_and_attack()
+			
 	if health <= 0:
 		player_alive = false
 		health = 0
@@ -405,21 +405,27 @@ func increase_constitution(amount):
 	update_attribute_on_chain("constitution", constitution)		
 
 
-func _on_detection_area_body_entered(body):
-	print("BODY ENTERED", body)
-	if body.is_in_group("dungeon_monsters"):
-		print("MONSTER ENTERED", body)
-		monster_chase = true
-		enemy = body
-		
-func _on_detection_area_body_exited(body):
-	if body.is_in_group("dungeon_monsters"):
-		monster_chase = false
+#func _on_detection_area_body_entered(body):
+#	print("BODY ENTERED", body)
+#	if body.is_in_group("dungeon_monsters"):
+#		print("MONSTER ENTERED", body)
+#		monster_chase = true
+#		enemy = body
+#
+#func _on_detection_area_body_exited(body):
+#	if body.is_in_group("dungeon_monsters"):
+#		monster_chase = false
 	
-func go_and_attack(enemy):
-	position += (enemy.position - position)/speed
-
+func go_and_attack():
+	for monster in monsters:
+		if is_instance_valid(monster):
+			enemy = monster
+			monster_chase = true
+			break
+			
+	
 	if enemy != null:
+		position += (enemy.position - position)/speed	
 		var direction = enemy.position - position
 
 		if current_direction == Direction.NONE:
@@ -448,8 +454,8 @@ func go_and_attack(enemy):
 				if position.x <= enemy.position.x:
 					current_direction = Direction.NONE
 					
-	if enemy_in_attackrange and enemy.health > 0:
-		attack()
+		if enemy_in_attackrange and enemy.health > 0:
+			attack()
 
 func _on_req_completed(result, response_code, headers, body):
 	pass

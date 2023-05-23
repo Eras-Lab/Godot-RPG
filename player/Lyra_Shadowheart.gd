@@ -9,6 +9,7 @@ signal toggle_inventory
 var monster_chase = false
 var enemy
 
+var monsters_defeated = false
 var enemy_in_attackrange = false
 var enemy_attack_cooldown = true
 var walking_towards = "none"
@@ -26,6 +27,7 @@ var constitution = 10
 var dexterity = 10
 var intelligence = 10
 
+
 var player_alive = true
 
 var attack_ip = false
@@ -35,6 +37,7 @@ var current_dir = "none"
 
 var buildings = null
 var locations = null
+var monsters = null
 
 enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
 
@@ -43,14 +46,17 @@ var step_size = 1
 
 var current_action = null
 @onready var buildings_list = $"../Buildings"
+@onready var monsters_list = $"../DungeonMonsters"
 @onready var http_request = $HTTPRequest
+@onready var chain_http_req = HTTPRequest.new()
 
 
 func _ready():
 	PlayerManager.players.push_back(self)
 	health_bar.max_value = max_health
 	$AnimatedSprite2D.play("front_idle")
-	buildings = buildings_list.get_children()	
+	buildings = buildings_list.get_children()
+	monsters = monsters_list.get_children()
 	locations = {}
 	for building in buildings:
 		print(building)
@@ -59,6 +65,20 @@ func _ready():
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
 	#send_request("Test")
+	
+	# set up http req object for on-chain syncs
+	chain_http_req.request_completed.connect(_on_req_completed)
+	self.add_child(chain_http_req) 	
+	
+	# do on-chain init of attributes
+	update_attribute_on_chain("health", health)
+	update_attribute_on_chain("attack", attack_damage)
+	update_attribute_on_chain("defense", defense)
+	update_attribute_on_chain("stamina", stamina)
+	update_attribute_on_chain("strength", strength)
+	update_attribute_on_chain("constitution", constitution)
+	update_attribute_on_chain("dexterity", dexterity)
+	update_attribute_on_chain("intelligence", intelligence)
 	
 func _physics_process(delta):
 	update_healthbar()
@@ -69,11 +89,9 @@ func _physics_process(delta):
 	if walking_towards != "none" and monster_chase == false and global.current_location == global.Location.TOWN:
 		walk_towards(walking_towards)
 	
-	if monster_chase == true:
-		go_and_attack(enemy)
-		
-
-	
+	if global.current_location == global.Location.DUNGEON:
+		go_and_attack()
+			
 	if health <= 0:
 		player_alive = false
 		health = 0
@@ -233,26 +251,33 @@ func get_drop_position():
 
 func heal(heal_value: int) -> void:
 	health += heal_value
+	update_attribute_on_chain("health", health)
 
 func equip(stats) -> void:
 	if stats["attack_damage"]:
 		attack_damage += stats["attack_damage"]
+		update_attribute_on_chain("attack", attack_damage)
 	
 	if stats["strength"]:
 		strength += stats["strength"]
+		update_attribute_on_chain("strength", strength)
 	
 	if stats["constitution"]:
 		constitution += stats["constitution"]
+		update_attribute_on_chain("constitution", constitution)
 
 func unequip(stats) -> void:
 	if stats["attack_damage"]:
 		attack_damage -= stats["attack_damage"]
+		update_attribute_on_chain("attack", attack_damage)
 	
 	if stats["strength"]:
 		strength -= stats["strength"]
+		update_attribute_on_chain("strength", strength)
 	
 	if stats["constitution"]:
 		constitution -= stats["constitution"]
+		update_attribute_on_chain("constitution", constitution)
 		
 func walk_towards(location_name):
 	var location = locations[location_name]
@@ -329,6 +354,8 @@ func _on_http_request_request_comspleted(result, response_code, headers, body):
 	if res == null:
 		self.send_request("did nothing")
 		return
+	print("=====response")
+	print(res)
 	var response = JSON.parse_string(res)	
 	
 	#var text = response["choices"][0]["text"].strip_edges()
@@ -357,38 +384,48 @@ func increase_attack_damage(amount):
 	attack_damage += amount
 	print("Player", self.name)
 	print("attack increased to", self.attack_damage)
-	
+	update_attribute_on_chain("attack", attack_damage)
 
 func increase_strength(amount):
 	strength += amount
 	print("Player", self.name)
-	print("strength increased to", self.strength)		
+	print("strength increased to", self.strength)	
+	update_attribute_on_chain("strength", strength)	
 	
 func increase_health(amount):
 	health += amount
 	print("Player", self.name)
 	print("health increased to", self.health)	
+	update_attribute_on_chain("health", health)
 
 func increase_constitution(amount):
 	constitution += amount
 	print("Player", self.name)
-	print("constitution increased to", self.constitution)		
+	print("constitution increased to ", self.constitution)
+	update_attribute_on_chain("constitution", constitution)		
 
 
-func _on_detection_area_body_entered(body):
-	print("BODY ENTERED", body)
-	if body.is_in_group("dungeon_monsters"):
-		print("MONSTER ENTERED", body)
-		monster_chase = true
-		enemy = body
-		
-func _on_detection_area_body_exited(body):
-	if body.is_in_group("dungeon_monsters"):
-		monster_chase = false
+#func _on_detection_area_body_entered(body):
+#	print("BODY ENTERED", body)
+#	if body.is_in_group("dungeon_monsters"):
+#		print("MONSTER ENTERED", body)
+#		monster_chase = true
+#		enemy = body
+#
+#func _on_detection_area_body_exited(body):
+#	if body.is_in_group("dungeon_monsters"):
+#		monster_chase = false
 	
-func go_and_attack(enemy):
-	position += (enemy.position - position)/speed
+func go_and_attack():
+	for monster in monsters:
+		if is_instance_valid(monster):
+			enemy = monster
+			monster_chase = true
+			break
+			
+	
 	if enemy != null:
+		position += (enemy.position - position)/speed	
 		var direction = enemy.position - position
 
 		if current_direction == Direction.NONE:
@@ -417,5 +454,24 @@ func go_and_attack(enemy):
 				if position.x <= enemy.position.x:
 					current_direction = Direction.NONE
 					
-	if enemy_in_attackrange and enemy.health > 0:
-		attack()
+		if enemy_in_attackrange and enemy.health > 0:
+			attack()
+
+func _on_req_completed(result, response_code, headers, body):
+	pass
+
+func update_attribute_on_chain(attribute, value):
+	var headers = ["Content-Type: application/json"]
+	var body = {
+		"player": self.name,
+		"attribute": attribute,
+		"value": value
+	}
+	var body_text = JSON.stringify(body)  
+
+	var error = chain_http_req.request("http://127.0.0.1:3000/attribute", headers, HTTPClient.METHOD_POST, body_text)
+	if error != OK:
+		print("An error occurred in the HTTP request")	
+	else:
+		print("===== On-chain update result: " + attribute + " updated for " + self.name)
+
