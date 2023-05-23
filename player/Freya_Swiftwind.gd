@@ -61,7 +61,7 @@ func _ready():
 	for building in buildings:
 		print(building)
 		locations[building.name] = building		
-	walk_towards("Building2")		
+	walk_towards("Building5")		
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
 	#send_request("Test")
