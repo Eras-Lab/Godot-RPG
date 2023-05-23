@@ -86,7 +86,7 @@ func _physics_process(delta):
 	enemy_attack()
 	pickup()
 	current_camera()
-	if walking_towards != "none" and monster_chase == false and global.current_location == global.Location.TOWN:
+	if walking_towards != "none" and global.current_location == global.Location.TOWN:
 		walk_towards(walking_towards)
 	
 	if global.current_location == global.Location.DUNGEON:
