@@ -2003,18 +2003,21 @@ inventory_data = ExtResource("48_b4c25")
 equip_inventory_data = SubResource("Resource_lefkm")
 
 [node name="GrimgarStonebeard" parent="." groups=["characters"] instance=ExtResource("49_cj331")]
+visible = false
 position = Vector2(515.146, 377.236)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("50_5236c")
 equip_inventory_data = SubResource("Resource_45wn7")
 
 [node name="MorgathDarkbane" parent="." groups=["characters"] instance=ExtResource("47_081vx")]
+visible = false
 position = Vector2(468.073, 248.618)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("48_7rhel")
 equip_inventory_data = SubResource("Resource_wlly2")
 
 [node name="FreyaSwiftwind" parent="." groups=["characters"] instance=ExtResource("49_3ji4y")]
+visible = false
 position = Vector2(468.073, 248.618)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("50_wmyya")
@@ -2028,23 +2031,25 @@ equip_inventory_data = SubResource("Resource_47lym")
 
 [node name="DungeonMonsters" type="Node" parent="."]
 
-[node name="slime" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(4408, 513)
 scale = Vector2(1.46761, 1.46761)
+collision_layer = 3
+collision_mask = 3
 
-[node name="slime2" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime2" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(5174, 317)
 scale = Vector2(1.46761, 1.46761)
 
-[node name="slime3" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime3" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(5203, 524)
 scale = Vector2(1.46761, 1.46761)
 
-[node name="slime4" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime4" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(4803, 531)
 scale = Vector2(1.46761, 1.46761)
 
-[node name="slime5" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+[node name="slime5" parent="DungeonMonsters" groups=["dungeon_monsters"] instance=ExtResource("5_s7rkd")]
 position = Vector2(5182, 69)
 scale = Vector2(1.46761, 1.46761)
 

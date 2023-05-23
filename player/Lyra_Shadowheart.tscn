@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://4tm460hjw0cg"]
+[gd_scene load_steps=58 format=3 uid="uid://4tm460hjw0cg"]
 
 [ext_resource type="Script" path="res://player/Lyra_Shadowheart.gd" id="1_4bt22"]
 [ext_resource type="Texture2D" uid="uid://d0hc7c3uc6tga" path="res://art/characters/player.png" id="2_ohbjc"]
@@ -416,6 +416,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmk0k"]
+radius = 111.879
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5j4u"]
 
 [node name="player" type="CharacterBody2D"]
@@ -441,6 +444,14 @@ position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"back_idle"
 frame_progress = 0.839914
+
+[node name="detection_area" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/detection_area"]
+position = Vector2(1, -4)
+shape = SubResource("CircleShape2D_gmk0k")
 
 [node name="player_hitbox" type="Area2D" parent="."]
 
@@ -490,6 +501,8 @@ scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
 
+[connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

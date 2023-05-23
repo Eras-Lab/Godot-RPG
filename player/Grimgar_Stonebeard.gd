@@ -283,7 +283,7 @@ func walk_towards(location_name):
 
 		walking_towards = location_name
 		#Call increase_dex		
-		
+
 func send_request(user_input: String):
 	var headers = ["Content-Type: application/json"]
 	#var nearby_players = self.get_parent().close_npc_list

@@ -2,6 +2,9 @@ extends Node
 
 signal changing_scenes
 
+enum Location {TOWN, DUNGEON}
+var current_location
+
 var player_1_inventory: InventoryData
 
 var player_current_attack = false
