@@ -1720,11 +1720,6 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(1441647, 1114121, 5, 1507183, 1114121, 6, 1572719, 1114121, 7, 1441648, 1179657, 5, 1507184, 1179657, 6, 1572720, 1179657, 7, 1441649, 1245193, 5, 1507185, 1245193, 6, 1572721, 1245193, 7, 1441650, 1310729, 5, 1507186, 1310729, 6, 1572722, 1310729, 7)
 
-[node name="slime" parent="." instance=ExtResource("5_s7rkd")]
-visible = false
-position = Vector2(673, 227)
-scale = Vector2(1.46761, 1.46761)
-
 [node name="collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
@@ -2030,6 +2025,28 @@ position = Vector2(545, 245)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("14_5mnxd")
 equip_inventory_data = SubResource("Resource_47lym")
+
+[node name="DungeonMonsters" type="Node" parent="."]
+
+[node name="slime" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+position = Vector2(4408, 513)
+scale = Vector2(1.46761, 1.46761)
+
+[node name="slime2" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+position = Vector2(5174, 317)
+scale = Vector2(1.46761, 1.46761)
+
+[node name="slime3" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+position = Vector2(5203, 524)
+scale = Vector2(1.46761, 1.46761)
+
+[node name="slime4" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+position = Vector2(4803, 531)
+scale = Vector2(1.46761, 1.46761)
+
+[node name="slime5" parent="DungeonMonsters" instance=ExtResource("5_s7rkd")]
+position = Vector2(5182, 69)
+scale = Vector2(1.46761, 1.46761)
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]

@@ -39,8 +39,11 @@ var current_direction = Direction.NONE
 var step_size = 1
 
 var current_action = null
+var monsters = null
 @onready var buildings_list = $"../Buildings"
 @onready var http_request = $HTTPRequest
+@onready var dungeon_monsters = $"../DungeonMonsters"
+
 
 
 func _ready():
@@ -49,15 +52,21 @@ func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	buildings = buildings_list.get_children()	
 	locations = {}
+	monsters = {}
 	for building in buildings:
 		print(building)
 		locations[building.name] = building		
-	walk_towards("Building2")		
+	for monster in dungeon_monsters.get_children():
+		monsters[monster.name] = monster
+	
+	print(monsters)
+	#walk_towards("Building2")		
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
 	#send_request("Test")
 	
 func _physics_process(delta):
+	#print(monsters)
 	player_movement(delta)
 	enemy_attack()
 	attack()
@@ -154,6 +163,8 @@ func enemy_attack():
 		enemy_attack_cooldown = false
 		
 		$attack_cooldown.start()
+		print("LIST OF MONSTERS")
+		print(monsters)
 		#print(health)
 	
 func player():
