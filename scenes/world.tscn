@@ -1996,31 +1996,31 @@ polygon = PackedVector2Array(5165, 179, 5234, 178, 5243, 199, 5240, 236, 5166, 2
 position = Vector2(-111, 237)
 polygon = PackedVector2Array(5165, 179, 5234, 178, 5243, 199, 5240, 236, 5166, 240, 5158, 194, 5168, 221, 5225, 221, 5223, 186, 5171, 192)
 
-[node name="LyraShadowheart" parent="." instance=ExtResource("47_7phof")]
+[node name="LyraShadowheart" parent="." groups=["characters"] instance=ExtResource("47_7phof")]
 position = Vector2(520.073, 310.618)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("48_b4c25")
 equip_inventory_data = SubResource("Resource_lefkm")
 
-[node name="GrimgarStonebeard" parent="." instance=ExtResource("49_cj331")]
+[node name="GrimgarStonebeard" parent="." groups=["characters"] instance=ExtResource("49_cj331")]
 position = Vector2(515.146, 377.236)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("50_5236c")
 equip_inventory_data = SubResource("Resource_45wn7")
 
-[node name="MorgathDarkbane" parent="." instance=ExtResource("47_081vx")]
+[node name="MorgathDarkbane" parent="." groups=["characters"] instance=ExtResource("47_081vx")]
 position = Vector2(468.073, 248.618)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("48_7rhel")
 equip_inventory_data = SubResource("Resource_wlly2")
 
-[node name="FreyaSwiftwind" parent="." instance=ExtResource("49_3ji4y")]
+[node name="FreyaSwiftwind" parent="." groups=["characters"] instance=ExtResource("49_3ji4y")]
 position = Vector2(468.073, 248.618)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("50_wmyya")
 equip_inventory_data = SubResource("Resource_j7hpl")
 
-[node name="GarrickStormwind" parent="." instance=ExtResource("13_ii73w")]
+[node name="GarrickStormwind" parent="." groups=["characters"] instance=ExtResource("13_ii73w")]
 position = Vector2(545, 245)
 scale = Vector2(1.642, 1.642)
 inventory_data = ExtResource("14_5mnxd")
