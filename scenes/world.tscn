@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://de51qesdruemo"]
+[gd_scene load_steps=75 format=3 uid="uid://de51qesdruemo"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
@@ -1670,6 +1670,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isy4e"]
 size = Vector2(9.66, 9.72)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mpdbe"]
+
 [node name="world" type="Node2D"]
 position = Vector2(-1, 3)
 script = ExtResource("1_c4xv6")
@@ -1771,6 +1773,7 @@ shape = SubResource("RectangleShape2D_lxqi3")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="InventoryInterface" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2015,6 +2018,22 @@ position = Vector2(4755, 285)
 
 [node name="TownCamera" type="Camera2D" parent="."]
 position = Vector2(475, 272)
+
+[node name="DungeonCollisions" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_mpdbe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DungeonCollisions"]
+polygon = PackedVector2Array(4226, 581, 5313, 584, 5311, -41, 4212, -30, 4210, 581, 4210, 620, 4161, 599, 4168, -109, 5371, -109, 5371, 652, 4224, 626)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="DungeonCollisions"]
+polygon = PackedVector2Array(4333, 240, 4487, 243, 4484, 95, 4332, 92, 4333, 216, 4339, 104, 4470, 109, 4470, 225, 4336, 226)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="DungeonCollisions"]
+polygon = PackedVector2Array(5165, 179, 5234, 178, 5243, 199, 5240, 236, 5166, 240, 5158, 194, 5168, 221, 5225, 221, 5223, 186, 5171, 192)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="DungeonCollisions"]
+position = Vector2(-111, 237)
+polygon = PackedVector2Array(5165, 179, 5234, 178, 5243, 199, 5240, 236, 5166, 240, 5158, 194, 5168, 221, 5225, 221, 5223, 186, 5171, 192)
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
