@@ -1,9 +1,11 @@
-[gd_scene load_steps=63 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=65 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Texture2D" uid="uid://dgylc53x0m4d4" path="res://images/treating/character/character_medieval_pixel/character sheet 2.png" id="2_yobrj"]
 [ext_resource type="Texture2D" uid="uid://b37ix6vvq8lne" path="res://images/treating/character/character_medieval_pixel/character sheet 1.png" id="3_ayftg"]
 [ext_resource type="Script" path="res://player/PlayerStatus.gd" id="4_gglgq"]
+[ext_resource type="Script" path="res://player/PlayerAnimation.gd" id="4_mdntx"]
+[ext_resource type="Script" path="res://player/Battle.gd" id="5_y6ckx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -465,8 +467,7 @@ shape = SubResource("CircleShape2D_sdljw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
-animation = &"side_walk"
-frame_progress = 0.353355
+animation = &"back_attack"
 
 [node name="detection_area" type="Area2D" parent="AnimatedSprite2D"]
 collision_layer = 2
@@ -524,7 +525,14 @@ scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
 
+[node name="PlayerAnimation" type="Node" parent="."]
+script = ExtResource("4_mdntx")
+
+[node name="Battle" type="Node" parent="."]
+script = ExtResource("5_y6ckx")
+
 [node name="PlayerStatus" type="Node2D" parent="."]
+visible = false
 script = ExtResource("4_gglgq")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]

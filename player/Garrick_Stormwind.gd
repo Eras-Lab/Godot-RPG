@@ -50,6 +50,7 @@ var current_action = null
 @onready var http_request = $HTTPRequest
 @onready var chain_http_req = HTTPRequest.new()
 @onready var player_status = $PlayerStatus
+@onready var player_animation = $PlayerAnimation
 
 
 func _ready():
@@ -83,7 +84,7 @@ func _ready():
 	
 func _physics_process(delta):
 	update_healthbar()
-	player_movement(delta)
+	#player_movement(delta)
 	enemy_attack()
 	pickup()
 	current_camera()
@@ -101,65 +102,7 @@ func _physics_process(delta):
 	
 func player_movement(delta):
 	
-	if Input.is_action_pressed("ui_right"):
-		current_dir = "right"
-		play_anim(1)
-		velocity.x = speed
-		velocity.y = 0
-	elif Input.is_action_pressed("ui_left"):
-		current_dir = "left"
-		play_anim(1)
-		velocity.x = -speed
-		velocity.y = 0
-	elif Input.is_action_pressed("ui_down"):
-		current_dir = "down"
-		play_anim(1)
-		velocity.x = 0
-		velocity.y = speed
-	elif Input.is_action_pressed("ui_up"):
-		current_dir = "up"
-		play_anim(1)
-		velocity.x = 0
-		velocity.y = -speed
-	else:
-		play_anim(0)
-		velocity.x = 0
-		velocity.y = 0
-		
-	move_and_slide()
-
-func play_anim(movement):
-	var dir = current_direction
-	var anim = $AnimatedSprite2D
-	
-	if dir == Direction.RIGHT:
-		anim.flip_h = false
-		if movement == 1:
-			anim.play("side_walk")
-		elif movement == 0:
-			if attack_ip == false:
-				anim.play("side_idle")
-	if dir == Direction.LEFT:
-		anim.flip_h = true
-		if movement == 1:
-			anim.play("side_walk")
-		elif movement == 0:
-			if attack_ip == false:
-				anim.play("side_idle")
-	if dir == Direction.UP:
-		anim.flip_h = false
-		if movement == 1:
-			anim.play("front_walk")
-		elif movement == 0:
-			if attack_ip == false:
-				anim.play("front_idle")
-	if dir == Direction.DOWN:
-		anim.flip_h = false
-		if movement == 1:
-			anim.play("back_walk")
-		elif movement == 0:
-			if attack_ip == false:
-				anim.play("back_idle")
+	player_animation.player_movement(delta)
 
 
 func _on_player_hitbox_body_entered(body):
@@ -251,34 +194,27 @@ func get_drop_position():
 	
 
 func heal(heal_value: int) -> void:
-	player_status.health += heal_value
+	player_status.heal(heal_value)
 	update_attribute_on_chain("health", player_status.health)
 
 func equip(stats) -> void:
-	if stats["attack_damage"]:
-		player_status.attack_damage += stats["attack_damage"]
-		update_attribute_on_chain("attack", player_status.attack_damage)
-	
-	if stats["strength"]:
-		player_status.strength += stats["strength"]
-		update_attribute_on_chain("strength", player_status.strength)
-	
-	if stats["constitution"]:
-		player_status.constitution += stats["constitution"]
-		update_attribute_on_chain("constitution", player_status.constitution)
+	player_status.equip(stats)
 
-func unequip(stats) -> void:
-	if stats["attack_damage"]:
-		player_status.attack_damage -= stats["attack_damage"]
-		update_attribute_on_chain("attack", player_status.attack_damage)
+
+func update_healthbar():
+	health_bar.value = player_status.health
 	
-	if stats["strength"]:
-		player_status.strength -= stats["strength"]
-		update_attribute_on_chain("strength", player_status.strength)
+func increase_attack_damage(amount):
+	player_status.increase_attack_damage(amount)
+
+func increase_strength(amount):
+	player_status.increase_strength(amount)
 	
-	if stats["constitution"]:
-		player_status.constitution -= stats["constitution"]
-		update_attribute_on_chain("constitution", player_status.constitution)
+func increase_health(amount):
+	player_status.increase_health(amount)
+
+func increase_constitution(amount):
+	player_status.increase_constitution(amount)		
 		
 func walk_towards(location_name):
 	var location = locations[location_name]
@@ -377,33 +313,7 @@ func _on_http_request_request_comspleted(result, response_code, headers, body):
 		print("WAITING")
 		self.send_request("Just Waited")
 									
-			
-func update_healthbar():
-	health_bar.value = player_status.health
-	
-func increase_attack_damage(amount):
-	player_status.attack_damage += amount
-	print("Player", self.name)
-	print("attack increased to", player_status.attack_damage)
-	update_attribute_on_chain("attack", player_status.attack_damage)
-
-func increase_strength(amount):
-	player_status.strength += amount
-	print("Player", self.name)
-	print("strength increased to", self.strength)	
-	update_attribute_on_chain("strength", player_status.strength)	
-	
-func increase_health(amount):
-	player_status.health += amount
-	print("Player", self.name)
-	print("health increased to", self.health)	
-	update_attribute_on_chain("health", player_status.health)
-
-func increase_constitution(amount):
-	player_status.constitution += amount
-	print("Player", self.name)
-	print("constitution increased to ", self.constitution)
-	update_attribute_on_chain("constitution", player_status.constitution)		
+		
 
 
 #func _on_detection_area_body_entered(body):

@@ -1,5 +1,5 @@
 extends Node
-
+#Make this initialization programable
 var player_name = "Garrick Stormwind"
 
 #player stats
