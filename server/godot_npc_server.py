@@ -40,7 +40,7 @@ class AIAgent:
             *npc: The name of the npc that triggered this action
             *type: Type of action to take.  Valid values are: move, wait, walkTo
             *where: Only for type "walkTo". Valid values are(dont respond with any other value): Building1, Building2, Building3, Building4, Building5
-            *thought: For all types, the reason why you are doing this action
+            *thought: For all types, the reason why you are doing this action(usually each building will train a different set o attribute)
             *relationship: Only for type "talkTo", what is your relationship with the other person
             *feeling: For all types, an emoji to represent your feeling
 

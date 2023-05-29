@@ -64,7 +64,7 @@ func _ready():
 	walk_towards("Building4")		
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
-	#send_request("Test")
+	send_request("Test")
 	
 	# set up http req object for on-chain syncs
 	chain_http_req.request_completed.connect(_on_req_completed)

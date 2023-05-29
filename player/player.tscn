@@ -1,7 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://c3wubdpgmja5a"]
+[gd_scene load_steps=58 format=3 uid="uid://c3wubdpgmja5a"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_5gwfe"]
 [ext_resource type="Texture2D" uid="uid://d0hc7c3uc6tga" path="res://art/characters/player.png" id="2_47i3a"]
+[ext_resource type="Script" path="res://player/PlayerStatus.gd" id="3_x3jyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -471,6 +472,9 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="PlayerStatus" type="Node2D" parent="."]
+script = ExtResource("3_x3jyq")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

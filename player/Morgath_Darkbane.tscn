@@ -1,8 +1,8 @@
 [gd_scene load_steps=61 format=3 uid="uid://bu06evlfyo0vj"]
 
 [ext_resource type="Script" path="res://player/Morgath_Darkbane.gd" id="1_y5mw0"]
-[ext_resource type="Texture2D" uid="uid://brjj7adevhegr" path="res://images/treating/character/character_medieval_pixel/alternative colors/yellow2.png" id="2_cu2lo"]
-[ext_resource type="Texture2D" uid="uid://bpy0flx6p8swl" path="res://images/treating/character/character_medieval_pixel/alternative colors/yellow1.png" id="3_48t54"]
+[ext_resource type="Texture2D" uid="uid://dekk7gbqds1a1" path="res://images/treating/character/character_medieval_pixel/alternative colors/yellow2.png" id="2_cu2lo"]
+[ext_resource type="Texture2D" uid="uid://stggyg3bdio7" path="res://images/treating/character/character_medieval_pixel/alternative colors/yellow1.png" id="3_48t54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011

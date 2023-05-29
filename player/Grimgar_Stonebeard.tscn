@@ -1,8 +1,8 @@
 [gd_scene load_steps=61 format=3 uid="uid://cxj23qoxnoqp6"]
 
 [ext_resource type="Script" path="res://player/Grimgar_Stonebeard.gd" id="1_xgoej"]
-[ext_resource type="Texture2D" uid="uid://b0jhif7u0r0so" path="res://images/treating/character/character_medieval_pixel/alternative colors/blue2.png" id="2_s5u2d"]
-[ext_resource type="Texture2D" uid="uid://d3y60b0r5le6u" path="res://images/treating/character/character_medieval_pixel/alternative colors/blue1.png" id="3_qavre"]
+[ext_resource type="Texture2D" uid="uid://6glr1v3mddsk" path="res://images/treating/character/character_medieval_pixel/alternative colors/blue2.png" id="2_s5u2d"]
+[ext_resource type="Texture2D" uid="uid://b0gayrotnoyte" path="res://images/treating/character/character_medieval_pixel/alternative colors/blue1.png" id="3_qavre"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011

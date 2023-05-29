@@ -17,15 +17,15 @@ var walking_towards = "none"
 var player_name = "Garrick Stormwind"
 
 #player stats
-var max_health = 300
-var health = 300
-var attack_damage = 10
-var defense = 10
-var stamina = 10
-var strength = 10
-var constitution = 10
-var dexterity = 10
-var intelligence = 10
+#var max_health = 300
+#var health = 300
+#var attack_damage = 10
+#var defense = 10
+#var stamina = 10
+#var strength = 10
+#var constitution = 10
+#var dexterity = 10
+#var intelligence = 10
 
 
 var player_alive = true
@@ -49,11 +49,12 @@ var current_action = null
 @onready var monsters_list = $"../DungeonMonsters"
 @onready var http_request = $HTTPRequest
 @onready var chain_http_req = HTTPRequest.new()
+@onready var player_status = $PlayerStatus
 
 
 func _ready():
 	PlayerManager.players.push_back(self)
-	health_bar.max_value = max_health
+	health_bar.max_value = player_status.max_health
 	$AnimatedSprite2D.play("front_idle")
 	buildings = buildings_list.get_children()
 	monsters = monsters_list.get_children()
@@ -64,21 +65,21 @@ func _ready():
 	walk_towards("Building2")		
 	#test_http_request()		
 	http_request.request_completed.connect(_on_http_request_request_comspleted)	
-	#send_request("Test")
+	send_request("Test")
 	
 	# set up http req object for on-chain syncs
 	chain_http_req.request_completed.connect(_on_req_completed)
 	self.add_child(chain_http_req) 	
 	
 	# do on-chain init of attributes
-	update_attribute_on_chain("health", health)
-	update_attribute_on_chain("attack", attack_damage)
-	update_attribute_on_chain("defense", defense)
-	update_attribute_on_chain("stamina", stamina)
-	update_attribute_on_chain("strength", strength)
-	update_attribute_on_chain("constitution", constitution)
-	update_attribute_on_chain("dexterity", dexterity)
-	update_attribute_on_chain("intelligence", intelligence)
+	update_attribute_on_chain("health", player_status.health)
+	update_attribute_on_chain("attack", player_status.attack_damage)
+	update_attribute_on_chain("defense", player_status.defense)
+	update_attribute_on_chain("stamina", player_status.stamina)
+	update_attribute_on_chain("strength", player_status.strength)
+	update_attribute_on_chain("constitution", player_status.constitution)
+	update_attribute_on_chain("dexterity", player_status.dexterity)
+	update_attribute_on_chain("intelligence", player_status.intelligence)
 	
 func _physics_process(delta):
 	update_healthbar()
@@ -92,9 +93,9 @@ func _physics_process(delta):
 	if global.current_location == global.Location.DUNGEON:
 		go_and_attack()
 			
-	if health <= 0:
+	if player_status.health <= 0:
 		player_alive = false
-		health = 0
+		player_status.health = 0
 		print("player has died")
 		self.queue_free()
 	
@@ -172,7 +173,7 @@ func _on_player_hitbox_body_exited(body):
 
 func enemy_attack():
 	if enemy_in_attackrange and enemy_attack_cooldown == true:
-		health = health - 20
+		player_status.health = player_status.health - 20
 		enemy_attack_cooldown = false
 		
 		$attack_cooldown.start()
@@ -250,34 +251,34 @@ func get_drop_position():
 	
 
 func heal(heal_value: int) -> void:
-	health += heal_value
-	update_attribute_on_chain("health", health)
+	player_status.health += heal_value
+	update_attribute_on_chain("health", player_status.health)
 
 func equip(stats) -> void:
 	if stats["attack_damage"]:
-		attack_damage += stats["attack_damage"]
-		update_attribute_on_chain("attack", attack_damage)
+		player_status.attack_damage += stats["attack_damage"]
+		update_attribute_on_chain("attack", player_status.attack_damage)
 	
 	if stats["strength"]:
-		strength += stats["strength"]
-		update_attribute_on_chain("strength", strength)
+		player_status.strength += stats["strength"]
+		update_attribute_on_chain("strength", player_status.strength)
 	
 	if stats["constitution"]:
-		constitution += stats["constitution"]
-		update_attribute_on_chain("constitution", constitution)
+		player_status.constitution += stats["constitution"]
+		update_attribute_on_chain("constitution", player_status.constitution)
 
 func unequip(stats) -> void:
 	if stats["attack_damage"]:
-		attack_damage -= stats["attack_damage"]
-		update_attribute_on_chain("attack", attack_damage)
+		player_status.attack_damage -= stats["attack_damage"]
+		update_attribute_on_chain("attack", player_status.attack_damage)
 	
 	if stats["strength"]:
-		strength -= stats["strength"]
-		update_attribute_on_chain("strength", strength)
+		player_status.strength -= stats["strength"]
+		update_attribute_on_chain("strength", player_status.strength)
 	
 	if stats["constitution"]:
-		constitution -= stats["constitution"]
-		update_attribute_on_chain("constitution", constitution)
+		player_status.constitution -= stats["constitution"]
+		update_attribute_on_chain("constitution", player_status.constitution)
 		
 func walk_towards(location_name):
 	var location = locations[location_name]
@@ -378,31 +379,31 @@ func _on_http_request_request_comspleted(result, response_code, headers, body):
 									
 			
 func update_healthbar():
-	health_bar.value = health
+	health_bar.value = player_status.health
 	
 func increase_attack_damage(amount):
-	attack_damage += amount
+	player_status.attack_damage += amount
 	print("Player", self.name)
-	print("attack increased to", self.attack_damage)
-	update_attribute_on_chain("attack", attack_damage)
+	print("attack increased to", player_status.attack_damage)
+	update_attribute_on_chain("attack", player_status.attack_damage)
 
 func increase_strength(amount):
-	strength += amount
+	player_status.strength += amount
 	print("Player", self.name)
 	print("strength increased to", self.strength)	
-	update_attribute_on_chain("strength", strength)	
+	update_attribute_on_chain("strength", player_status.strength)	
 	
 func increase_health(amount):
-	health += amount
+	player_status.health += amount
 	print("Player", self.name)
 	print("health increased to", self.health)	
-	update_attribute_on_chain("health", health)
+	update_attribute_on_chain("health", player_status.health)
 
 func increase_constitution(amount):
-	constitution += amount
+	player_status.constitution += amount
 	print("Player", self.name)
 	print("constitution increased to ", self.constitution)
-	update_attribute_on_chain("constitution", constitution)		
+	update_attribute_on_chain("constitution", player_status.constitution)		
 
 
 #func _on_detection_area_body_entered(body):

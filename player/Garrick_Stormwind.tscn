@@ -1,8 +1,9 @@
-[gd_scene load_steps=62 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=63 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Texture2D" uid="uid://dgylc53x0m4d4" path="res://images/treating/character/character_medieval_pixel/character sheet 2.png" id="2_yobrj"]
 [ext_resource type="Texture2D" uid="uid://b37ix6vvq8lne" path="res://images/treating/character/character_medieval_pixel/character sheet 1.png" id="3_ayftg"]
+[ext_resource type="Script" path="res://player/PlayerStatus.gd" id="4_gglgq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -522,6 +523,9 @@ offset_bottom = 9.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
+
+[node name="PlayerStatus" type="Node2D" parent="."]
+script = ExtResource("4_gglgq")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_exited"]
