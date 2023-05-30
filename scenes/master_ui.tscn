@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://r7k27ivt633q"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button7" type="Button" parent="CanvasLayer"]
+offset_left = 233.0
+offset_top = 681.0
+offset_right = 616.0
+offset_bottom = 1066.0
+text = "Extra infiormations:
+
+Character actions / last decision:
+Giving item to character:
+Characters information
+"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 238.0
+offset_top = 48.0
+offset_right = 624.0
+offset_bottom = 211.0
+text = "Town Art"
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 637.0
+offset_top = 52.0
+offset_right = 1060.0
+offset_bottom = 208.0
+text = " List of Characters"
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+offset_left = 238.0
+offset_top = 239.0
+offset_right = 621.0
+offset_bottom = 624.0
+text = "What happened in town logs"
+
+[node name="Button4" type="Button" parent="CanvasLayer"]
+offset_left = 637.0
+offset_top = 466.0
+offset_right = 877.0
+offset_bottom = 626.0
+text = "Character Stats and skills"
+
+[node name="Button5" type="Button" parent="CanvasLayer"]
+offset_left = 889.0
+offset_top = 242.0
+offset_right = 1059.0
+offset_bottom = 627.0
+text = "Character Inventory"
+
+[node name="Button6" type="Button" parent="CanvasLayer"]
+offset_left = 641.0
+offset_top = 236.0
+offset_right = 881.0
+offset_bottom = 453.0
+text = "Character Thoughts moves
+And last actiions"
+
+[node name="Button8" type="Button" parent="CanvasLayer"]
+offset_left = 652.0
+offset_top = 683.0
+offset_right = 1054.0
+offset_bottom = 1068.0
+text = "Go to dungeoun button"

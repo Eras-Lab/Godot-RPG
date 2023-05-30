@@ -3,7 +3,7 @@ extends Node
 # Note that we make the assumption that the `CharacterBody2D` is the parent of this node
 # and is thus accessible via `get_parent()`. Adjust according to your specific scene tree.
 var current_dir = "none"
-var current_direction = Direction.NONE
+var current_direction = Direction.LEFT
 var velocity = Vector2()
 const speed = 100
 
@@ -11,27 +11,28 @@ enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
 
 func _physics_process(delta):
 	player_movement(delta)
-	play_anim(1)
+	#play_anim(1)
+	#get_parent().move_and_slide()
 
 func player_movement(delta):
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "right"
-		play_anim(1)
+		play_anim(Direction.RIGHT)
 		velocity.x = speed
 		velocity.y = 0
 	elif Input.is_action_pressed("ui_left"):
 		current_dir = "left"
-		play_anim(1)
+		play_anim(Direction.LEFT)
 		velocity.x = -speed
 		velocity.y = 0
 	elif Input.is_action_pressed("ui_down"):
 		current_dir = "down"
-		play_anim(1)
+		play_anim(Direction.DOWN)
 		velocity.x = 0
 		velocity.y = speed
 	elif Input.is_action_pressed("ui_up"):
 		current_dir = "up"
-		play_anim(1)
+		play_anim(Direction.UP)
 		velocity.x = 0
 		velocity.y = -speed
 	else:
@@ -39,15 +40,16 @@ func player_movement(delta):
 		velocity.x = 0
 		velocity.y = 0
 		
-	get_parent().move_and_slide()
+	#get_parent().move_and_slide()
 
 func play_anim(movement):
-	var dir = current_direction
+	var dir = movement
 	var anim = $"../AnimatedSprite2D"
-	
+	print("Direction: ",dir)
 	if dir == Direction.RIGHT:
 		anim.flip_h = false
 		if movement == 1:
+			print("PLAYING SIDE WALK")
 			anim.play("side_walk")
 		elif movement == 0:
 			if get_parent().attack_ip == false:

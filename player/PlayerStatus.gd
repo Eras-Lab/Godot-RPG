@@ -63,3 +63,5 @@ func update_attribute_on_chain(attribute, value):
 	# This function implementation depends on your implementation
 	# TODO
 	pass
+	
+

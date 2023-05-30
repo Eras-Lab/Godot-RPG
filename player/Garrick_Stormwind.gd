@@ -45,6 +45,9 @@ var current_direction = Direction.NONE
 var step_size = 1
 
 var current_action = null
+#velocity = Vector2()
+#var velocity = Vector2()
+#print(velocity)
 @onready var buildings_list = $"../Buildings"
 @onready var monsters_list = $"../DungeonMonsters"
 @onready var http_request = $HTTPRequest
@@ -84,7 +87,7 @@ func _ready():
 	
 func _physics_process(delta):
 	update_healthbar()
-	#player_movement(delta)
+	play_anim(0)
 	enemy_attack()
 	pickup()
 	current_camera()
@@ -99,10 +102,7 @@ func _physics_process(delta):
 		player_status.health = 0
 		print("player has died")
 		self.queue_free()
-	
-func player_movement(delta):
-	
-	player_animation.player_movement(delta)
+
 
 
 func _on_player_hitbox_body_entered(body):
@@ -214,7 +214,41 @@ func increase_health(amount):
 	player_status.increase_health(amount)
 
 func increase_constitution(amount):
-	player_status.increase_constitution(amount)		
+	player_status.increase_constitution(amount)	
+
+
+func play_anim(movement):
+	var dir = current_direction
+	var anim = $AnimatedSprite2D
+	
+	if dir == Direction.RIGHT:
+		anim.flip_h = false
+		if movement == 1:
+			anim.play("side_walk")
+		elif movement == 0:
+			if attack_ip == false:
+				anim.play("side_idle")
+	if dir == Direction.LEFT:
+		anim.flip_h = true
+		if movement == 1:
+			anim.play("side_walk")
+		elif movement == 0:
+			if attack_ip == false:
+				anim.play("side_idle")
+	if dir == Direction.UP:
+		anim.flip_h = false
+		if movement == 1:
+			anim.play("front_walk")
+		elif movement == 0:
+			if attack_ip == false:
+				anim.play("front_idle")
+	if dir == Direction.DOWN:
+		anim.flip_h = false
+		if movement == 1:
+			anim.play("back_walk")
+		elif movement == 0:
+			if attack_ip == false:
+				anim.play("back_idle")	
 		
 func walk_towards(location_name):
 	var location = locations[location_name]
