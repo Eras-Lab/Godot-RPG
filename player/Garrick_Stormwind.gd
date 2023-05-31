@@ -17,15 +17,15 @@ var walking_towards = "none"
 var player_name = "Garrick Stormwind"
 
 #player stats
-#var max_health = 300
-#var health = 300
-#var attack_damage = 10
-#var defense = 10
-#var stamina = 10
-#var strength = 10
-#var constitution = 10
-#var dexterity = 10
-#var intelligence = 10
+# var max_health = 300
+# var health = 300
+# var attack_damage = 10
+# var defense = 10
+# var stamina = 10
+# var strength = 10
+# var constitution = 10
+# var dexterity = 10
+# var intelligence = 10
 
 
 var player_alive = true
@@ -84,7 +84,7 @@ func _ready():
 	
 func _physics_process(delta):
 	update_healthbar()
-	#player_movement(delta)
+	# player_movement(delta)
 	enemy_attack()
 	pickup()
 	current_camera()

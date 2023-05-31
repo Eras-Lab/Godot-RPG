@@ -1,8 +1,11 @@
-[gd_scene load_steps=61 format=3 uid="uid://bu06evlfyo0vj"]
+[gd_scene load_steps=64 format=3 uid="uid://bu06evlfyo0vj"]
 
 [ext_resource type="Script" path="res://player/Morgath_Darkbane.gd" id="1_y5mw0"]
 [ext_resource type="Texture2D" uid="uid://dekk7gbqds1a1" path="res://images/treating/character/character_medieval_pixel/alternative colors/yellow2.png" id="2_cu2lo"]
 [ext_resource type="Texture2D" uid="uid://stggyg3bdio7" path="res://images/treating/character/character_medieval_pixel/alternative colors/yellow1.png" id="3_48t54"]
+[ext_resource type="Script" path="res://player/PlayerAnimation.gd" id="4_e4148"]
+[ext_resource type="Script" path="res://player/Battle.gd" id="5_pr6ee"]
+[ext_resource type="Script" path="res://player/PlayerStatus.gd" id="6_g8wc6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -510,6 +513,15 @@ offset_bottom = 9.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
+
+[node name="PlayerAnimation" type="Node" parent="."]
+script = ExtResource("4_e4148")
+
+[node name="Battle" type="Node" parent="."]
+script = ExtResource("5_pr6ee")
+
+[node name="PlayerStatus" type="Node2D" parent="."]
+script = ExtResource("6_g8wc6")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
