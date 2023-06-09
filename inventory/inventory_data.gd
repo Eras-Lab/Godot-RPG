@@ -24,7 +24,6 @@ func drop_single_slot_data(grabbed_slot_data: SlotData, index: int):
 		return null
 		
 func use_slot_data(index: int) -> void:
-	print("use slot data")
 	var slot_data = slot_datas[index]
 	
 	if not slot_data:
@@ -35,9 +34,6 @@ func use_slot_data(index: int) -> void:
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
 		
-		
-	print(slot_data.item_data.name)
-	print(player)
 	PlayerManager.use_slot_data(slot_data)
 	
 	inventory_updated.emit(self)
@@ -47,7 +43,6 @@ func drop_slot_data(index: int):
 	
 func find_empty_slot():
 	for slot_data in slot_datas:
-		print("slot_data.item_data: ", slot_data.item_data)
 		if not slot_data.item_data:
 			var empty_slot = slot_datas.find(slot_data)
 			return empty_slot
@@ -62,9 +57,7 @@ func equip_slot_data(index: int):
 			inventory_updated.emit(self)
 
 func store_item(slot_data: SlotData):
-	print("slot data after unequip: ", slot_data)
 	var empty_slot = find_empty_slot()
-	print("found empty_slot: ", empty_slot)
 	if empty_slot >= 0:
 		slot_datas[empty_slot] = slot_data
 		inventory_updated.emit(self)
