@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=75 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="2_poubp"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="4_ybxt3"]
 [ext_resource type="Script" path="res://player/Battle.gd" id="5_y6ckx"]
 [ext_resource type="PackedScene" uid="uid://do1yubo7ebqbh" path="res://inventory/inventory.tscn" id="8_b2ck1"]
-[ext_resource type="Script" path="res://inventory/inventory_manager.gd" id="10_kmcir"]
 [ext_resource type="Script" path="res://player/AttributeUI.gd" id="12_mrgvg"]
 
 [sub_resource type="Resource" id="Resource_r14wp"]
@@ -563,16 +562,6 @@ script = ExtResource("5_y6ckx")
 [node name="PlayerStatus" type="Node2D" parent="."]
 visible = false
 script = ExtResource("4_gglgq")
-
-[node name="InventoryManager" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -1.0
-offset_top = -7.0
-offset_right = 39.0
-offset_bottom = 33.0
-script = ExtResource("10_kmcir")
 
 [node name="EquipInventory" type="Control" parent="."]
 layout_mode = 3
