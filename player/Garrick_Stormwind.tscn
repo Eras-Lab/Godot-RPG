@@ -1,11 +1,38 @@
-[gd_scene load_steps=65 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=76 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
+[ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="2_poubp"]
 [ext_resource type="Texture2D" uid="uid://dgylc53x0m4d4" path="res://images/treating/character/character_medieval_pixel/character sheet 2.png" id="2_yobrj"]
 [ext_resource type="Texture2D" uid="uid://b37ix6vvq8lne" path="res://images/treating/character/character_medieval_pixel/character sheet 1.png" id="3_ayftg"]
+[ext_resource type="Script" path="res://inventory/inventory_data_equip.gd" id="3_wxtal"]
 [ext_resource type="Script" path="res://player/PlayerStatus.gd" id="4_gglgq"]
 [ext_resource type="Script" path="res://player/PlayerAnimation.gd" id="4_mdntx"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="4_ybxt3"]
 [ext_resource type="Script" path="res://player/Battle.gd" id="5_y6ckx"]
+[ext_resource type="PackedScene" uid="uid://do1yubo7ebqbh" path="res://inventory/inventory.tscn" id="8_b2ck1"]
+[ext_resource type="Script" path="res://inventory/inventory_manager.gd" id="10_kmcir"]
+[ext_resource type="Script" path="res://player/AttributeUI.gd" id="12_mrgvg"]
+
+[sub_resource type="Resource" id="Resource_r14wp"]
+script = ExtResource("4_ybxt3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_u8635"]
+script = ExtResource("4_ybxt3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_4c1gi"]
+script = ExtResource("4_ybxt3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_l86th"]
+script = ExtResource("4_ybxt3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_k8ug0"]
+script = ExtResource("3_wxtal")
+slot_datas = Array[ExtResource("4_ybxt3")]([SubResource("Resource_r14wp"), SubResource("Resource_u8635"), SubResource("Resource_4c1gi"), SubResource("Resource_l86th")])
+player = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -447,10 +474,12 @@ radius = 111.879
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5j4u"]
 
 [node name="player" type="CharacterBody2D"]
-position = Vector2(-3, 35)
+position = Vector2(24, 47)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_tspnc")
+inventory_data = ExtResource("2_poubp")
+equip_inventory_data = SubResource("Resource_k8ug0")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -26.0
@@ -534,6 +563,71 @@ script = ExtResource("5_y6ckx")
 [node name="PlayerStatus" type="Node2D" parent="."]
 visible = false
 script = ExtResource("4_gglgq")
+
+[node name="InventoryManager" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -7.0
+offset_right = 39.0
+offset_bottom = 33.0
+script = ExtResource("10_kmcir")
+
+[node name="EquipInventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 21.0
+offset_right = 40.0
+offset_bottom = 61.0
+
+[node name="Inventory" parent="EquipInventory" instance=ExtResource("8_b2ck1")]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -10.0
+offset_right = 105.0
+offset_bottom = 30.0
+scale = Vector2(0.476928, 0.476928)
+
+[node name="Label" type="Label" parent="EquipInventory"]
+layout_mode = 2
+offset_left = 65.0
+offset_top = -18.0
+offset_right = 138.0
+offset_bottom = 8.0
+scale = Vector2(0.297391, 0.289218)
+text = "Equipped
+"
+
+[node name="CharacterInventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 65.0
+offset_top = -38.0
+offset_right = 105.0
+offset_bottom = 1.99998
+
+[node name="Inventory" parent="CharacterInventory" instance=ExtResource("8_b2ck1")]
+layout_mode = 0
+scale = Vector2(0.464701, 0.464701)
+
+[node name="Label" type="Label" parent="CharacterInventory"]
+layout_mode = 2
+offset_top = -8.86
+offset_right = 73.0
+offset_bottom = 17.14
+scale = Vector2(0.297391, 0.289218)
+text = "Inventory
+"
+
+[node name="AttributeUI" type="VBoxContainer" parent="."]
+offset_left = 281.0
+offset_top = -39.0
+offset_right = 321.0
+offset_bottom = 1.0
+scale = Vector2(0.565225, 0.565225)
+theme_override_constants/separation = 2
+script = ExtResource("12_mrgvg")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_exited"]

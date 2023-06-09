@@ -1,29 +1,25 @@
 extends PanelContainer
 
 const Slot = preload("res://inventory/slot.tscn")
+@onready var attribute_ui = $"../../AttributeUI"
 
 @onready var item_grid = $MarginContainer/ItemGrid
-@export var player: int
 
 func set_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_updated.connect(populate_item_grid)
 	populate_item_grid(inventory_data)
 
-func set_player(_player: int):
-	player = _player
-
 func clear_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_updated.disconnect(populate_item_grid)
 	
 func populate_item_grid(inventory_data: InventoryData) -> void:
+	print("updated item grid")
 	for child in item_grid.get_children():
 		child.queue_free()
 		
 	for slot_data in inventory_data.slot_datas:
 		var slot = Slot.instantiate()
 		item_grid.add_child(slot)
-		
-		slot.slot_clicked.connect(inventory_data.on_slot_clicked)
-		if slot_data:
+		if slot_data.item_data:
 			slot.set_slot_data(slot_data)
-	
+			

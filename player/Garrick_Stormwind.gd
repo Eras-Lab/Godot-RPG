@@ -4,7 +4,9 @@ signal toggle_inventory
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
+@export var head: InventoryDataEquip
 @onready var health_bar = $HealthBar
+
 
 var monster_chase = false
 var enemy
@@ -51,36 +53,64 @@ var current_action = null
 @onready var chain_http_req = HTTPRequest.new()
 @onready var player_status = $PlayerStatus
 @onready var player_animation = $PlayerAnimation
+@onready var inventory_interface = $InventoryInterface
+@onready var inventory = $CharacterInventory/Inventory
+@onready var equip_inventory = $EquipInventory/Inventory
+@onready var inventory_manager = $InventoryManager
 
 
 func _ready():
-	PlayerManager.players.push_back(self)
+	PlayerManager.set_player(self)
+	inventory.set_inventory_data(inventory_data)
+	equip_inventory.set_inventory_data(equip_inventory_data)
+	
+	#drink health potion
+	inventory_data.use_slot_data(5)
+	
+	#equip wooden shield
+	inventory_data.equip_slot_data(1)
+	
+	#equip iron sword
+	inventory_data.equip_slot_data(0)
+	
+	#equip iron helmet
+	inventory_data.equip_slot_data(3)
+	
+	#equip steel helmet
+	#This should not work because a helmet is already equipped
+	inventory_data.equip_slot_data(4)
+	
+	#unequip iron sword
+	equip_inventory_data.unequip_item(1)
+	
+	
+	
 	health_bar.max_value = player_status.max_health
 	$AnimatedSprite2D.play("front_idle")
-	buildings = buildings_list.get_children()
-	monsters = monsters_list.get_children()
-	locations = {}
-	for building in buildings:
-		print(building)
-		locations[building.name] = building		
-	walk_towards("Building2")		
+#	buildings = buildings_list.get_children()
+#	monsters = monsters_list.get_children()
+#	locations = {}
+#	for building in buildings:
+#		print(building)
+#		locations[building.name] = building		
+#	walk_towards("Building2")		
 	#test_http_request()		
-	http_request.request_completed.connect(_on_http_request_request_comspleted)	
-	send_request("Test")
-	
-	# set up http req object for on-chain syncs
-	chain_http_req.request_completed.connect(_on_req_completed)
-	self.add_child(chain_http_req) 	
-	
-	# do on-chain init of attributes
-	update_attribute_on_chain("health", player_status.health)
-	update_attribute_on_chain("attack", player_status.attack_damage)
-	update_attribute_on_chain("defense", player_status.defense)
-	update_attribute_on_chain("stamina", player_status.stamina)
-	update_attribute_on_chain("strength", player_status.strength)
-	update_attribute_on_chain("constitution", player_status.constitution)
-	update_attribute_on_chain("dexterity", player_status.dexterity)
-	update_attribute_on_chain("intelligence", player_status.intelligence)
+#	http_request.request_completed.connect(_on_http_request_request_comspleted)	
+#	send_request("Test")
+#
+#	# set up http req object for on-chain syncs
+#	chain_http_req.request_completed.connect(_on_req_completed)
+#	self.add_child(chain_http_req) 	
+#
+#	# do on-chain init of attributes
+#	update_attribute_on_chain("health", player_status.health)
+#	update_attribute_on_chain("attack", player_status.attack_damage)
+#	update_attribute_on_chain("defense", player_status.defense)
+#	update_attribute_on_chain("stamina", player_status.stamina)
+#	update_attribute_on_chain("strength", player_status.strength)
+#	update_attribute_on_chain("constitution", player_status.constitution)
+#	update_attribute_on_chain("dexterity", player_status.dexterity)
+#	update_attribute_on_chain("intelligence", player_status.intelligence)
 	
 func _physics_process(delta):
 	update_healthbar()
@@ -88,18 +118,18 @@ func _physics_process(delta):
 	enemy_attack()
 	pickup()
 	current_camera()
-	if walking_towards != "none" and global.current_location == global.Location.TOWN:
-		walk_towards(walking_towards)
-	
-	if global.current_location == global.Location.DUNGEON:
-		go_and_attack()
-			
-	if player_status.health <= 0:
-		player_alive = false
-		player_status.health = 0
-		print("player has died")
-		self.queue_free()
-	
+#	if walking_towards != "none" and global.current_location == global.Location.TOWN:
+#		walk_towards(walking_towards)
+#
+#	if global.current_location == global.Location.DUNGEON:
+#		go_and_attack()
+#
+#	if player_status.health <= 0:
+#		player_alive = false
+#		player_status.health = 0
+#		print("player has died")
+#		self.queue_free()
+#
 func player_movement(delta):
 	
 	player_animation.player_movement(delta)
@@ -200,6 +230,8 @@ func heal(heal_value: int) -> void:
 func equip(stats) -> void:
 	player_status.equip(stats)
 
+func unequip(stats) -> void:
+	player_status.unequip(stats)
 
 func update_healthbar():
 	health_bar.value = player_status.health
@@ -385,4 +417,3 @@ func update_attribute_on_chain(attribute, value):
 		print("An error occurred in the HTTP request")	
 	else:
 		print("===== On-chain update result: " + attribute + " updated for " + self.name)
-

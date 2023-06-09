@@ -1,27 +1,27 @@
 extends InventoryData
 class_name InventoryDataEquip
 
-func drop_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
+func equip_item(slot_data):
+	var type = slot_data.item_data.type
+	var type_already_equipped = false
+	var able_to_equip = false
 	
-	if not grabbed_slot_data.item_data is ItemDataEquip:
-		return grabbed_slot_data
-	
-	return super.drop_slot_data_equip(grabbed_slot_data, index)
+	for item in slot_datas:
+		if item.item_data and item.item_data.type == type:
+			print("item of this type already equipped")
+			type_already_equipped = true
+			
+	if not type_already_equipped:
+		var empty_slot = find_empty_slot()
+		if empty_slot != null:
+			slot_datas[empty_slot] = slot_data
+			inventory_updated.emit(self)
+			able_to_equip = true
+			
+	return able_to_equip
 
-func drop_single_slot_data(grabbed_slot_data: SlotData, index: int) -> SlotData:
-	if not grabbed_slot_data.item_data is ItemDataEquip:
-		return grabbed_slot_data
-	
-	return super.drop_single_slot_data(grabbed_slot_data, index)
-
-func grab_slot_data(index: int) -> SlotData:
-	var slot_data = slot_datas[index]
-	
-	if slot_data:
-		if slot_data.item_data is ItemDataEquip:
-			unequip_slot_data(index)
-		slot_datas[index] = null
-		inventory_updated.emit(self)
-		return slot_data
-	else:
-		return null
+func unequip_item(index: int):
+	var slot_data = slot_datas[index].duplicate()
+	PlayerManager.unequip_slot_data(slot_data)
+	slot_datas[index].item_data = null
+	inventory_updated.emit(self)

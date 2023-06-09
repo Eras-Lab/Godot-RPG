@@ -9,6 +9,7 @@ region = Rect2(0, 192, 32, 29.8186)
 
 [resource]
 script = ExtResource("1_fwo3s")
+type = 5
 attack_damage = 0
 strength = 0
 constitution = 10

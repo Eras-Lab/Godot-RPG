@@ -14,4 +14,5 @@ func equip(target) -> void:
 	pass
 
 func unequip(target) -> void:
+	print("wrong function")
 	pass
