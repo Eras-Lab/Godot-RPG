@@ -22,6 +22,8 @@ PlayerManager="*res://player/player_manager.gd"
 
 [display]
 
+window/size/viewport_width=2400
+window/size/viewport_height=1600
 window/canvas_textures/default_texture_filter=1
 
 [input]

@@ -6,6 +6,8 @@ signal toggle_inventory
 @export var equip_inventory_data: InventoryDataEquip
 @onready var health_bar = $HealthBar
 
+signal attack
+
 var monster_chase = false
 var enemy
 
@@ -184,26 +186,25 @@ func player():
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 
-func attack():
-	var dir = current_direction
+#func attack():
+#	var dir = current_direction
 	
-	
-	global.player_current_attack = true
-	attack_ip = true
-	if dir == Direction.RIGHT:
-		$AnimatedSprite2D.flip_h = false
-		$AnimatedSprite2D.play("side_attack")
-		$deal_attack_timer.start()
-	if dir == Direction.LEFT:
-		$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.play("side_attack")
-		$deal_attack_timer.start()
-	if dir == Direction.DOWN:
-		$AnimatedSprite2D.play("front_attack")
-		$deal_attack_timer.start()
-	if dir == Direction.UP:
-		$AnimatedSprite2D.play("back_attack")
-		$deal_attack_timer.start()
+#	global.player_current_attack = true
+#	attack_ip = true
+#	if dir == Direction.RIGHT:
+#		$AnimatedSprite2D.flip_h = false
+#		$AnimatedSprite2D.play("side_attack")
+#		$deal_attack_timer.start()
+#	if dir == Direction.LEFT:
+#		$AnimatedSprite2D.flip_h = true
+#		$AnimatedSprite2D.play("side_attack")
+#		$deal_attack_timer.start()
+#	if dir == Direction.DOWN:
+#		$AnimatedSprite2D.play("front_attack")
+#		$deal_attack_timer.start()
+#	if dir == Direction.UP:
+#		$AnimatedSprite2D.play("back_attack")
+#		$deal_attack_timer.start()
 
 func pickup():
 	if Input.is_action_just_pressed("interact"):
@@ -455,7 +456,8 @@ func go_and_attack():
 					current_direction = Direction.NONE
 					
 		if enemy_in_attackrange and enemy.health > 0:
-			attack()
+			attack.emit(current_direction)
+			# pass
 
 func _on_req_completed(result, response_code, headers, body):
 	pass
