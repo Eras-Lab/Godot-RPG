@@ -19,8 +19,8 @@ var walking_towards = "none"
 var player_name = "Garrick Stormwind"
 
 #player stats
-var max_health = 300
-var health = 300
+var max_health = 1300
+var health = 1300
 var attack_damage = 10
 var defense = 10
 var stamina = 10
@@ -457,6 +457,7 @@ func go_and_attack():
 					
 		if enemy_in_attackrange and enemy.health > 0:
 			attack.emit(current_direction)
+			# attack()
 			# pass
 
 func _on_req_completed(result, response_code, headers, body):

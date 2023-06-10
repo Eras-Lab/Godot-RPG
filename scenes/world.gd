@@ -86,15 +86,20 @@ func _on_inventory_interface_drop_slot_data(slot_data):
 	add_child(pick_up)
 	
 func _on_teleport_to_dungeon_pressed():
+	var shouldAppear = false
 	global.current_location = global.Location.DUNGEON
 	if is_instance_valid(garrick_stormwind):
-		garrick_stormwind.global_position = Vector2(4500, 30)
+		if shouldAppear:
+			garrick_stormwind.global_position = Vector2(4500, 30)
 	if is_instance_valid(lyra_shadowheart):
-		lyra_shadowheart.global_position = Vector2(4500, 50)
+		if shouldAppear:
+			lyra_shadowheart.global_position = Vector2(4500, 50)
 	if is_instance_valid(grimgar_stonebeard):
-		grimgar_stonebeard.global_position = Vector2(4500, 70)
+		if shouldAppear:
+			grimgar_stonebeard.global_position = Vector2(4500, 70)
 	if is_instance_valid(morgath_darkbane):
-		morgath_darkbane.global_position = Vector2(4500, 90)
+		if shouldAppear:
+			morgath_darkbane.global_position = Vector2(4500, 90)
 	if is_instance_valid(freya_swiftwind):
 		freya_swiftwind.global_position = Vector2(4500, 110)
 	dungeon_camera.make_current()

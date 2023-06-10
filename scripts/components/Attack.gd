@@ -4,8 +4,6 @@ extends Node
 
 enum Direction { UP, DOWN, LEFT, RIGHT }
 
-@export var owner_sprite: Node2D
-@export var owner_direction: Direction = Direction.UP
 @onready var animated_sprite_2d = $"../AnimatedSprite2D"
 @onready var deal_attack_timer = $"../deal_attack_timer"
 

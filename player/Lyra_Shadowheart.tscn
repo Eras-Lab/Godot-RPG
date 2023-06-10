@@ -1,8 +1,8 @@
 [gd_scene load_steps=62 format=3 uid="uid://4tm460hjw0cg"]
 
 [ext_resource type="Script" path="res://player/Lyra_Shadowheart.gd" id="1_4bt22"]
-[ext_resource type="Texture2D" uid="uid://c8f841foj0lgt" path="res://images/treating/character/character_medieval_pixel/alternative colors/green2.png" id="2_0pqmi"]
-[ext_resource type="Texture2D" uid="uid://dm3oils6dty2b" path="res://images/treating/character/character_medieval_pixel/alternative colors/green1.png" id="3_wtcl7"]
+[ext_resource type="Texture2D" uid="uid://dx4xjn0h58c0q" path="res://images/treating/character/character_medieval_pixel/alternative colors/green2.png" id="2_0pqmi"]
+[ext_resource type="Texture2D" uid="uid://chejm2opj6rs4" path="res://images/treating/character/character_medieval_pixel/alternative colors/green1.png" id="3_wtcl7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
