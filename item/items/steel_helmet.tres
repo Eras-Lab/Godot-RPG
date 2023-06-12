@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataEquip" load_steps=4 format=3 uid="uid://cltawdavs5aec"]
+
+[ext_resource type="Script" path="res://item/item_data_equip.gd" id="1_4dvww"]
+[ext_resource type="Texture2D" uid="uid://clo8kybcrsm3l" path="res://item/#1 - Transparent Icons.png" id="2_d2vvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dulr1"]
+atlas = ExtResource("2_d2vvg")
+region = Rect2(96, 224, 32, 32)
+
+[resource]
+script = ExtResource("1_4dvww")
+type = 0
+attack_damage = 0
+strength = 5
+constitution = 20
+name = "Steel Helmet"
+description = "A common iron sword"
+stackable = false
+texture = SubResource("AtlasTexture_dulr1")
