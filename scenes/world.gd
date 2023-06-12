@@ -13,7 +13,6 @@ const PickUp = preload("res://item/pick_up.tscn")
 @onready var dungeon_camera = $DungeonCamera
 @onready var town_camera = $TownCamera
 
-
 func _ready():
 	global.current_location = global.Location.TOWN
 	town_camera.make_current()

@@ -463,7 +463,7 @@ shape = SubResource("CircleShape2D_sdljw")
 position = Vector2(-1, -7)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"side_attack"
-frame_progress = 0.427267
+frame_progress = 0.327861
 
 [node name="player_hitbox" type="Area2D" parent="."]
 

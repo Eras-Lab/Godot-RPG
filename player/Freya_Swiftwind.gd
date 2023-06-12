@@ -6,7 +6,7 @@ signal toggle_inventory
 @export var equip_inventory_data: InventoryDataEquip
 @onready var health_bar = $HealthBar
 
-signal attack
+signal go_and_attack
 
 var monster_chase = false
 var enemy
@@ -81,7 +81,7 @@ func _ready():
 	update_attribute_on_chain("constitution", constitution)
 	update_attribute_on_chain("dexterity", dexterity)
 	update_attribute_on_chain("intelligence", intelligence)
-	
+
 func _physics_process(delta):
 	update_healthbar()
 	player_movement(delta)
@@ -92,7 +92,7 @@ func _physics_process(delta):
 		walk_towards(walking_towards)
 	
 	if global.current_location == global.Location.DUNGEON:
-		go_and_attack()
+		go_and_attack.emit(current_direction)
 			
 	if health <= 0:
 		player_alive = false
@@ -205,6 +205,51 @@ func _on_attack_cooldown_timeout():
 #	if dir == Direction.UP:
 #		$AnimatedSprite2D.play("back_attack")
 #		$deal_attack_timer.start()
+
+
+
+# func go_and_attack():
+#	for monster in monsters:
+#		if is_instance_valid(monster):
+#			enemy = monster
+#			monster_chase = true
+#			break
+#	
+#	if enemy != null:
+#		position += (enemy.position - position)/speed
+#		var direction = enemy.position - position
+
+#		if current_direction == Direction.NONE:
+#			if abs(direction.x) > 0:
+#				current_direction = Direction.RIGHT if direction.x > 0 else Direction.LEFT
+#			else:
+#				current_direction = Direction.UP if direction.y > 0 else Direction.DOWN
+
+#		if current_direction == Direction.UP or current_direction == Direction.DOWN:
+#			if direction.y > 0:
+#				position.y += min(step_size, direction.y)
+#				if position.y >= enemy.position.y:
+#					current_direction = Direction.NONE
+#			else:
+#				position.y -= min(step_size, -direction.y)
+#				if position.y <= enemy.position.y:
+#					current_direction = Direction.NONE
+
+#		elif current_direction == Direction.LEFT or current_direction == Direction.RIGHT:
+#			if direction.x > 0:
+#				position.x += min(step_size, direction.x)
+#				if position.x >= enemy.position.x:
+#					current_direction = Direction.NONE
+#			else:
+#				position.x -= min(step_size, -direction.x)
+#				if position.x <= enemy.position.x:
+#					current_direction = Direction.NONE
+					
+#		if enemy_in_attackrange and enemy.health > 0:
+#			attack.emit(current_direction)
+			# attack()
+			# pass
+
 
 func pickup():
 	if Input.is_action_just_pressed("interact"):
@@ -417,49 +462,6 @@ func increase_constitution(amount):
 #	if body.is_in_group("dungeon_monsters"):
 #		monster_chase = false
 	
-func go_and_attack():
-	for monster in monsters:
-		if is_instance_valid(monster):
-			enemy = monster
-			monster_chase = true
-			break
-			
-	
-	if enemy != null:
-		position += (enemy.position - position)/speed
-		var direction = enemy.position - position
-
-		if current_direction == Direction.NONE:
-			if abs(direction.x) > 0:
-				current_direction = Direction.RIGHT if direction.x > 0 else Direction.LEFT
-			else:
-				current_direction = Direction.UP if direction.y > 0 else Direction.DOWN
-
-		if current_direction == Direction.UP or current_direction == Direction.DOWN:
-			if direction.y > 0:
-				position.y += min(step_size, direction.y)
-				if position.y >= enemy.position.y:
-					current_direction = Direction.NONE
-			else:
-				position.y -= min(step_size, -direction.y)
-				if position.y <= enemy.position.y:
-					current_direction = Direction.NONE
-
-		elif current_direction == Direction.LEFT or current_direction == Direction.RIGHT:
-			if direction.x > 0:
-				position.x += min(step_size, direction.x)
-				if position.x >= enemy.position.x:
-					current_direction = Direction.NONE
-			else:
-				position.x -= min(step_size, -direction.x)
-				if position.x <= enemy.position.x:
-					current_direction = Direction.NONE
-					
-		if enemy_in_attackrange and enemy.health > 0:
-			attack.emit(current_direction)
-			# attack()
-			# pass
-
 func _on_req_completed(result, response_code, headers, body):
 	pass
 
