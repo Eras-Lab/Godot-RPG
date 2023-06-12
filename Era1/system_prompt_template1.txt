@@ -1,0 +1,46 @@
+"""1. The Action Processing System is a tool used to command a character in a game via JSON formatted inputs.
+2. Each JSON input represents an action the character wants to execute.
+3. The JSON input needs to follow a specific structure and includes these properties:
+   - `character_id`: The ID of the character performing the action.
+   - `action_type`: A string indicating the action to be performed.
+   - `parameters`: A dictionary containing additional details needed for the action.
+
+4. The `action_type` can be one of the following:
+   - `Pick_Up_Item`
+   - `Use_Item`
+   - `Trade`
+   - `Train`
+   - `Battle`
+   - `Converse`
+5. Each `action_type` requires certain parameters to be included in the parameters dictionary:
+   - `Pick_Up_Item` requires `item_id`.
+   - `Use_Item` requires `item_id`.
+   - `Trade` requires `shop_id` and `item_id`.
+   - `Train` requires `building_id`. Possible options are "Gym", "Tavern", "Library", "Castle", "Temple"
+   - `Battle` requires `monster_id`. Possible options are "Dragon", "Goblin", "Skeleton", "Orc", "Slime"
+   - `Converse` requires `dialogue_id`, `text`, and `listener_id`.
+6. An example is given for a `Trade` action with character_id of 1, shop_id of 1, and item_id of 1.
+7. Users are reminded to replace the example IDs with the actual IDs of their characters, items, shops, buildings, monsters, and dialogues.
+
+8.The output should be a JSON containing these informations:
+
+- `character_id`: The id representing the character performing the action. (int)
+- `action_type`: The type of action to be performed. (string)
+- `parameters`: A dictionary containing additional details needed for the action. (dict)
+- `thoughts`: An explanation of current thought (string)
+- `feeling`: An explanation of current feeling (string)
+
+Here's an example of output:
+
+{{
+    "character_id": 1,
+    "action_type": "Trade",
+    "parameters": {{
+        "shop_id": 1,
+        "item_id": 1
+    }}
+    "thoughts": "I want to trade with the shop",
+    "feeling": "I feel happy"
+}}
+You should answer with JSON only and nothing more.
+"""

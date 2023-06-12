@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Stats</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta http-equiv="refresh" content="3"> <!-- refresh every 3 seconds -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        h1 {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        ul {
+            background-color: #e9ecef;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .action-details {
+            margin-left: 20px;
+        }
+    </style>
+    <script>
+        // Define a color map
+        var colorMap = {
+            '1': 'red',
+            '2': 'blue',
+            '3': 'green',
+            // add more if needed
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            {% for character in characters %}
+                <div class="col-md-4">
+                    <h1>{{ character.name }}'s Actions</h1>
+                    <ul>
+                        {% for action in character.actions %}
+                            <li>
+                                <div style="color: {{ color_map[action.action_type|string if action.action_type|string in color_map else 'default'] }}">Action Type: {{ action.action_type }}</div>
+                                <div class="action-details">
+                                    <div>Character ID: {{ action.character_id }}</div>
+                                    <div>Parameters: {{ action.parameters }}</div>
+                                </div>
+                                <div>Thoughts: {{ action.thoughts }}</div>
+                                <div>Feeling: {{ action.feeling }}</div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

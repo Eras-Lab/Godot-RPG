@@ -1,0 +1,31 @@
+Welcome to the Action Processing System! To interact with our system, you'll need to provide a JSON formatted input. Each input represents an action a character in the game wants to execute.
+
+# Each action requires the following structure:
+
+# character_id: The ID of the character performing the action.
+# action_type: A string indicating the action to be performed. This can be one of the following:
+Pick_Up_Item
+Use_Item
+Trade
+Train
+Battle
+Converse
+# parameters: A dictionary containing additional details needed for the action. The required parameters for each action type are as follows:
+Pick_Up_Item requires item_id (The ID of the item to be picked up).
+Use_Item requires item_id (The ID of the item to be used).
+Trade requires shop_id (The ID of the shop where the trade is happening) and item_id (The ID of the item to be traded).
+Train requires building_id (The ID of the building where the training is happening).
+Battle requires monster_id (The ID of the monster to be battled).
+Converse requires dialogue_id (The ID of the dialogue), text (The text of the dialogue), and listener_id (The ID of the character that the dialogue is directed towards).
+
+Here's an example action of the type Trade:
+{
+    "character_id": 1,
+    "action_type": "Trade",
+    "parameters": {
+        "shop_id": 1,
+        "item_id": 1
+    }
+}
+
+Remember to replace the example IDs with the actual IDs of your characters, items, shops, buildings, monsters, and dialogues. Enjoy your adventure!

@@ -1,0 +1,57 @@
+World:
+  Characters:
+    - Id: 1
+      Name: "Hero"
+      LocationId: 1
+      Health: 100
+      Strength: 10
+      Agility: 10
+      Intelligence: 10
+      Charisma: 10
+      Inventory: ["Sword", "Potion"]
+      Actions: 
+        - ActionType: "Pick_Up_Item"
+          Parameters: {ItemId: 1}
+        - ActionType: "Trade"
+          Parameters: {ShopId: 1, ItemId: 1}
+        - ActionType: "Train"
+          Parameters: {BuildingId: 1}
+        - ActionType: "Battle"
+          Parameters: {MonsterId: 1}
+    - Id: 2
+      Name: "Villain"
+      LocationId: 2
+      Health: 100
+      Strength: 10
+      Agility: 10
+      Intelligence: 10
+      Charisma: 10
+  Items:
+    - Id: 1
+      Name: "Sword"
+    - Id: 2
+      Name: "Potion"
+  Locations:
+    - Id: 1
+      Name: "Town"
+    - Id: 2
+      Name: "Dungeon"
+  Shops:
+    - Id: 1
+      Name: "Blacksmith"
+      Inventory: ["Sword","Potion","Apple"]
+  Buildings:
+    - Id: 1
+      Name: "Gym"
+      TrainingBonus: 10
+    - Id: 2
+      Name: "Restaurant"
+      TrainingBonus: 30      
+    - Id: 3
+      Name: "Resting Area"
+      TrainingBonus: 30          
+  Monsters:
+    - Id: 1
+      Name: "Dragon"
+      Health: 200
+      Damage: 15
