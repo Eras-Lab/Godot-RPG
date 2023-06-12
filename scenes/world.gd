@@ -47,6 +47,16 @@ func _ready():
 	for node in get_tree().get_nodes_in_group("external_inventory"):
 		node.toggle_inventory.connect(toggle_inventory_interface)
 		
+	# Initialize buildings
+	for building_node in get_tree().get_nodes_in_group("buildings"):
+		var building = Building.new(CurrencyManager.new(), InventoryData.new()) 
+		building_node.add_child(building)
+
+		# Set the price of an item in the building's store
+		var item = ItemData.new()
+		item.name = "Sword"
+		building.set_item_price_in_store(item, 100)
+		
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	inventory_interface.visible = not inventory_interface.visible
 	
