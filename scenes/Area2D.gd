@@ -25,4 +25,4 @@ func _on_body_exited(body):
 
 func _on_timer_timeout():
 	for player in players_in_area:
-		player.increase_attack_damage(10)
+		player.player_status.increase_attack_damage(10)
