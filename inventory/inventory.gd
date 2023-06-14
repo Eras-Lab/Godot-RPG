@@ -13,7 +13,6 @@ func clear_inventory_data(inventory_data: InventoryData) -> void:
 	inventory_data.inventory_updated.disconnect(populate_item_grid)
 	
 func populate_item_grid(inventory_data: InventoryData) -> void:
-	print("updated item grid")
 	for child in item_grid.get_children():
 		child.queue_free()
 		
@@ -22,4 +21,3 @@ func populate_item_grid(inventory_data: InventoryData) -> void:
 		item_grid.add_child(slot)
 		if slot_data.item_data:
 			slot.set_slot_data(slot_data)
-			

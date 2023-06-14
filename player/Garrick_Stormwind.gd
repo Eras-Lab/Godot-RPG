@@ -53,15 +53,12 @@ var current_action = null
 @onready var chain_http_req = HTTPRequest.new()
 @onready var player_status = $PlayerStatus
 @onready var player_animation = $PlayerAnimation
-@onready var inventory_interface = $InventoryInterface
-@onready var inventory = $CharacterInventory/Inventory
-@onready var equip_inventory = $EquipInventory/Inventory
-@onready var inventory_manager = $InventoryManager
-
+@onready var character_inventory = $InventoryInterface/CharacterInventory/Inventory
+@onready var equip_inventory = $InventoryInterface/EquipInventory/Inventory
 
 func _ready():
 	PlayerManager.set_player(self)
-	inventory.set_inventory_data(inventory_data)
+	character_inventory.set_inventory_data(inventory_data)
 	equip_inventory.set_inventory_data(equip_inventory_data)
 	
 	#drink health potion
@@ -82,8 +79,6 @@ func _ready():
 	
 	#unequip iron sword
 	equip_inventory_data.unequip_item(1)
-	
-	
 	
 	health_bar.max_value = player_status.max_health
 	$AnimatedSprite2D.play("front_idle")
@@ -111,7 +106,7 @@ func _ready():
 #	update_attribute_on_chain("constitution", player_status.constitution)
 #	update_attribute_on_chain("dexterity", player_status.dexterity)
 #	update_attribute_on_chain("intelligence", player_status.intelligence)
-	
+
 func _physics_process(delta):
 	update_healthbar()
 	#player_movement(delta)
@@ -131,14 +126,11 @@ func _physics_process(delta):
 #		self.queue_free()
 #
 func player_movement(delta):
-	
 	player_animation.player_movement(delta)
-
-
+	
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):
 		enemy_in_attackrange = true
-
 
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("enemy"):
@@ -160,7 +152,6 @@ func _on_attack_cooldown_timeout():
 
 func attack():
 	var dir = current_direction
-	
 	
 	global.player_current_attack = true
 	attack_ip = true

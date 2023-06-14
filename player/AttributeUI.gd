@@ -1,6 +1,6 @@
 extends VBoxContainer
 @onready var attribute_ui = $"."
-@onready var player_status = $"../PlayerStatus"
+@onready var player_status = $"../../PlayerStatus"
 
 
 # Called when the node enters the scene tree for the first time.

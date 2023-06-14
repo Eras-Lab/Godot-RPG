@@ -10,7 +10,7 @@ func equip_item(slot_data):
 		if item.item_data and item.item_data.type == type:
 			print("item of this type already equipped")
 			type_already_equipped = true
-			
+
 	if not type_already_equipped:
 		var empty_slot = find_empty_slot()
 		if empty_slot != null:
