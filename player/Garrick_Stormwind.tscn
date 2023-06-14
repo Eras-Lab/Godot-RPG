@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://do1yubo7ebqbh" path="res://inventory/inventory.tscn" id="8_b2ck1"]
 [ext_resource type="Script" path="res://player/AttributeUI.gd" id="12_mrgvg"]
 
-[sub_resource type="Resource" id="Resource_r14wp"]
+[sub_resource type="Resource" id="Resource_2uak5"]
 script = ExtResource("4_ybxt3")
 quantity = 1
 
@@ -24,13 +24,13 @@ quantity = 1
 script = ExtResource("4_ybxt3")
 quantity = 1
 
-[sub_resource type="Resource" id="Resource_l86th"]
+[sub_resource type="Resource" id="Resource_113e3"]
 script = ExtResource("4_ybxt3")
 quantity = 1
 
 [sub_resource type="Resource" id="Resource_k8ug0"]
 script = ExtResource("3_wxtal")
-slot_datas = Array[ExtResource("4_ybxt3")]([SubResource("Resource_r14wp"), SubResource("Resource_u8635"), SubResource("Resource_4c1gi"), SubResource("Resource_l86th")])
+slot_datas = Array[ExtResource("4_ybxt3")]([SubResource("Resource_2uak5"), SubResource("Resource_u8635"), SubResource("Resource_4c1gi"), SubResource("Resource_113e3")])
 player = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
@@ -481,19 +481,19 @@ inventory_data = ExtResource("2_poubp")
 equip_inventory_data = SubResource("Resource_k8ug0")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -26.0
-offset_top = -27.0
-offset_right = 120.0
-offset_bottom = -1.0
+offset_left = -24.0
+offset_top = 28.0
+offset_right = 122.0
+offset_bottom = 54.0
 scale = Vector2(0.362991, 0.362991)
 text = "Garrick Stormwind"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
+position = Vector2(1, 57)
 shape = SubResource("CircleShape2D_sdljw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -7)
+position = Vector2(1, 48)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"back_attack"
 
@@ -506,6 +506,7 @@ position = Vector2(1, -4)
 shape = SubResource("CircleShape2D_7jpv1")
 
 [node name="player_hitbox" type="Area2D" parent="."]
+position = Vector2(2, 55)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 scale = Vector2(1.29908, 1.36403)
@@ -545,10 +546,10 @@ drag_vertical_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.188235, 0.67451, 0, 1)
-offset_left = -16.0
-offset_top = -18.0
-offset_right = 149.0
-offset_bottom = 9.0
+offset_left = -14.0
+offset_top = 37.0
+offset_right = 151.0
+offset_bottom = 64.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
@@ -563,14 +564,21 @@ script = ExtResource("5_y6ckx")
 visible = false
 script = ExtResource("4_gglgq")
 
-[node name="EquipInventory" type="Control" parent="."]
+[node name="InventoryInterface" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_top = 21.0
-offset_right = 40.0
-offset_bottom = 61.0
 
-[node name="Inventory" parent="EquipInventory" instance=ExtResource("8_b2ck1")]
+[node name="EquipInventory" type="Control" parent="InventoryInterface"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -39.0
+offset_top = 48.0
+offset_right = 1.00001
+offset_bottom = 88.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Inventory" parent="InventoryInterface/EquipInventory" instance=ExtResource("8_b2ck1")]
 layout_mode = 0
 offset_left = 65.0
 offset_top = -10.0
@@ -578,7 +586,7 @@ offset_right = 105.0
 offset_bottom = 30.0
 scale = Vector2(0.476928, 0.476928)
 
-[node name="Label" type="Label" parent="EquipInventory"]
+[node name="Label" type="Label" parent="InventoryInterface/EquipInventory"]
 layout_mode = 2
 offset_left = 65.0
 offset_top = -18.0
@@ -588,19 +596,20 @@ scale = Vector2(0.297391, 0.289218)
 text = "Equipped
 "
 
-[node name="CharacterInventory" type="Control" parent="."]
+[node name="CharacterInventory" type="Control" parent="InventoryInterface"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 65.0
-offset_top = -38.0
-offset_right = 105.0
-offset_bottom = 1.99998
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 47.0
+offset_bottom = 54.0
+scale = Vector2(0.7, 0.7)
 
-[node name="Inventory" parent="CharacterInventory" instance=ExtResource("8_b2ck1")]
+[node name="Inventory" parent="InventoryInterface/CharacterInventory" instance=ExtResource("8_b2ck1")]
 layout_mode = 0
 scale = Vector2(0.464701, 0.464701)
 
-[node name="Label" type="Label" parent="CharacterInventory"]
+[node name="Label" type="Label" parent="InventoryInterface/CharacterInventory"]
 layout_mode = 2
 offset_top = -8.86
 offset_right = 73.0
@@ -609,12 +618,12 @@ scale = Vector2(0.297391, 0.289218)
 text = "Inventory
 "
 
-[node name="AttributeUI" type="VBoxContainer" parent="."]
-offset_left = 281.0
-offset_top = -39.0
-offset_right = 321.0
-offset_bottom = 1.0
-scale = Vector2(0.565225, 0.565225)
+[node name="AttributeUI" type="VBoxContainer" parent="InventoryInterface"]
+offset_left = 148.0
+offset_top = 11.0
+offset_right = 188.0
+offset_bottom = 51.0
+scale = Vector2(0.3, 0.3)
 theme_override_constants/separation = 2
 script = ExtResource("12_mrgvg")
 

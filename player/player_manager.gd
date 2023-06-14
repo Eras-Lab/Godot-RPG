@@ -27,6 +27,9 @@ func unequip_slot_data(slot_data: SlotData) -> void:
 	print("player manager unequip", slot_data.item_data)
 	slot_data.item_data.unequip(player)
 
+func craft_item(recipeslot1: SlotData, slot2: SlotData):
+	pass
+
 func trade(inventory_data, inv2):
 	pass
 

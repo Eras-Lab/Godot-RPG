@@ -1,7 +1,7 @@
 extends Node
 #Make this initialization programable
 var player_name = "Garrick Stormwind"
-@onready var attribute_ui = $"../AttributeUI"
+@onready var attribute_ui = $"../InventoryInterface/AttributeUI"
 
 #player stats
 var max_health = 300
