@@ -1,8 +1,12 @@
-[gd_scene load_steps=61 format=3 uid="uid://cgl8cs3rmtyvt"]
+[gd_scene load_steps=65 format=3 uid="uid://cgl8cs3rmtyvt"]
 
 [ext_resource type="Script" path="res://player/Freya_Swiftwind.gd" id="1_xox5e"]
 [ext_resource type="Texture2D" uid="uid://bp4qv1akio2jf" path="res://images/treating/character/character_medieval_pixel/alternative colors/purple2.png" id="3_tpl03"]
+[ext_resource type="Script" path="res://scripts/player_scripts/battles.gd" id="4_dji8e"]
 [ext_resource type="Texture2D" uid="uid://1fj01n2hte84" path="res://images/treating/character/character_medieval_pixel/alternative colors/purple1.png" id="4_fc077"]
+[ext_resource type="Script" path="res://scripts/player_scripts/player_status.gd" id="5_exg1g"]
+[ext_resource type="Script" path="res://scripts/player_scripts/ai_requests.gd" id="6_4fwwd"]
+[ext_resource type="Script" path="res://scripts/player_scripts/play_anim.gd" id="7_omity"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -511,6 +515,18 @@ offset_bottom = 9.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
+
+[node name="battle_status" type="Node" parent="."]
+script = ExtResource("4_dji8e")
+
+[node name="player_status" type="Node" parent="."]
+script = ExtResource("5_exg1g")
+
+[node name="ai-requests" type="Node" parent="."]
+script = ExtResource("6_4fwwd")
+
+[node name="play_anim" type="Node" parent="."]
+script = ExtResource("7_omity")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

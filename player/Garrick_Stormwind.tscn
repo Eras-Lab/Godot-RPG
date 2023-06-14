@@ -619,6 +619,7 @@ text = "Inventory
 "
 
 [node name="AttributeUI" type="VBoxContainer" parent="InventoryInterface"]
+layout_mode = 0
 offset_left = 148.0
 offset_top = 11.0
 offset_right = 188.0
