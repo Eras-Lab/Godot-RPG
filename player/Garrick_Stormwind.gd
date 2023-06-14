@@ -455,8 +455,7 @@ func go_and_attack():
 					current_direction = Direction.NONE
 					
 		if enemy_in_attackrange and enemy.health > 0:
-			# attack()
-			pass
+			attack()
 
 func _on_req_completed(result, response_code, headers, body):
 	pass
