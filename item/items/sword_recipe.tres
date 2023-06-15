@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CraftRecipe" load_steps=5 format=3 uid="uid://cxdqukjmkmw0q"]
+
+[ext_resource type="Script" path="res://item/craft_recipe.gd" id="1_csxc8"]
+[ext_resource type="Resource" uid="uid://c055xh5e2diru" path="res://item/items/apple.tres" id="1_hvb3v"]
+[ext_resource type="Resource" uid="uid://4tpdn6levbd0" path="res://item/items/iron_sword.tres" id="1_qscp1"]
+[ext_resource type="Resource" uid="uid://cbocr64lfia2e" path="res://item/items/blue_book.tres" id="2_ohm5x"]
+
+[resource]
+script = ExtResource("1_csxc8")
+ingredients = Array[Resource("res://item/item_data.gd")]([ExtResource("1_hvb3v"), ExtResource("2_ohm5x")])
+result = ExtResource("1_qscp1")

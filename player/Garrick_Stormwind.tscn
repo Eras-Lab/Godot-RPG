@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=76 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="2_poubp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="4_ybxt3"]
 [ext_resource type="Script" path="res://player/Battle.gd" id="5_y6ckx"]
 [ext_resource type="PackedScene" uid="uid://do1yubo7ebqbh" path="res://inventory/inventory.tscn" id="8_b2ck1"]
+[ext_resource type="Script" path="res://player/crafting.gd" id="12_2hyxs"]
 [ext_resource type="Script" path="res://player/AttributeUI.gd" id="12_mrgvg"]
 
 [sub_resource type="Resource" id="Resource_2uak5"]
@@ -627,6 +628,9 @@ offset_bottom = 51.0
 scale = Vector2(0.3, 0.3)
 theme_override_constants/separation = 2
 script = ExtResource("12_mrgvg")
+
+[node name="Crafting" type="Node" parent="."]
+script = ExtResource("12_2hyxs")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_exited"]
