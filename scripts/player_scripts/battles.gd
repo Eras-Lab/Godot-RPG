@@ -1,5 +1,7 @@
 extends Node
 
+class_name battles_status
+
 # Declare a new signal
 signal attack_enemy
 
@@ -7,8 +9,6 @@ signal attack_enemy
 @onready var attack_cooldown = $"../attack_cooldown"
 @onready var animated_sprite_2d = $"../AnimatedSprite2D"
 @onready var deal_attack_timer = $"../deal_attack_timer"
-
-
 
 # Reference to the player node and monsters list
 @onready var player = get_parent()

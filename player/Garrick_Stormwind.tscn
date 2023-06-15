@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=79 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="2_poubp"]
@@ -8,10 +8,13 @@
 [ext_resource type="Script" path="res://player/PlayerStatus.gd" id="4_gglgq"]
 [ext_resource type="Script" path="res://player/PlayerAnimation.gd" id="4_mdntx"]
 [ext_resource type="Script" path="res://inventory/slot_data.gd" id="4_ybxt3"]
-[ext_resource type="Script" path="res://player/Battle.gd" id="5_y6ckx"]
 [ext_resource type="PackedScene" uid="uid://do1yubo7ebqbh" path="res://inventory/inventory.tscn" id="8_b2ck1"]
 [ext_resource type="Script" path="res://player/crafting.gd" id="12_2hyxs"]
+[ext_resource type="Script" path="res://scripts/player_scripts/battles.gd" id="12_do1co"]
 [ext_resource type="Script" path="res://player/AttributeUI.gd" id="12_mrgvg"]
+[ext_resource type="Script" path="res://scripts/player_scripts/player_status.gd" id="13_ls4ss"]
+[ext_resource type="Script" path="res://scripts/player_scripts/play_anim.gd" id="14_cbjvx"]
+[ext_resource type="Script" path="res://scripts/player_scripts/ai_requests.gd" id="15_ope3e"]
 
 [sub_resource type="Resource" id="Resource_2uak5"]
 script = ExtResource("4_ybxt3")
@@ -558,9 +561,6 @@ show_percentage = false
 [node name="PlayerAnimation" type="Node" parent="."]
 script = ExtResource("4_mdntx")
 
-[node name="Battle" type="Node" parent="."]
-script = ExtResource("5_y6ckx")
-
 [node name="PlayerStatus" type="Node2D" parent="."]
 visible = false
 script = ExtResource("4_gglgq")
@@ -631,6 +631,18 @@ script = ExtResource("12_mrgvg")
 
 [node name="Crafting" type="Node" parent="."]
 script = ExtResource("12_2hyxs")
+
+[node name="battles_status" type="Node" parent="."]
+script = ExtResource("12_do1co")
+
+[node name="player_status" type="Node" parent="."]
+script = ExtResource("13_ls4ss")
+
+[node name="play_anim" type="Node" parent="."]
+script = ExtResource("14_cbjvx")
+
+[node name="ai_requests" type="Node" parent="."]
+script = ExtResource("15_ope3e")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_exited"]
