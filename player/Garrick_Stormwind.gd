@@ -23,10 +23,6 @@ enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
 var current_direction = Direction.NONE
 var step_size = 1
 
-var player_name = "Garrick Stormwind"
-
-const speed = 100
-
 var current_action = null
 @onready var buildings_list = $"../Buildings"
 @onready var monsters_list = $"../DungeonMonsters"
@@ -38,7 +34,7 @@ var current_action = null
 
 @onready var play_anim = $play_anim
 @onready var player_status = $player_status
-@onready var battle_status = $battles_status
+@onready var battle_status = $battle_status
 @onready var ai_requests = $"ai-requests"
 
 func _ready():
@@ -73,7 +69,7 @@ func _physics_process(delta):
 	update_healthbar()
 	play_anim.play_anim(current_direction, 0, attack_ip)
 	current_camera()
-	#enemy_attack()
+	battle_status.enemy_attack(1) #TODO: Change to be called from Enemy	
 	pickup()
 	if walking_towards != "none" and global.current_location == global.Location.TOWN:
 		battle_status.walk_towards(walking_towards)

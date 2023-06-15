@@ -632,7 +632,7 @@ script = ExtResource("12_mrgvg")
 [node name="Crafting" type="Node" parent="."]
 script = ExtResource("12_2hyxs")
 
-[node name="battles_status" type="Node" parent="."]
+[node name="battle_status" type="Node" parent="."]
 script = ExtResource("12_do1co")
 
 [node name="player_status" type="Node" parent="."]
