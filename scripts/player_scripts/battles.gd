@@ -1,6 +1,6 @@
 extends Node
 
-class_name battles_status
+class_name battle_status
 
 # Declare a new signal
 signal attack_enemy
@@ -51,7 +51,7 @@ func go_and_attack(enemy):
 			monster_chase = true
 			break
 			
-	
+
 	var position = player.position
 	var current_direction = player.current_direction
 	var step_size = player.step_size
