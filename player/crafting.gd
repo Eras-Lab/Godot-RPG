@@ -1,7 +1,7 @@
 extends Node
 @onready var player = $".."
 
-var sword_recipe = preload("res://item/items/sword_recipe.tres")
+var sword_recipe = preload("res://item/recipes/sword_recipe.tres")
 
 func _ready():
 	craft(sword_recipe)
