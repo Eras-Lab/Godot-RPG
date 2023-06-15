@@ -1,5 +1,6 @@
 extends Node
 
+class_name play_anim
 
 # Called when the node enters the scene tree for the first time.
 

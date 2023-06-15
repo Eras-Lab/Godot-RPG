@@ -1,4 +1,7 @@
 extends Node
+
+class_name player_status
+
 #Make this initialization programable
 var player_name = "Garrick Stormwind"
 

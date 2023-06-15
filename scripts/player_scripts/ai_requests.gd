@@ -1,5 +1,7 @@
 extends Node
 
+class_name ai_requests
+
 @onready var http_request = $"../HTTPRequest"
 @onready var player = $".."
 @onready var battle_status = $"../battle_status"
@@ -7,7 +9,6 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	http_request.request_completed.connect(_on_http_request_request_completed)	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
