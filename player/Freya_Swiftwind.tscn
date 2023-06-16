@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cgl8cs3rmtyvt"]
+[gd_scene load_steps=68 format=3 uid="uid://cgl8cs3rmtyvt"]
 
 [ext_resource type="Script" path="res://player/Freya_Swiftwind.gd" id="1_xox5e"]
 [ext_resource type="Texture2D" uid="uid://bp4qv1akio2jf" path="res://images/treating/character/character_medieval_pixel/alternative colors/purple2.png" id="3_tpl03"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/player_status.gd" id="5_exg1g"]
 [ext_resource type="Script" path="res://scripts/player_scripts/ai_requests.gd" id="6_4fwwd"]
 [ext_resource type="Script" path="res://scripts/player_scripts/play_anim.gd" id="7_omity"]
+[ext_resource type="Script" path="res://scripts/market_scripts/currency_manager.gd" id="8_lp0fq"]
+[ext_resource type="Script" path="res://scripts/market_scripts/store.gd" id="9_gmrwg"]
+[ext_resource type="Script" path="res://scripts/market_scripts/transaction_manager.gd" id="10_5iojt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -527,6 +530,15 @@ script = ExtResource("6_4fwwd")
 
 [node name="play_anim" type="Node" parent="."]
 script = ExtResource("7_omity")
+
+[node name="CurrencyManager" type="Node" parent="."]
+script = ExtResource("8_lp0fq")
+
+[node name="Store" type="Node" parent="."]
+script = ExtResource("9_gmrwg")
+
+[node name="TransactionManager" type="Node" parent="."]
+script = ExtResource("10_5iojt")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

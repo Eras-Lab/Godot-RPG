@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dodmkmlg7jmh6"]
+[gd_scene load_steps=8 format=3 uid="uid://dodmkmlg7jmh6"]
 
 [ext_resource type="Script" path="res://scenes/Area2D.gd" id="1_hmckj"]
+[ext_resource type="Script" path="res://scripts/building_scripts/building.gd" id="1_rm3p8"]
+[ext_resource type="Script" path="res://scripts/market_scripts/currency_manager.gd" id="3_qxlyc"]
+[ext_resource type="Script" path="res://scripts/market_scripts/store.gd" id="4_gea5r"]
+[ext_resource type="Script" path="res://scripts/market_scripts/transaction_manager.gd" id="5_v8m0j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nn6au"]
 radius = 101.463
@@ -9,6 +13,7 @@ radius = 101.463
 size = Vector2(9.66, 9.72)
 
 [node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_rm3p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -29,3 +34,12 @@ shape = SubResource("RectangleShape2D_0hklr")
 
 [node name="Timer" type="Timer" parent="Area2D"]
 wait_time = 2.0
+
+[node name="CurrencyManager" type="Node" parent="."]
+script = ExtResource("3_qxlyc")
+
+[node name="Store" type="Node" parent="."]
+script = ExtResource("4_gea5r")
+
+[node name="TransactionManager" type="Node" parent="."]
+script = ExtResource("5_v8m0j")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=82 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="2_poubp"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/player_status.gd" id="13_ls4ss"]
 [ext_resource type="Script" path="res://scripts/player_scripts/play_anim.gd" id="14_cbjvx"]
 [ext_resource type="Script" path="res://scripts/player_scripts/ai_requests.gd" id="15_ope3e"]
+[ext_resource type="Script" path="res://scripts/market_scripts/currency_manager.gd" id="16_c0t1n"]
+[ext_resource type="Script" path="res://scripts/market_scripts/store.gd" id="17_tjxsh"]
+[ext_resource type="Script" path="res://scripts/market_scripts/transaction_manager.gd" id="18_vr8t2"]
 
 [sub_resource type="Resource" id="Resource_2uak5"]
 script = ExtResource("4_ybxt3")
@@ -643,6 +646,15 @@ script = ExtResource("14_cbjvx")
 
 [node name="ai_requests" type="Node" parent="."]
 script = ExtResource("15_ope3e")
+
+[node name="CurrencyManager" type="Node" parent="."]
+script = ExtResource("16_c0t1n")
+
+[node name="Store" type="Node" parent="."]
+script = ExtResource("17_tjxsh")
+
+[node name="TransactionManager" type="Node" parent="."]
+script = ExtResource("18_vr8t2")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="." method="_on_detection_area_body_exited"]
