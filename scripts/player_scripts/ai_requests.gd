@@ -6,6 +6,7 @@ class_name ai_requests
 @onready var player = $".."
 @onready var battle_status = $"../battle_status"
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	http_request.request_completed.connect(_on_http_request_request_completed)	
@@ -40,12 +41,13 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	# parse the arguments field as a separate JSON string
 	var arguments = JSON.parse_string(res["arguments"])
 	var action_name = res["name"]
-	print("action_Name:", name)
+	print("action_name : ", action_name)
 	
 	if action_name == "walk_to":
 		var location_name = arguments["location_name"]
 		print("Location name:", location_name)
-		#TODO: Call "Walk to function"
+		#Call "walk_towards" function with given location_name argument
+		battle_status.walk_towards(location_name)
 		
 	elif action_name == "pick_up_item":
 		var item_name = arguments["item_name"]
