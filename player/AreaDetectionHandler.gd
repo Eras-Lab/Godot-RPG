@@ -1,42 +1,38 @@
 extends Node
-#TODO: We should have an array list of: [shops] , [players], [items] and [monsters] that enters and exit the detection area
 
-#@onready var detection_area = $"../AnimatedSprite2D/detection_area"
+var players_in_area = []
+var buildings_in_area = []
+var items_in_area = []
+var monsters_in_area = []
+
 @onready var detection_area = $"../AnimatedSprite2D/detection_area"
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Replace with function body.
 	detection_area.connect("body_entered", _on_detection_area_body_entered)
 	detection_area.connect("body_exited", _on_detection_area_body_exited)
-	print("test Area Detection Node")
+	print("Area Detection Node Ready")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-#TODO Create a Node for dealing with "Area_body_detection"
 # MARKET
 func _on_detection_area_body_entered(body):
-	print("BODY THAT ENTERED AREA", body)
-	if body == self:
+	if body == self.get_parent():
 		return
-	#TODO: Add list for stores
-	#TODO: Add other checks for entered area (players, monsters, items)
-	if body.has_node("Store"):
-		#external_store = body.get_node("Store")
-		#print("New store found by Garrick: ", external_store.item_prices)
-		print("External Store Detected")
-
-	#if body.has_node("CurrencyManager"): # not all entities with stores need to have currency
-		#external_currency_manager = body.get_node("CurrencyManager")
+	
+	if body.has_method("is_player"):  # or check for some player-specific property
+		players_in_area.append(body)
+	elif body.has_method("is_building"):  # or check for some building-specific property
+		buildings_in_area.append(body)
+	elif body.has_method("is_item"):  # or check for some item-specific property
+		items_in_area.append(body)
+	elif body.has_method("is_monster"):  # or check for some monster-specific property
+		monsters_in_area.append(body)
 
 func _on_detection_area_body_exited(body):
-	print("BODY THAT EXITED AREA", body)
-	if body.has_node("Store"): # only leave the store if leaving an element that has a store
-		#external_store = null
-		#external_currency_manager = null
-		print("Left store")
+	if body in players_in_area:
+		players_in_area.erase(body)
+	elif body in buildings_in_area:
+		buildings_in_area.erase(body)
+	elif body in items_in_area:
+		items_in_area.erase(body)
+	elif body in monsters_in_area:
+		monsters_in_area.erase(body)

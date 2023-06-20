@@ -157,5 +157,5 @@ func update_healthbar():
 	health_bar.value = player_status.health
 
 
-
-
+func is_player():
+	true
