@@ -44,7 +44,7 @@ func _ready():
 	PlayerManager.players.push_back(self)
 	health_bar.max_value = player_status.max_health
 	$AnimatedSprite2D.play("front_idle")
-	
+
 	# MARKET
 	# store and tx manager have to be initialized
 	store.initialize(inventory_data)
@@ -66,6 +66,10 @@ func _ready():
 	# END MARKET
 
 	battle_status.walk_towards("Building5")		
+	
+	#Make initial AI Request
+	ai_requests.send_request("My goal is to walk somewhere")
+	
 
 func _physics_process(delta):
 	update_healthbar()

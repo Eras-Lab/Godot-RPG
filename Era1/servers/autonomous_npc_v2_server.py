@@ -18,7 +18,7 @@ def chat():
     print("User input:", user_input)
 
     if player_id not in chat_agents:
-        api_key = "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"
+        api_key = ""
         filepath = '../prompts/chatbot10.txt'
 
         # Initialize new ChatGPT agent for the player

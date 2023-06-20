@@ -26,7 +26,8 @@ class ChatGPT:
         messages_input = self.short_term_memory.copy()
         prompt = [{"role": "system", "content": self.system_prompt}]
         messages_input.insert(0, prompt[0])
-
+        #TODO: Add remaining functions / actions
+        #TODO: Compose "enums" with possible options for each function based on observations
         functions=[
                 
                 {
@@ -55,6 +56,7 @@ class ChatGPT:
                         "properties": {
                             "location_name": {
                                 "type": "string",
+                                "enum": ["Building2", "Building3", "Building4", "Building5"],
                                 "description": "Name of the place you would like to walk to",
                             }
                         },
@@ -76,10 +78,24 @@ class ChatGPT:
                     },
                 },
                 {
-                    "name": "trade",
-                    "description": "The player can trade with nearby players or Shops",
+                    "name" : "trade",
+                    "description" : "The player can trade with nearby players or shops",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "shop_name": {
+                                "type": "string",
+                                "description": "Name of the shop that the player would like to trade with",
+                            },
+                            "item_name": {
+                                "type": "string",
+                                "description": "Name of the item that the player would like to trade"
+                            }
+                        },
+                        "required": ["shop_name", "item_name"]
+                    }
+                },
 
-                }
             ]
 
         completion = openai.ChatCompletion.create(

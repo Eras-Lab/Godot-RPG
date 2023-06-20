@@ -16,6 +16,7 @@ class ChatGPT:
             outfile.write(content)
 
     def chat(self, user_input, temperature=0, frequency_penalty=0.2, presence_penalty=0, max_turns=10):
+
         self.short_term_memory.append({"role": "user","content": user_input})
 
         # Only use the last max_turns turns of the short_term_memory
@@ -27,14 +28,13 @@ class ChatGPT:
         messages_input.insert(0, prompt[0])
 
         functions=[
-                
                 {
                     "name": "talk_to",
                     "description": "You will start a conversation with nearby players",
                     "parameters": {
                         "type": "object",
                         "properties": {
-                            "listener_id": {
+                            "listener_name": {
                                 "type": "string",
                                 "description": "Name of the player you would like to chat with",
                             },
@@ -60,24 +60,7 @@ class ChatGPT:
                         "required": ["location_name"],
                     },
                 },
-                {
-                    "name": "save_file",
-                    "description": "Save the provided content to a file",
-                    "parameters": {
-                        "type": "object",
-                        "properties": {
-                            "filepath": {
-                                "type": "string",
-                                "description": "Path to the file where the content will be saved",
-                            },
-                            "content": {
-                                "type": "string",
-                                "description": "Content to be saved in the file",
-                            },
-                        },
-                        "required": ["filepath", "content"],
-                    },
-                },
+                
             ]
 
         completion = openai.ChatCompletion.create(
@@ -108,6 +91,9 @@ class ChatGPT:
 
         return response
 
+
+
+# Testing the ChatGpt Class
 api_key = "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"
 filepath = 'prompts/chatbot10.txt'
 
