@@ -76,9 +76,22 @@ class ChatGPT:
                     },
                 },
                 {
-                    "name": "trade",
-                    "description": "The player can trade with nearby players or Shops",
-
+                    "name" : "trade",
+                    "description" : "The player can trade with nearby players or shops",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "shop_name": {
+                                "type": "string",
+                                "description": "Name of the shop that the player would like to trade with",
+                            },
+                            "item_name": {
+                                "type": "string",
+                                "description": "Name of the item that the player would like to trade"
+                            }
+                        },
+                        "required": ["shop_name", "item_name"]
+                    }
                 }
             ]
 

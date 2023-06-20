@@ -17,8 +17,9 @@ func _process(delta):
 func send_request(user_input: String):
 	var headers = ["Content-Type: application/json"]
 	print("action requested")
+	#TODO: Connect with Nodes that have these datas stored
 	var body = {
-		"npc_name": self.get_parent().name,
+		"player_id": self.get_parent().name,
 		"npc_desc": "Test",
 		"location": "park",
 		"inventory": [],
@@ -29,22 +30,30 @@ func send_request(user_input: String):
 	http_request.request("http://127.0.0.1:5000/chat", headers, HTTPClient.METHOD_POST, body_text)
 
 func _on_http_request_request_completed(result, response_code, headers, body):
-
 	var res = str_to_var(body.get_string_from_utf8())
 	if res == null:
 		self.send_request("did nothing")
 		return
 	print("=====response")
 	print(res)
-	var response = JSON.parse_string(res)	
 	
-	if response.action.type == "walkTo":
-		player.current_action = "walking"
-		var location_name = response.action.where
-		print("walking to " + location_name)
-		battle_status.walk_towards(location_name)
-		self.send_request("Just walked to " + location_name)
-				
-	elif response.action.type == "wait":
-		print("WAITING")
-		self.send_request("Just Waited")
+	# parse the arguments field as a separate JSON string
+	var arguments = JSON.parse_string(res["arguments"])
+	var action_name = res["name"]
+	print("action_Name:", name)
+	
+	if action_name == "walk_to":
+		var location_name = arguments["location_name"]
+		print("Location name:", location_name)
+		#TODO: Call "Walk to function"
+		
+	elif action_name == "pick_up_item":
+		var item_name = arguments["item_name"]
+		print("Item to pick up", item_name)
+		#TODO: Call "Pick up item function"
+	
+	#TODO: Add remaining actions
+
+
+	
+
