@@ -68,7 +68,7 @@ func _ready():
 	battle_status.walk_towards("Building5")		
 	
 	#Make initial AI Request
-	ai_requests.send_request("My goal is to walk somewhere")
+	#ai_requests.send_request("My goal is to walk somewhere")
 	
 
 func _physics_process(delta):
