@@ -6,6 +6,8 @@ signal toggle_inventory
 @export var equip_inventory_data: InventoryDataEquip
 @export var head: InventoryDataEquip
 @onready var health_bar = $HealthBar
+@onready var notifications = $Notifications
+@onready var player_manager = $PlayerManager
 
 var enemy
 var enemy_attack_cooldown = true
@@ -77,7 +79,7 @@ func _ready():
 	
 	#drink health potion
 	inventory_data.use_slot_data(5)
-	
+
 	#equip wooden shield
 	inventory_data.equip_slot_data(1)
 	

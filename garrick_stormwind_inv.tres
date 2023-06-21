@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=14 format=3 uid="uid://btk5ixn2yabpu"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=15 format=3 uid="uid://btk5ixn2yabpu"]
 
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="1_huwrv"]
 [ext_resource type="Resource" uid="uid://4tpdn6levbd0" path="res://item/items/iron_sword.tres" id="2_et6sw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://c055xh5e2diru" path="res://item/items/apple.tres" id="5_teqtd"]
 [ext_resource type="Resource" uid="uid://bykpyjcukkwi3" path="res://item/items/iron_helmet.tres" id="6_saa8m"]
 [ext_resource type="Resource" uid="uid://cbocr64lfia2e" path="res://item/items/blue_book.tres" id="7_7pemc"]
+[ext_resource type="Resource" uid="uid://dv8t5ytsqd0ks" path="res://item/items/health_potion.tres" id="8_7fbh2"]
 
 [sub_resource type="Resource" id="Resource_eqrkm"]
 script = ExtResource("3_srir1")
@@ -35,7 +36,7 @@ quantity = 1
 
 [sub_resource type="Resource" id="Resource_6wmjb"]
 script = ExtResource("3_srir1")
-item_data = ExtResource("7_7pemc")
+item_data = ExtResource("8_7fbh2")
 quantity = 5
 
 [resource]
