@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://qeg02qdtl16m"]
+
+[ext_resource type="Script" path="res://scenes/notifications.gd" id="1_5dgeq"]
+[ext_resource type="Texture2D" uid="uid://c76a41lwpruvs" path="res://item/item_atlas.tres" id="2_41mg8"]
+
+[sub_resource type="Animation" id="Animation_t15oy"]
+resource_name = "fade"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_28gad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuv3e"]
+_data = {
+"RESET": SubResource("Animation_28gad"),
+"fade": SubResource("Animation_t15oy")
+}
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5dgeq")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 52.0
+offset_right = 86.0
+offset_bottom = 78.0
+scale = Vector2(0.661006, 0.812835)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 8
+text = "notif"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+offset_top = 52.0
+offset_right = 32.0
+offset_bottom = 84.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_41mg8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nuv3e")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
