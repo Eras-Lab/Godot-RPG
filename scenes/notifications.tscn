@@ -3,6 +3,21 @@
 [ext_resource type="Script" path="res://scenes/notifications.gd" id="1_5dgeq"]
 [ext_resource type="Texture2D" uid="uid://c76a41lwpruvs" path="res://item/item_atlas.tres" id="2_41mg8"]
 
+[sub_resource type="Animation" id="Animation_28gad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_t15oy"]
 resource_name = "fade"
 length = 1.5
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_28gad"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nuv3e"]
@@ -63,6 +63,7 @@ theme_override_font_sizes/font_size = 8
 text = "notif"
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
 offset_top = 52.0
 offset_right = 32.0
 offset_bottom = 84.0
