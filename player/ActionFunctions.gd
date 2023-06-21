@@ -6,22 +6,23 @@ extends Node
 @onready var ai_requests = $".."
 @onready var transaction_manager = $"../../TransactionManager"
 
+var min_distance = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	wrapped_walk_towards("Building5")
 
 func wrapped_walk_towards(location_name):
 	battle_status.walk_towards(location_name)
-	if player.distance_to(battle_status.locations[location_name].position) <= battle_status.min_distance:
+	if player.position.distance_to(battle_status.locations[location_name].position) <= min_distance:
 		ai_requests.send_request("Player arrived at location " + str(location_name))
 
 func wrapped_train(location_name):
 	battle_status.walk_towards(location_name)
-	if player.distance_to(battle_status.locations[location_name].position) <= battle_status.min_distance:
+	if player.position.distance_to(battle_status.locations[location_name].position) <= min_distance:
 		#yield(get_tree().create_timer(30.0), "timeout")
 		ai_requests.send_request("Player trained at location " + str(location_name))
 		
@@ -39,3 +40,4 @@ func wrapped_pick_up_item():
 
 func wrapped_craft():
 	pass
+
