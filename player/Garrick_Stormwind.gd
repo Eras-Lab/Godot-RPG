@@ -6,6 +6,7 @@ signal toggle_inventory
 @export var equip_inventory_data: InventoryDataEquip
 @export var head: InventoryDataEquip
 @onready var health_bar = $HealthBar
+@onready var notifications = $Notifications
 
 var enemy
 var enemy_attack_cooldown = true
