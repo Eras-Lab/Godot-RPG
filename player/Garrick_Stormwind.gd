@@ -52,10 +52,11 @@ func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	battle_status.walk_towards("Building5")
 	
+	
 	character_inventory.set_inventory_data(inventory_data)
 	equip_inventory.set_inventory_data(equip_inventory_data)
 	
-	# MARKET
+	# Initialize MARKET
 	# store and tx manager have to be initialized
 	store.initialize(inventory_data)
 	transaction_manager.initialize(inventory_data, currency_manager)
@@ -65,14 +66,6 @@ func _ready():
 	
 	# give myself some money to start with
 	currency_manager.increase_balance(1000)
-	
-	# ui setup
-	var detection_area = find_child("detection_area", true, false)
-	detection_area.connect("body_entered", _on_detection_area_body_entered)
-	detection_area.connect("body_exited", _on_detection_area_body_exited)
-	if buy_button:
-		buy_button.connect("pressed", _on_buy_button_pressed)
-		buy_button.visible = false
 	# END MARKET
 	
 	#drink health potion
@@ -120,10 +113,7 @@ func _on_player_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		battle_status.enemy_in_attackrange = false
 
-	
-func player():
-	pass
-	
+#TODO: Move attack cooldown to Attack Node
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 
@@ -131,6 +121,7 @@ func pickup():
 	if Input.is_action_just_pressed("interact"):
 		print("interact button pressed")
 
+#TODO: Move on deal attack timer to Attack Node
 func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()
 	global.player_current_attack = false
@@ -143,14 +134,6 @@ func current_camera():
 	elif global.current_scene == "cliff_side":
 		$world_camera.enabled = false
 		$cliffside_camera.enabled = true
-
-func _on_line_edit_text_submitted(new_text):
-	print(new_text)
-	global.player_talking = true
-	global.plyaer_message = new_text
-	var json = JSON.stringify(new_text)
-	var headers = ["Content-Type: application/json"]
-	$HTTPRequest.request("http://localhost:5000/openai", headers, HTTPClient.METHOD_POST, json)
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("inventory"):
@@ -173,30 +156,6 @@ func get_drop_position():
 func update_healthbar():
 	health_bar.value = player_status.health
 
-	
-func _on_req_completed(result, response_code, headers, body):
-	pass
-	
-# MARKET
-func _on_detection_area_body_entered(body):
-	if body == self:
-		return
-	if body.has_node("Store"):
-		external_store = body.get_node("Store")
-		print("New store found by Garrick: ", external_store.item_prices)
-		if buy_button:
-			buy_button.visible = true
-	if body.has_node("CurrencyManager"): # not all entities with stores need to have currency
-		external_currency_manager = body.get_node("CurrencyManager")
 
-func _on_detection_area_body_exited(body):
-	if body.has_node("Store"): # only leave the store if leaving an element that has a store
-		external_store = null
-		external_currency_manager = null
-		print("Left store")
-		if buy_button:
-			buy_button.visible = false
-
-func _on_buy_button_pressed():
-	transaction_manager.buy_item("Health Potion", 2, external_store, external_currency_manager)
-# END MARKET
+func is_player():
+	true

@@ -68,7 +68,7 @@ func _ready():
 	battle_status.walk_towards("Building5")		
 	
 	#Make initial AI Request
-	ai_requests.send_request("My goal is to walk somewhere")
+	#ai_requests.send_request("My goal is to walk somewhere")
 	
 
 func _physics_process(delta):
@@ -164,3 +164,5 @@ func _on_detection_area_body_exited(body):
 func _on_buy_button_pressed():
 	transaction_manager.buy_item("Health Potion", 2, external_store, external_currency_manager)
 # END MARKET
+func is_player():
+	true

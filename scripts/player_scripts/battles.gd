@@ -141,4 +141,5 @@ func walk_towards(location_name):
 					player.current_direction = Direction.NONE
 
 		player.walking_towards = location_name
+	# If player arrived call ai_request.send_request("Player arrived at location X")
 		#Call increase_dex			

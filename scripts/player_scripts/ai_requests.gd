@@ -5,6 +5,7 @@ class_name ai_requests
 @onready var http_request = $"../HTTPRequest"
 @onready var player = $".."
 @onready var battle_status = $"../battle_status"
+@onready var transaction_manager = $"../TransactionManager"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,9 +54,23 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		var item_name = arguments["item_name"]
 		print("Item to pick up", item_name)
 		#TODO: Call "Pick up item function"
+		
 	
+	elif action_name == "trade":
+		var shop_name = arguments["shop_name"]
+		var item_name = arguments["item_name"]
+		#Call the function that would do the trade
+		print("Shop name", shop_name)
+		print("Item name", item_name)
+		
+
+	elif action_name == "buy_item":
+		var item_name = arguments["item_name"]
+		var external_store = arguments["external_store"]
+		var external_currency_manager = arguments["external_currency_manager"]
+		var quantity = arguments["quantity"]
+		#TODO find "external_store" and "external_currency_manager" node given their "string_names"
+		transaction_manager.buy_item(item_name, quantity, external_store, external_currency_manager)
+
 	#TODO: Add remaining actions
-
-
-	
 

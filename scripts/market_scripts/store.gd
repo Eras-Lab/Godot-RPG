@@ -4,7 +4,7 @@ class_name Store
 
 var inventory: InventoryData
 var item_prices: Dictionary = {}
-	
+
 func initialize(inventory_data: InventoryData):
 	inventory = inventory_data
 	
