@@ -50,7 +50,7 @@ func _ready():
 	PlayerManager.set_player(self)
 	health_bar.max_value = player_status.max_health
 	$AnimatedSprite2D.play("front_idle")
-	battle_status.walk_towards("Building5")
+	#battle_status.walk_towards("Building5")
 	
 	
 	character_inventory.set_inventory_data(inventory_data)

@@ -4,7 +4,8 @@ class_name TransactionManager
 
 var inventory : InventoryData
 var currency : CurrencyManager
-	
+@onready var ai_requests = $"../ai_requests"
+
 func initialize(_inventory: InventoryData, _currency: CurrencyManager):
 	inventory = _inventory
 	currency = _currency
@@ -37,6 +38,9 @@ external_store: Store, external_currency: CurrencyManager) -> bool:
 	currency.decrease_balance(total_price)
 	if external_currency:
 		external_currency.increase_balance(total_price)
-	print("Item puchased. New balance: ", currency.get_balance())
+
+	var new_balance = currency.get_balance()
+	print("Item puchased. New balance: ", new_balance)
+	ai_requests.send_request("Item purchased: {item_name}, new balance is {new_balance}")
 	return true
 	

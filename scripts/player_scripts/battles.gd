@@ -14,12 +14,14 @@ signal attack_enemy
 @onready var player = get_parent()
 @onready var monsters_list = $"../../DungeonMonsters"
 @onready var buildings_list = $"../../Buildings"
+@onready var ai_requests = $"../ai_requests"
 
 var enemy_in_attackrange = false
 var enemy_attack_cooldown = true
 #var enemy = null
 var monster_chase = false
 var speed = 100
+var minimum_distance = 1
 
 enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
 
@@ -141,5 +143,13 @@ func walk_towards(location_name):
 					player.current_direction = Direction.NONE
 
 		player.walking_towards = location_name
-	# If player arrived call ai_request.send_request("Player arrived at location X")
-		#Call increase_dex			
+		# If the player has arrived at the location
+		
+		
+		#TODO: delete when "wrapped_walking_towards" is working
+		#var distance_to_location = player.position.distance_to(location.position)
+		#if distance_to_location < minimum_distance:  # minimum_distance is the radius you consider close enough
+			#ai_requests.send_request("Player arrived at location {location_name}")
+			#print("Player Arrived")
+			# increase_dex()			
+		
