@@ -14,6 +14,7 @@ signal attack_enemy
 @onready var player = get_parent()
 @onready var monsters_list = $"../../DungeonMonsters"
 @onready var buildings_list = $"../../Buildings"
+@onready var players_list = get_tree().get_nodes_in_group("characters")
 @onready var ai_requests = $"../ai_requests"
 
 var enemy_in_attackrange = false
@@ -28,15 +29,22 @@ enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
 var buildings
 var monsters
 var locations
+var players
+
 
 func _ready():
 	buildings = buildings_list.get_children()
 	monsters = monsters_list.get_children()
 	locations = {}
+	players = {}
 	
 	for building in buildings:
 		print(building)
 		locations[building.name] = building		
+		
+	for player in players_list:
+		print(player)
+		locations[player.name] = player	
 
 func enemy_attack(enemy_damage : int):
 
@@ -112,10 +120,11 @@ func attack():
 		deal_attack_timer.start()		
 		
 func walk_towards(location_name):
-	var location = locations[location_name]
+	var location = locations[location_name] if locations[location_name] else players[location_name]
 	if location == null:
 		return
 	player.walking_towards = location_name
+	print("location: ", location)
 	while location != null:
 		var direction = location.position - player.position
 
@@ -146,7 +155,6 @@ func walk_towards(location_name):
 					player.current_direction = Direction.NONE
 
 		if player.position.distance_to(location.position) < minimum_distance:
-			print("Player Arrived")
 			stop_walking()
 			return
 

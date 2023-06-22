@@ -29,7 +29,7 @@ var current_action = null
 @onready var play_anim = $play_anim
 @onready var player_status = $player_status
 @onready var battle_status = $battle_status
-@onready var ai_requests = $"ai-requests"
+@onready var ai_requests = $ai_requests
 
 # MARKET
 var external_store = null
@@ -70,10 +70,12 @@ func _ready():
 		buy_button.visible = false
 	# END MARKET
 
-#	battle_status.walk_towards("Building5")	
-	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building5"], true)
-	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building1"], true)
-	
+#	# Testing some actions that are queued and interrupted
+	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building2"], true)
+	action_manager.add_action(action_functions, "wrapped_train", ["Building3"], true)
+	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building2"], true)
+#	await get_tree().create_timer(12).timeout
+#	action_manager.interrupt_with_action(true, action_functions, "wrapped_walk_towards", ["GarrickStormwind"], true)
 	
 	#Make initial AI Request
 	#ai_requests.send_request("My goal is to walk somewhere")
@@ -99,6 +101,7 @@ func _physics_process(delta):
 	
 	# ActionManager testing
 	player_label.text = "Freya Swiftwind\n"
+	player_label.text += "Action Finished?: " + str(action_manager.action_finished) + "\n"
 	if action_manager.current_action:
 		player_label.text += action_manager.current_action["func_name"] + "(" +  str(action_manager.current_action["args"]) + ")\n"
 	for action in action_manager.action_queue:

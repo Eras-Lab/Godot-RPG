@@ -527,7 +527,7 @@ script = ExtResource("4_dji8e")
 [node name="player_status" type="Node" parent="."]
 script = ExtResource("5_exg1g")
 
-[node name="ai-requests" type="Node" parent="."]
+[node name="ai_requests" type="Node" parent="."]
 script = ExtResource("6_4fwwd")
 
 [node name="play_anim" type="Node" parent="."]
