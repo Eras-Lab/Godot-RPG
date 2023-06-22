@@ -113,7 +113,10 @@ func attack():
 		
 func walk_towards(location_name):
 	var location = locations[location_name]
-	if location != null:
+	if location == null:
+		return
+	player.walking_towards = location_name
+	while location != null:
 		var direction = location.position - player.position
 
 		if player.current_direction == Direction.NONE:
@@ -142,14 +145,16 @@ func walk_towards(location_name):
 				if player.position.x <= location.position.x:
 					player.current_direction = Direction.NONE
 
-		player.walking_towards = location_name
-		# If the player has arrived at the location
-		
-		
-		#TODO: delete when "wrapped_walking_towards" is working
-		#var distance_to_location = player.position.distance_to(location.position)
-		#if distance_to_location < minimum_distance:  # minimum_distance is the radius you consider close enough
-			#ai_requests.send_request("Player arrived at location {location_name}")
-			#print("Player Arrived")
-			# increase_dex()			
-		
+		if player.position.distance_to(location.position) < minimum_distance:
+			print("Player Arrived")
+			stop_walking()
+			return
+
+		await get_tree().process_frame 
+
+func is_walking():
+	return player.walking_towards != "none"
+	
+func stop_walking():
+	player.current_direction = Direction.NONE
+	player.walking_towards = "none"

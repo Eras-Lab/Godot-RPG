@@ -38,7 +38,12 @@ var external_currency_manager = null
 @onready var store = $Store
 @onready var transaction_manager = $TransactionManager
 @onready var buy_button = $BuyButton
-# END MARKET	
+# END MARKET
+
+@onready var action_functions = $ActionFunctions
+@onready var action_manager = $ActionManager	
+@onready var player_label = $Label
+
 
 func _ready():
 	PlayerManager.players.push_back(self)
@@ -65,7 +70,10 @@ func _ready():
 		buy_button.visible = false
 	# END MARKET
 
-	battle_status.walk_towards("Building5")		
+#	battle_status.walk_towards("Building5")	
+	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building5"], true)
+	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building1"], true)
+	
 	
 	#Make initial AI Request
 	#ai_requests.send_request("My goal is to walk somewhere")
@@ -77,8 +85,8 @@ func _physics_process(delta):
 	battle_status.enemy_attack(1) #TODO: Change to be called from Enemy
 	current_camera()
 	
-	if walking_towards != "none" and global.current_location == global.Location.TOWN:
-		battle_status.walk_towards(walking_towards)
+#	if walking_towards != "none" and global.current_location == global.Location.TOWN:
+#		battle_status.walk_towards(walking_towards)
 	
 	if global.current_location == global.Location.DUNGEON:
 		battle_status.go_and_attack(enemy)
@@ -88,6 +96,13 @@ func _physics_process(delta):
 		player_status.health = 0
 		print("player has died")
 		self.queue_free()
+	
+	# ActionManager testing
+	player_label.text = "Freya Swiftwind\n"
+	if action_manager.current_action:
+		player_label.text += action_manager.current_action["func_name"] + "(" +  str(action_manager.current_action["args"]) + ")\n"
+	for action in action_manager.action_queue:
+		player_label.text += action["func_name"] + "(" +  str(action["args"]) + ")\n"
 
 
 func _on_player_hitbox_body_entered(body):
