@@ -2,7 +2,7 @@ extends Node
 @onready var notifications = $"."
 
 var displayedNotifications = []
-var notificationPosition = Vector2(-20,-80)
+var notificationPosition = Vector2(-10,-16)
 
 var notificationScene = preload("res://scenes/notifications.tscn")
 

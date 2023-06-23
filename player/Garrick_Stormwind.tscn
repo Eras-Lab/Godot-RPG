@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=85 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="2_poubp"]
@@ -17,8 +17,8 @@
 [ext_resource type="Script" path="res://scripts/market_scripts/currency_manager.gd" id="16_c0t1n"]
 [ext_resource type="Script" path="res://scripts/market_scripts/store.gd" id="17_tjxsh"]
 [ext_resource type="Script" path="res://scripts/market_scripts/transaction_manager.gd" id="18_vr8t2"]
-[ext_resource type="Script" path="res://player/ActionManager.gd" id="19_hhwra"]
 [ext_resource type="Script" path="res://scripts/notification_scripts/notifications.gd" id="19_g610a"]
+[ext_resource type="Script" path="res://player/ActionManager.gd" id="19_hhwra"]
 [ext_resource type="Script" path="res://player/AreaDetectionHandler.gd" id="19_up4r5"]
 [ext_resource type="Script" path="res://player/ActionFunctions.gd" id="20_b0aum"]
 

@@ -54,7 +54,7 @@ func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	
 	#craft Iron Sword
-#	crafting.craft(sword_recipe)
+	crafting.craft(sword_recipe)
 	
 	# MARKET
 	# store and tx manager have to be initialized

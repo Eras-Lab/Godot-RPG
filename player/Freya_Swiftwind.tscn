@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cgl8cs3rmtyvt"]
+[gd_scene load_steps=72 format=3 uid="uid://cgl8cs3rmtyvt"]
 
 [ext_resource type="Script" path="res://player/Freya_Swiftwind.gd" id="1_xox5e"]
 [ext_resource type="Texture2D" uid="uid://bp4qv1akio2jf" path="res://images/treating/character/character_medieval_pixel/alternative colors/purple2.png" id="3_tpl03"]
@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://scripts/market_scripts/store.gd" id="9_gmrwg"]
 [ext_resource type="Script" path="res://scripts/market_scripts/transaction_manager.gd" id="10_5iojt"]
 [ext_resource type="Script" path="res://player/ActionManager.gd" id="11_7aycy"]
-[ext_resource type="Script" path="res://player/ActionFunctions.gd" id="12_2wdnq"]
 [ext_resource type="Script" path="res://scripts/notification_scripts/notifications.gd" id="11_o4p6o"]
+[ext_resource type="Script" path="res://player/ActionFunctions.gd" id="12_2wdnq"]
 [ext_resource type="Script" path="res://player/crafting.gd" id="12_gfpi8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
@@ -452,30 +452,32 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5j4u"]
 
 [node name="player" type="CharacterBody2D"]
-position = Vector2(-3, 35)
+position = Vector2(24, 47)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_xox5e")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -25.0
-offset_top = -27.0
-offset_right = 121.0
-offset_bottom = -1.0
+offset_left = -24.0
+offset_top = 28.0
+offset_right = 122.0
+offset_bottom = 54.0
 scale = Vector2(0.362991, 0.362991)
 text = "Freya Swiftwind"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
+position = Vector2(1, 57)
 shape = SubResource("CircleShape2D_sdljw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -7)
+position = Vector2(1, 48)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"side_attack"
 frame_progress = 0.427267
 
 [node name="player_hitbox" type="Area2D" parent="."]
+visible = false
+position = Vector2(2, 55)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 scale = Vector2(1.29908, 1.36403)
@@ -516,9 +518,9 @@ drag_vertical_enabled = true
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.188235, 0.67451, 0, 1)
 offset_left = -16.0
-offset_top = -18.0
+offset_top = 38.0
 offset_right = 149.0
-offset_bottom = 9.0
+offset_bottom = 65.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
@@ -553,10 +555,10 @@ script = ExtResource("12_2wdnq")
 [node name="Notifications" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 3.0
-offset_top = -35.0
-offset_right = 43.0
-offset_bottom = 5.0
+offset_left = -24.0
+offset_top = -14.0
+offset_right = 16.0
+offset_bottom = 26.0
 script = ExtResource("11_o4p6o")
 
 [node name="Crafting" type="Node" parent="."]
