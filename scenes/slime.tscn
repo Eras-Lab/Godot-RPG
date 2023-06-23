@@ -1,7 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1bf1ga70wtne"]
+[gd_scene load_steps=26 format=3 uid="uid://c1bf1ga70wtne"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_d43fc"]
 [ext_resource type="Texture2D" uid="uid://15qlvtbi0qak" path="res://art/characters/slime.png" id="1_fldxp"]
+[ext_resource type="Resource" uid="uid://bykpyjcukkwi3" path="res://item/items/iron_helmet.tres" id="2_4qq2m"]
+[ext_resource type="Resource" uid="uid://4tpdn6levbd0" path="res://item/items/iron_sword.tres" id="3_5uigc"]
+[ext_resource type="Resource" uid="uid://cltawdavs5aec" path="res://item/items/steel_helmet.tres" id="4_0kljs"]
+[ext_resource type="Resource" uid="uid://cn0428rir40or" path="res://item/items/wooden_shield.tres" id="5_5tjil"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm4u3"]
 atlas = ExtResource("1_fldxp")
@@ -136,6 +140,7 @@ radius = 5.83095
 
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_d43fc")
+loot = Array[Resource("res://item/item_data.gd")]([ExtResource("2_4qq2m"), ExtResource("3_5uigc"), ExtResource("4_0kljs"), ExtResource("5_5tjil")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pt1sw")
