@@ -5,6 +5,9 @@ signal toggle_inventory
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
 @onready var health_bar = $HealthBar
+@onready var crafting = $Crafting
+
+var sword_recipe = preload("res://item/recipes/sword_recipe.tres")
 
 var enemy
 var enemy_attack_cooldown = true
@@ -49,7 +52,10 @@ func _ready():
 	PlayerManager.players.push_back(self)
 	health_bar.max_value = player_status.max_health
 	$AnimatedSprite2D.play("front_idle")
-
+	
+	#craft Iron Sword
+#	crafting.craft(sword_recipe)
+	
 	# MARKET
 	# store and tx manager have to be initialized
 	store.initialize(inventory_data)

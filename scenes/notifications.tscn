@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qeg02qdtl16m"]
+[gd_scene load_steps=7 format=3 uid="uid://qeg02qdtl16m"]
 
 [ext_resource type="Script" path="res://scenes/notifications.gd" id="1_5dgeq"]
-[ext_resource type="Texture2D" uid="uid://c76a41lwpruvs" path="res://item/item_atlas.tres" id="2_41mg8"]
+[ext_resource type="Texture2D" uid="uid://clo8kybcrsm3l" path="res://item/#1 - Transparent Icons.png" id="2_2pfwd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcgp6"]
+atlas = ExtResource("2_2pfwd")
+region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="Animation" id="Animation_28gad"]
 length = 0.001
@@ -68,7 +72,7 @@ offset_top = 52.0
 offset_right = 32.0
 offset_bottom = 84.0
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_41mg8")
+texture = SubResource("AtlasTexture_lcgp6")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scripts/market_scripts/transaction_manager.gd" id="10_5iojt"]
 [ext_resource type="Script" path="res://player/ActionManager.gd" id="11_7aycy"]
 [ext_resource type="Script" path="res://player/ActionFunctions.gd" id="12_2wdnq"]
+[ext_resource type="Script" path="res://scripts/notification_scripts/notifications.gd" id="11_o4p6o"]
+[ext_resource type="Script" path="res://player/crafting.gd" id="12_gfpi8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdljw"]
 radius = 7.28011
@@ -547,6 +549,18 @@ script = ExtResource("11_7aycy")
 
 [node name="ActionFunctions" type="Node" parent="."]
 script = ExtResource("12_2wdnq")
+
+[node name="Notifications" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = -35.0
+offset_right = 43.0
+offset_bottom = 5.0
+script = ExtResource("11_o4p6o")
+
+[node name="Crafting" type="Node" parent="."]
+script = ExtResource("12_gfpi8")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

@@ -5,6 +5,8 @@ class_name battle_status
 # Declare a new signal
 signal attack_enemy
 
+@onready var notifications = $"../Notifications"
+
 @onready var player_status = $"../player_status"
 @onready var attack_cooldown = $"../attack_cooldown"
 @onready var animated_sprite_2d = $"../AnimatedSprite2D"
@@ -51,6 +53,8 @@ func enemy_attack(enemy_damage : int):
 	if enemy_in_attackrange && enemy_attack_cooldown == true:
 		player_status.health = player_status.health - enemy_damage
 		enemy_attack_cooldown = false
+		print("notificationz: ", notifications)
+		notifications.handle_combat_notification(enemy_damage)
 		print("Player Health: ", player_status.health)
 		attack_cooldown.start()
 	#print(health)

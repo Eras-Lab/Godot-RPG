@@ -7,6 +7,9 @@ signal toggle_inventory
 @export var head: InventoryDataEquip
 @onready var health_bar = $HealthBar
 @onready var notifications = $Notifications
+@onready var crafting = $Crafting
+
+var sword_recipe = preload("res://item/recipes/sword_recipe.tres")
 
 var enemy
 var enemy_attack_cooldown = true
@@ -72,8 +75,10 @@ func _ready():
 	currency_manager.increase_balance(1000)
 	# END MARKET
 	
+	#craft Iron Sword
+	crafting.craft(sword_recipe)
 	#drink health potion
-	inventory_data.use_slot_data(5)
+#	inventory_data.use_slot_data(5)
 	
 	#equip wooden shield
 	inventory_data.equip_slot_data(1)
@@ -89,7 +94,7 @@ func _ready():
 	inventory_data.equip_slot_data(4)
 	
 	#unequip iron sword
-	equip_inventory_data.unequip_item(1)
+#	equip_inventory_data.unequip_item(1)
 	
 	# Testing some actions that are queued and interrupted
 	action_manager.add_action(action_functions, "wrapped_train", ["Building1"], true)
