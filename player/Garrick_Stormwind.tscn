@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cpqxwf5njqvlc"]
+[gd_scene load_steps=85 format=3 uid="uid://cpqxwf5njqvlc"]
 
 [ext_resource type="Script" path="res://player/Garrick_Stormwind.gd" id="1_tspnc"]
 [ext_resource type="Resource" uid="uid://btk5ixn2yabpu" path="res://garrick_stormwind_inv.tres" id="2_poubp"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scripts/market_scripts/currency_manager.gd" id="16_c0t1n"]
 [ext_resource type="Script" path="res://scripts/market_scripts/store.gd" id="17_tjxsh"]
 [ext_resource type="Script" path="res://scripts/market_scripts/transaction_manager.gd" id="18_vr8t2"]
+[ext_resource type="Script" path="res://scripts/notification_scripts/notifications.gd" id="19_g610a"]
 [ext_resource type="Script" path="res://player/ActionManager.gd" id="19_hhwra"]
 [ext_resource type="Script" path="res://player/AreaDetectionHandler.gd" id="19_up4r5"]
 [ext_resource type="Script" path="res://player/ActionFunctions.gd" id="20_b0aum"]
@@ -490,20 +491,20 @@ inventory_data = ExtResource("2_poubp")
 equip_inventory_data = SubResource("Resource_k8ug0")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -27.0
-offset_right = 124.0
-offset_bottom = -0.999985
+offset_left = -24.0
+offset_top = 28.0
+offset_right = 122.0
+offset_bottom = 54.0
 scale = Vector2(0.362991, 0.362991)
 text = "Garrick Stormwind"
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(1, 57)
 shape = SubResource("CircleShape2D_sdljw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -4)
+position = Vector2(1, 48)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"back_attack"
 offset = Vector2(2.08165e-12, 2.08165e-12)
@@ -559,9 +560,9 @@ drag_vertical_enabled = true
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.188235, 0.67451, 0, 1)
 offset_left = -14.0
-offset_top = -17.0
+offset_top = 37.0
 offset_right = 151.0
-offset_bottom = 10.0
+offset_bottom = 64.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
@@ -667,6 +668,15 @@ script = ExtResource("19_hhwra")
 
 [node name="ActionFunctions" type="Node" parent="."]
 script = ExtResource("20_b0aum")
+
+[node name="Notifications" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -47.0
+offset_right = 16.0
+offset_bottom = -7.0
+script = ExtResource("19_g610a")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="AreaDetectionHandler" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/detection_area" to="AreaDetectionHandler" method="_on_detection_area_body_exited"]

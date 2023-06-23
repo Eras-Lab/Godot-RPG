@@ -1,10 +1,6 @@
 extends Node
 @onready var player = $".."
-
-var sword_recipe = preload("res://item/recipes/sword_recipe.tres")
-
-func _ready():
-	craft(sword_recipe)
+@onready var notifications = $"../Notifications"
 
 func craft(recipe: CraftRecipe):
 	#TODO:
@@ -26,3 +22,5 @@ func craft(recipe: CraftRecipe):
 			player.inventory_data.slot_datas[index].item_data = null
 		var empty_slot = player.inventory_data.find_empty_slot()
 		player.inventory_data.slot_datas[empty_slot].item_data = recipe.result
+		print("player crafting: ", player)
+		notifications.handle_item_notification(recipe.result, "craft")
