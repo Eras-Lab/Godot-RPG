@@ -1,7 +1,6 @@
 extends Node
 
 #inventory manager of everything
-const notificationTypes = preload("res://enums/notification_types.gd")
 
 var players = []
 var buildings = []
