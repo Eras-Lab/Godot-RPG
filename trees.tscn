@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwwydaimkj4jx"]
+
+[ext_resource type="Texture2D" uid="uid://cvtiwfm0fffrx" path="res://images/Tiny Swords/Resources/Trees/Tree.png" id="1_k14oy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k4dw"]
+atlas = ExtResource("1_k14oy")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81nmc"]
+atlas = ExtResource("1_k14oy")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5c05"]
+atlas = ExtResource("1_k14oy")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrus3"]
+atlas = ExtResource("1_k14oy")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jqax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k4dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81nmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5c05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrus3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(2281.89, 990.059)
+sprite_frames = SubResource("SpriteFrames_4jqax")
+frame_progress = 0.806686
