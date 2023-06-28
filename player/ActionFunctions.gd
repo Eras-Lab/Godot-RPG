@@ -14,10 +14,9 @@ var training = false
 #	pass # Replace with function body.
 
 func wrapped_walk_towards(location_name):
-	battle_status.walk_towards(location_name)
-	while battle_status.is_walking():
-		await get_tree().process_frame 
-	var action_result = "Player arrived at location " + str(location_name)
+	var action_result = ""
+	if await battle_status.walk_towards(location_name):
+		action_result = "Player arrived at location " + str(location_name)
 	action_manager.action_done(action_result) # necessary call when action completes
 
 # Presence of a stop_[func name for action] method allows us to do things when the action is interrupted
@@ -52,6 +51,7 @@ func wrapped_buy_item(item_name, quantity, external_store, external_currency_man
 	
 func wrapped_trade():
 	# do something
+	await get_tree().create_timer(3).timeout
 	var action_result = ""
 	action_manager.action_done(action_result)
 
@@ -72,12 +72,16 @@ func wrapped_talk_to(listener_id, message):
 	
 	if listener == null:
 		print("Invalid listener_id provided to talk_to action")
-		action_manager.action_done(null)
+		action_manager.action_done("")
 		return
 	
 	# Make sure the players are near each other
-	if player.position.distance_to(listener.position) < MAX_DISTANCE_TO_TALK:
-		print(player, " will now try to talk to ", listener)
+	if player.position.distance_to(listener.position) >= MAX_DISTANCE_TO_TALK:
+		print(player.name, " is not near enough to ", listener, " to talk.")
+		action_manager.action_done("")
+		return
+		
+		print(player.name, " will now try to talk to ", listener)
 		
 		# Freeze the listener
 		listener.action_manager.interrupt_and_pause()

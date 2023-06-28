@@ -25,3 +25,6 @@ func _ready():
 	# add item prices to store 
 	store.set_item_price("Iron Sword", 100)
 	store.set_item_price("Wooden Shield", 200)
+
+func is_building():
+	true

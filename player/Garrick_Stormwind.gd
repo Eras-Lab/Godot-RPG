@@ -96,12 +96,12 @@ func _ready():
 	#unequip iron sword
 #	equip_inventory_data.unequip_item(1)
 	
-	# Testing some actions that are queued and interrupted
-	action_manager.add_action(action_functions, "wrapped_train", ["Building1"], true)
-	action_manager.add_action(action_functions, "wrapped_walk_towards", ["FreyaSwiftwind"], true)
-#	await get_tree().create_timer(21).timeout
-	action_manager.add_action(action_functions, "wrapped_talk_to", ["FreyaSwiftwind", "Garrick Stormwind: Hey there Freya, what have you got for me today?\nFreyaSwiftwind: Nothing but an old beat up Iron Sword.\n"], true)
-#	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building3"], true)
+#	# Testing some actions that are queued and interrupted
+#	action_manager.add_action(action_functions, "wrapped_train", ["Building1"], true)
+#	action_manager.add_action(action_functions, "wrapped_walk_towards", ["FreyaSwiftwind"], true)
+##	await get_tree().create_timer(21).timeout
+#	action_manager.add_action(action_functions, "wrapped_talk_to", ["FreyaSwiftwind", "Garrick Stormwind: Hey there Freya, what have you got for me today?\nFreyaSwiftwind: Nothing but an old beat up Iron Sword.\n"], true)
+##	action_manager.add_action(action_functions, "wrapped_walk_towards", ["Building3"], true)
 
 func _physics_process(delta):
 	update_healthbar()
@@ -123,7 +123,8 @@ func _physics_process(delta):
 		
 	# ActionManager testing
 	player_label.text = "Garrick Stormwind\n"
-	player_label.text += "Action Finished?: " + str(action_manager.action_finished) + "\n"
+#	player_label.text += "Action Finished?: " + str(action_manager.action_finished) + "\n"
+#	player_label.text += "Queue size: " + str(action_manager.action_queue.size()) + "\n"
 	if action_manager.current_action:
 		player_label.text += action_manager.current_action["func_name"] + "(" +  str(action_manager.current_action["args"]) + ")\n"
 	for action in action_manager.action_queue:
