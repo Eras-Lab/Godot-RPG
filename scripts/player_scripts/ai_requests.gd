@@ -10,68 +10,66 @@ class_name ai_requests
 @onready var area_detection_handler = $"../AreaDetectionHandler"
 @onready var action_manager = $"../ActionManager"
 
-
-# Called when the node enters the scene tree for the first time.
+# Called when the node entefdid nrs the scene tree for the first time.
 func _ready():
 	http_request.request_completed.connect(_on_http_request_request_completed)	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 	
 func send_request(prompt_input: String):
 	var headers = ["Content-Type: application/json"]
-	print("action requested")
+	
 	#TODO: Connect with Nodes that have these datas stored
-#	var players_nearby = area_detection_handler.players_nearby
-#	var buildings_nearby = area_detection_handler.buildings_nearby
-#	var items_nearby = area_detection_handler.items_nearby
-#	var monsters_nearby = area_detection_handler.monsters_nearby
+	var players_nearby = area_detection_handler.players_nearby
+	var buildings_nearby = area_detection_handler.buildings_nearby
+	var items_nearby = area_detection_handler.items_nearby
+	var monsters_nearby = area_detection_handler.monsters_nearby
 	
 	#TODO: Get these observation data
 	var current_location
 	var current_currency_amount
 	var current_inventory
 	
-	
 	var body = {
-		"player_id": self.get_parent().name,
+		"player_id": player.name,
 		"npc_desc": "Test",
 		"location": current_location,
 		"inventory": current_inventory,
 		"message": prompt_input,
 		"funds": current_currency_amount,
-#		"monsters_nearby": monsters_nearby,
-#		"players_nearby": players_nearby,
-#		"buildings_nearby": buildings_nearby,
-#		"items_nearby": items_nearby,
+		"monsters_nearby": monsters_nearby,
+		"players_nearby": players_nearby,
+		"buildings_nearby": buildings_nearby,
+		"items_nearby": items_nearby,
 	}
 	var body_text = JSON.stringify(body)  # use JSON.print() to convert dict to JSON string
 	http_request.request("http://127.0.0.1:5000/chat", headers, HTTPClient.METHOD_POST, body_text)
+	print("=== API REQUEST | ", player.name, " | ", body_text)
 
 func _on_http_request_request_completed(result, response_code, headers, body):
 	var action_name = null
 	var res = str_to_var(body.get_string_from_utf8())
 
-	print("=== API Response: ",res)
+	print("=== API RESPONSE: | ", player.name , " | ", res)
 	
-	if !res.has("name") or !res.has("arguments"):
-		print("Did not return function")
+	if res == null:
+		print("API RESPONSE | Did not return response")
+	
+	if res and !res.has("name") or !res.has("arguments"):
+		print("API RESPONSE | Did not return function")
 	
 	# parse the arguments field as a separate JSON string
 	var arguments = JSON.parse_string(res["arguments"]) if res.has("arguments") else []
 	action_name = res["name"] if res.has("name") else null
-	print("action_name : ", action_name)
+	print("API RESPONSE | Returned action: ", action_name)
 	
 	if action_name == "walk_to":
 		var location_name = arguments["location_name"]
-		print("Location name:", location_name)
+#		print("Location name:", location_name)
 		# Call "walk_towards" function with given location_name argument
 		action_manager.add_action(action_functions, "wrapped_walk_towards", [location_name], true)
 		
 	elif action_name == "pick_up_item":
-		var item_name = arguments["item_name"]
-		print("Item to pick up", item_name)
+#		var item_name = arguments["item_name"]
+#		print("Item to pick up", item_name)
 		action_manager.add_action(action_functions, "wrapped_pick_up_item")
 		
 	elif action_name == "trade":

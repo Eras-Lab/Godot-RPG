@@ -123,12 +123,20 @@ func attack():
 		animated_sprite_2d.play("back_attack")
 		deal_attack_timer.start()		
 		
-func walk_towards(location_name):
-	var location = locations[location_name] if locations[location_name] else players[location_name]
+func walk_towards(location_name) -> bool:
+	
+	var location = null
+	
+	if locations.has(location_name):
+		location = locations[location_name] 
+	elif players.has(location_name):
+		location = players[location_name]
+			
 	if location == null:
-		return
+		return false
+		
 	player.walking_towards = location_name
-	print("location: ", location)
+
 	while location != null:
 		var direction = location.position - player.position
 
@@ -160,9 +168,11 @@ func walk_towards(location_name):
 
 		if player.position.distance_to(location.position) < minimum_distance:
 			stop_walking()
-			return
+			return true
 
-		await get_tree().process_frame 
+		await get_tree().process_frame
+	
+	return true
 
 func is_walking():
 	return player.walking_towards != "none"
