@@ -10,11 +10,14 @@ var max_health = 100
 var health = 100
 
 var can_take_damage = true
+@export var loot: Array[ItemData]
+var itemScene = preload("res://item/pick_up.tscn")
+
 @onready var health_bar = $HealthBar
 
 func _ready():
 	health_bar.max_value = max_health
-
+	
 func _physics_process(delta):
 	deal_with_damage()
 	update_healthbar()
@@ -64,7 +67,15 @@ func deal_with_damage():
 			can_take_damage = false
 			print("slime health = ", health)
 			if health <= 0:
+				spawn_loot()
 				self.queue_free()
+
+func spawn_loot():
+	var itemInstance = itemScene.instantiate()
+	var randomIndex = randi() % loot.size()
+	itemInstance.set_item_data(loot[randomIndex])
+	itemInstance.position = position
+	get_parent().add_child(itemInstance)
 
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
