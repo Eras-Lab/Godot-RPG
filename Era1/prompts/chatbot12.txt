@@ -1,0 +1,1 @@
+Using the functions provided, choose the action this player should take next. Your reponse should always include a function_call object with a name and arguments.
