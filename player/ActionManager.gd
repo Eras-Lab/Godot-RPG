@@ -21,7 +21,7 @@ func log_result(result: String):
 func format_results() -> String:
 	var formatted_results = ""
 	if results.is_empty():
-		formatted_results = "You can walk to a building. If a building is nearby, you can train there. If a player is nearby, you can talk to that player." 
+		formatted_results = "No actions have been completed yet." #"You can walk to a building. If a building is nearby, you can train there. If a player is nearby, you can talk to that player." 
 	else:
 		var count = 0  
 		for result in results:

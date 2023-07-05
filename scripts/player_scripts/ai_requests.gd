@@ -45,21 +45,25 @@ func send_request(prompt_input: String):
 	print("=== API REQUEST | ", player.name, " | ", body_text)
 
 func _on_http_request_request_completed(result, response_code, headers, body):
-	var action_name = null
+	var action_name : String = ""
+	var arguments = null
 	var res = str_to_var(body.get_string_from_utf8())
 
 	print("=== API RESPONSE: | ", player.name , " | ", res)
 	
+	var transformed_res = null
 	if res == null:
 		print("API RESPONSE | Did not return response")
+	else:
+		transformed_res = transform_response(res)
 	
-	if res and !res.has("name") or !res.has("arguments"):
+	if transformed_res and transformed_res.has("name") and transformed_res.has("arguments"):
+		# parse the arguments field as a separate JSON string
+		arguments = JSON.parse_string(transformed_res["arguments"]) if transformed_res.has("arguments") else []
+		action_name = transformed_res["name"] if transformed_res.has("name") else null
+		print("API RESPONSE | Returned action: ", action_name)
+	else:
 		print("API RESPONSE | Did not return function")
-	
-	# parse the arguments field as a separate JSON string
-	var arguments = JSON.parse_string(res["arguments"]) if res.has("arguments") else []
-	action_name = res["name"] if res.has("name") else null
-	print("API RESPONSE | Returned action: ", action_name)
 	
 	if action_name == "walk_to":
 		var location_name = arguments["location_name"]
@@ -105,4 +109,45 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 		action_manager.add_action(action_functions, "wrapped_do_nothing", [])
 
 	#TODO: Add remaining actions
+	
+
+func transform_response(response: Dictionary) -> Dictionary:
+	# Check if response is in the second format
+	if response.has("role") and response.has("content"):
+		var json_str = response["content"]
+#		print("content_str: ", content_str)
+
+		# Check if json_str looks like it could contain a JSON object
+		if json_str.begins_with("{") and json_str.find("}") != -1:
+			# Cut off everything after the final }
+			json_str = json_str.substr(0, json_str.rfind("}") + 1)
+#			print("trimmed_json_str: ", json_str)
+
+			var json = JSON.new()
+			var error = json.parse(json_str)
+
+			# Check if the parsing was successful
+			if error == OK:
+				var content_dict = json.get_data()
+#				print("content_dict: ", content_dict)
+
+				# Extract the action name and arguments from the dictionary
+				var action_name = content_dict.keys()[0]
+				var arguments = content_dict[action_name]
+
+				# Format arguments as a JSON string
+				var arguments_str = JSON.stringify(arguments)
+
+				# Return transformed response
+				return {"name": action_name, "arguments": arguments_str}
+				
+			else:
+				print("JSON Parse Error: ", json.get_error_message(), " in ", json_str, " at line ", json.get_error_line())
+
+	# If response is not in the second format, or parsing failed, return it as is
+	return response
+
+
+
+
 
