@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=3 uid="uid://cm62osqxndp04"]
+[gd_scene load_steps=208 format=3 uid="uid://cm62osqxndp04"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
@@ -18682,6 +18682,9 @@ size = Vector2(181, 103)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irw3c"]
 size = Vector2(76.5, 64.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_humnh"]
+size = Vector2(98, 75.5)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxxo5"]
 atlas = ExtResource("32_rjyii")
 region = Rect2(0, 0, 256, 192)
@@ -19565,17 +19568,30 @@ shape = SubResource("RectangleShape2D_eetun")
 
 [node name="House_Contruction" type="Node" parent="TownTilemap/Decoration"]
 
-[node name="Building26" type="StaticBody2D" parent="TownTilemap/Decoration/House_Contruction"]
+[node name="House_Construction" type="StaticBody2D" parent="TownTilemap/Decoration/House_Contruction"]
 position = Vector2(5947, 2982)
 
-[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/House_Contruction/Building26"]
+[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/House_Contruction/House_Construction"]
 position = Vector2(-6, -40)
 texture = ExtResource("20_vtib7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/House_Contruction/Building26"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/House_Contruction/House_Construction"]
 visible = false
 position = Vector2(-6.25, -7.25)
 shape = SubResource("RectangleShape2D_irw3c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TownTilemap/Decoration/House_Contruction"]
+position = Vector2(744, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/House_Contruction/StaticBody2D"]
+position = Vector2(-2, -38)
+scale = Vector2(1.28125, 1.15104)
+texture = ExtResource("20_vtib7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/House_Contruction/StaticBody2D"]
+visible = false
+position = Vector2(-2, -4.75)
+shape = SubResource("RectangleShape2D_humnh")
 
 [node name="Wood_Towers" type="Node" parent="TownTilemap/Decoration"]
 
