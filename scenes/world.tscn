@@ -18744,7 +18744,7 @@ player = 0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mpdbe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ukh7x"]
-radius = 15.0333
+radius = 10.4403
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ey01"]
 atlas = ExtResource("50_wm2wb")
@@ -19677,7 +19677,6 @@ scale = Vector2(2.46484, 1.98828)
 texture = ExtResource("51_g4iq1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Building16"]
-visible = false
 position = Vector2(33, -3)
 shape = SubResource("RectangleShape2D_ehaaf")
 
@@ -19875,11 +19874,11 @@ position = Vector2(127, 196)
 script = ExtResource("49_upbhm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer"]
-position = Vector2(121, 207)
+position = Vector2(-5, 21)
 shape = SubResource("CircleShape2D_ukh7x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestPlayer"]
-position = Vector2(4, -6)
+position = Vector2(-8, -1)
 scale = Vector2(2.04167, 1.8125)
 sprite_frames = SubResource("SpriteFrames_ilgw7")
 animation = &"idle"
