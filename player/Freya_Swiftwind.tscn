@@ -542,28 +542,29 @@ collision_mask = 7
 script = ExtResource("1_xox5e")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.0
-offset_top = 28.0
-offset_right = 122.0
-offset_bottom = 54.0
+offset_left = 5.0
+offset_top = -19.0
+offset_right = 151.0
+offset_bottom = 7.00001
 scale = Vector2(0.362991, 0.362991)
 text = "Freya Swiftwind"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 57)
+position = Vector2(2, -2)
 shape = SubResource("CircleShape2D_sdljw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 56)
+position = Vector2(2, 0.999992)
 scale = Vector2(0.408854, 0.317708)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"side_idle"
 frame_progress = 0.469693
 
 [node name="player_hitbox" type="Area2D" parent="."]
-position = Vector2(2, 55)
+position = Vector2(1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(0, 1.00001)
 scale = Vector2(1.29908, 1.36403)
 shape = SubResource("CircleShape2D_g5j4u")
 
@@ -601,10 +602,10 @@ drag_vertical_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.188235, 0.67451, 0, 1)
-offset_left = -16.0
-offset_top = 38.0
-offset_right = 149.0
-offset_bottom = 65.0
+offset_left = 10.0
+offset_top = -11.0
+offset_right = 175.0
+offset_bottom = 16.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false

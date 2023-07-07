@@ -511,7 +511,7 @@ radius = 47.0425
 [sub_resource type="CircleShape2D" id="CircleShape2D_g5j4u"]
 
 [node name="player2" type="CharacterBody2D"]
-position = Vector2(24, 47)
+position = Vector2(27, 64)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_tspnc")
@@ -519,20 +519,20 @@ inventory_data = ExtResource("2_poubp")
 equip_inventory_data = SubResource("Resource_k8ug0")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.0
-offset_top = 28.0
-offset_right = 122.0
-offset_bottom = 54.0
+offset_left = -5.0
+offset_top = -33.0
+offset_right = 141.0
+offset_bottom = -6.99999
 scale = Vector2(0.362991, 0.362991)
 text = "Garrick Stormwind"
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 57)
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_sdljw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 59)
+position = Vector2(0, -4)
 scale = Vector2(0.328125, 0.330729)
 sprite_frames = SubResource("SpriteFrames_ul8hp")
 animation = &"side_walk"
@@ -540,11 +540,12 @@ frame_progress = 0.802684
 offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="detection_area" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(-3.04762, -6.04724)
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/detection_area"]
-position = Vector2(1.52381, -11.3386)
+position = Vector2(6.09524, -3.02362)
 shape = SubResource("CircleShape2D_7jpv1")
 
 [node name="player_hitbox" type="Area2D" parent="."]
@@ -574,7 +575,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="cliffside_camera" type="Camera2D" parent="."]
-position = Vector2(1, 27)
+position = Vector2(0, -33)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
@@ -589,10 +590,10 @@ drag_vertical_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.188235, 0.67451, 0, 1)
-offset_left = -14.0
-offset_top = 37.0
-offset_right = 151.0
-offset_bottom = 64.0
+offset_left = -15.0
+offset_top = -23.0
+offset_right = 150.0
+offset_bottom = 4.0
 scale = Vector2(0.2, 0.2)
 fill_mode = 1
 show_percentage = false
@@ -702,10 +703,10 @@ script = ExtResource("20_b0aum")
 [node name="Notifications" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -24.0
-offset_top = -47.0
-offset_right = 16.0
-offset_bottom = -7.0
+offset_left = -22.0
+offset_top = -28.0
+offset_right = 18.0
+offset_bottom = 12.0
 script = ExtResource("19_g610a")
 
 [connection signal="body_entered" from="AnimatedSprite2D/detection_area" to="AreaDetectionHandler" method="_on_detection_area_body_entered"]
