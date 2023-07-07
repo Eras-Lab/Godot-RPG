@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://cm62osqxndp04"]
+[gd_scene load_steps=207 format=3 uid="uid://cm62osqxndp04"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_c4xv6"]
 [ext_resource type="Texture2D" uid="uid://dowq384yk2kyq" path="res://art/tilesets/plains.png" id="1_qal58"]
@@ -18502,12 +18502,80 @@ size = Vector2(20, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw0is"]
 size = Vector2(27, 28)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6fcxj"]
-radius = 20.9034
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvrgf"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rb6q3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cgtb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0er2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3o1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sevg0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxmku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14mwf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odj6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srgen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg2vm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnhyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k5ab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r85hs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dskmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tp0ss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3krb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6oxwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmm7s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hxxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sjt4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i20sn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ymnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eubfc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud72x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7fjx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v27pv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qrr6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fcxj"]
+radius = 14.6939
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s6ll"]
+radius = 9.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4oq3e"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bu1vy"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivikx"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nnncw"]
 radius = 16.0
-height = 68.0
+height = 46.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1f3w"]
 atlas = ExtResource("33_w2h40")
@@ -18573,9 +18641,37 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icprq"]
-radius = 18.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ooxnm"]
+radius = 21.0
 height = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mlcdu"]
+radius = 20.3961
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_grwge"]
+radius = 20.0
+height = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfmeh"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qk1f6"]
+radius = 24.1868
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f04ge"]
+radius = 22.3607
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_662k6"]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rl3fm"]
+radius = 22.0907
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ha2q1"]
+radius = 24.0208
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhe7g"]
+radius = 23.0217
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqfnj"]
 size = Vector2(99, 85)
@@ -18885,7 +18981,7 @@ layer_10/tile_data = PackedInt32Array(8061075, 1048590, 3, 8061076, 1114126, 3, 
 [node name="Tree" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(3631, 1682)
 
-[node name="Tree" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree"]
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.811594
 
@@ -18905,144 +19001,244 @@ position = Vector2(1.5, 65)
 shape = SubResource("RectangleShape2D_yw0is")
 
 [node name="Tree3" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(4601, 1945)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree3"]
-position = Vector2(4561, 1990)
+position = Vector2(3, -5)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.82284
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree3"]
+position = Vector2(6, 61)
+shape = SubResource("RectangleShape2D_hvrgf")
+
 [node name="Tree4" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(738, 827)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree4"]
-position = Vector2(725, 823)
+position = Vector2(-3, -27)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.855276
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree4"]
+position = Vector2(-2, 38)
+shape = SubResource("RectangleShape2D_6cgtb")
+
 [node name="Tree5" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(420, 2986)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree5"]
-position = Vector2(394, 3024)
+position = Vector2(-2, -27)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.963011
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree5"]
+position = Vector2(1, 39)
+shape = SubResource("RectangleShape2D_j0er2")
+
 [node name="Tree6" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(499, 2654)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree6"]
-position = Vector2(463, 2612)
+position = Vector2(2, -21)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.826828
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree6"]
+position = Vector2(4, 44)
+shape = SubResource("RectangleShape2D_s3o1g")
+
 [node name="Tree7" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(354, 2759)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree7"]
-position = Vector2(370, 2725)
+position = Vector2(-3, -26)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.0436079
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree7"]
+position = Vector2(-1, 39)
+shape = SubResource("RectangleShape2D_sevg0")
+
 [node name="Tree8" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(967, 91)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree8"]
-position = Vector2(930, 38)
+position = Vector2(1, -14)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.388963
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree8"]
+position = Vector2(2, 51)
+shape = SubResource("RectangleShape2D_dxmku")
+
 [node name="Tree9" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(680, 1896)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree9"]
-position = Vector2(655, 1837)
+position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.985456
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree9"]
+position = Vector2(1, 39)
+shape = SubResource("RectangleShape2D_14mwf")
+
 [node name="Tree10" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(3710, 4094)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree10"]
-position = Vector2(3663, 4070)
+position = Vector2(-1, -33)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.250665
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree10"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_odj6g")
+
 [node name="Tree11" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(338, 2553)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree11"]
-position = Vector2(342, 2523)
+position = Vector2(-1, -27)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.795415
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree11"]
+position = Vector2(0, 38)
+shape = SubResource("RectangleShape2D_srgen")
+
 [node name="Tree12" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(4123, 2448)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree12"]
-position = Vector2(4139, 2370)
+position = Vector2(4, -29)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.67199
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree12"]
+position = Vector2(5, 36)
+shape = SubResource("RectangleShape2D_bg2vm")
+
 [node name="Tree13" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(518, 1823)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree13"]
-position = Vector2(552, 1865)
+position = Vector2(0, -40)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.985456
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree13"]
+position = Vector2(2, 25)
+shape = SubResource("RectangleShape2D_bnhyk")
+
 [node name="Tree14" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(1909, 3316)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree14"]
-position = Vector2(1894, 3235)
+position = Vector2(-1, -37)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.742703
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree14"]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_3k5ab")
+
 [node name="Tree15" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(3560, 4011)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree15"]
-position = Vector2(3543, 4059)
+position = Vector2(-1, -34)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.137241
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree15"]
+position = Vector2(1, 31)
+shape = SubResource("RectangleShape2D_r85hs")
+
 [node name="Tree16" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(4993, 3384)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree16"]
-position = Vector2(5059, 3388)
+position = Vector2(-1, -34)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.785901
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree16"]
+position = Vector2(0, 31)
+shape = SubResource("RectangleShape2D_dskmc")
+
 [node name="Tree17" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(3464, 4242)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree17"]
-position = Vector2(3482, 4198)
+position = Vector2(1, -37)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.549765
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree17"]
+position = Vector2(2, 28)
+shape = SubResource("RectangleShape2D_tp0ss")
+
 [node name="Tree19" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(1740, 3334)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree19"]
-position = Vector2(1756, 3311)
+position = Vector2(4, -16)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.496818
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree19"]
+position = Vector2(4, 49)
+shape = SubResource("RectangleShape2D_y3krb")
+
 [node name="Tree20" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(4894, 3562)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree20"]
-position = Vector2(4874, 3542)
+position = Vector2(-2, -30)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.235123
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree20"]
+position = Vector2(-1, 35)
+shape = SubResource("RectangleShape2D_6oxwt")
+
 [node name="Tree21" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(3603, 4238)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree21"]
-position = Vector2(3596, 4200)
+position = Vector2(-3, -34)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.256864
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree21"]
+position = Vector2(-2, 30)
+shape = SubResource("RectangleShape2D_wmm7s")
+
 [node name="Tree22" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(4025, 2302)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree22"]
-position = Vector2(4021, 2232)
+position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.19607
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree22"]
+position = Vector2(1, 25)
+shape = SubResource("RectangleShape2D_3hxxi")
+
 [node name="Tree23" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
+position = Vector2(5016, 3568)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TownTilemap/Decoration/Trees/Tree23"]
-position = Vector2(5018, 3542)
+position = Vector2(2, -41)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.870005
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree23"]
+position = Vector2(4, 23)
+shape = SubResource("RectangleShape2D_4sjt4")
 
 [node name="Tree24" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(2739, 2917)
@@ -19052,6 +19248,10 @@ position = Vector2(-8, -36)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.511511
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree24"]
+position = Vector2(-7, 28)
+shape = SubResource("RectangleShape2D_i20sn")
+
 [node name="Tree25" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(2086, 3191)
 
@@ -19059,6 +19259,10 @@ position = Vector2(2086, 3191)
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.826261
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree25"]
+position = Vector2(1, 39)
+shape = SubResource("RectangleShape2D_4ymnm")
 
 [node name="Tree26" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(3441, 4078)
@@ -19068,6 +19272,10 @@ position = Vector2(-10, -20)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.312509
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree26"]
+position = Vector2(-9, 44)
+shape = SubResource("RectangleShape2D_eubfc")
+
 [node name="Tree27" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(3712, 284)
 
@@ -19075,6 +19283,10 @@ position = Vector2(3712, 284)
 position = Vector2(-1, -20)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.647029
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree27"]
+position = Vector2(-1, 44)
+shape = SubResource("RectangleShape2D_ud72x")
 
 [node name="Tree28" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(3959, 370)
@@ -19084,6 +19296,10 @@ position = Vector2(2, -36)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.976185
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree28"]
+position = Vector2(4, 29)
+shape = SubResource("RectangleShape2D_b7fjx")
+
 [node name="Tree29" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(4906, 762)
 
@@ -19092,6 +19308,10 @@ position = Vector2(-4, -32)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.394096
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree29"]
+position = Vector2(-2, 34)
+shape = SubResource("RectangleShape2D_v27pv")
+
 [node name="Tree30" type="StaticBody2D" parent="TownTilemap/Decoration/Trees"]
 position = Vector2(1853, 3086)
 
@@ -19099,6 +19319,10 @@ position = Vector2(1853, 3086)
 position = Vector2(-2, -43)
 sprite_frames = SubResource("SpriteFrames_lrc6e")
 frame_progress = 0.348381
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Trees/Tree30"]
+position = Vector2(-1, 22)
+shape = SubResource("RectangleShape2D_4qrr6")
 
 [node name="Straw_man" type="Node" parent="TownTilemap/Decoration"]
 
@@ -19111,8 +19335,7 @@ scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man"]
-visible = false
-position = Vector2(830, 1071)
+position = Vector2(7, 29)
 scale = Vector2(1.02083, 1.07812)
 shape = SubResource("CircleShape2D_6fcxj")
 
@@ -19125,10 +19348,8 @@ scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man2"]
-visible = false
-position = Vector2(3396, 2485)
-scale = Vector2(1.02083, 1.07812)
-shape = SubResource("CircleShape2D_6fcxj")
+position = Vector2(1, 25)
+shape = SubResource("CapsuleShape2D_0s6ll")
 
 [node name="Straw_man3" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
 position = Vector2(2500, 2577)
@@ -19139,10 +19360,8 @@ scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man3"]
-visible = false
-position = Vector2(2525, 2596)
-scale = Vector2(1.02083, 1.07812)
-shape = SubResource("CircleShape2D_6fcxj")
+position = Vector2(0, 27)
+shape = SubResource("CapsuleShape2D_4oq3e")
 
 [node name="Straw_man4" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
 position = Vector2(2087, 3421)
@@ -19153,10 +19372,8 @@ scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man4"]
-visible = false
-position = Vector2(2115, 3484)
-scale = Vector2(1.02083, 1.07812)
-shape = SubResource("CircleShape2D_6fcxj")
+position = Vector2(1, 31)
+shape = SubResource("CapsuleShape2D_bu1vy")
 
 [node name="Straw_man5" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
 position = Vector2(2058, 413)
@@ -19167,10 +19384,8 @@ scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man5"]
-visible = false
-position = Vector2(2056, 397)
-scale = Vector2(1.02083, 1.07812)
-shape = SubResource("CircleShape2D_6fcxj")
+position = Vector2(-1, 38)
+shape = SubResource("CapsuleShape2D_ivikx")
 
 [node name="Arrow" type="Node" parent="TownTilemap/Decoration"]
 
@@ -19183,9 +19398,8 @@ scale = Vector2(1.40235, 1.21679)
 texture = ExtResource("34_07glu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Arrow/Arrow"]
-visible = false
-position = Vector2(4445, 3721)
-shape = SubResource("CapsuleShape2D_rb6q3")
+position = Vector2(-4, 11)
+shape = SubResource("CapsuleShape2D_nnncw")
 
 [node name="Sheeps" type="Node" parent="TownTilemap/Decoration"]
 
@@ -19199,9 +19413,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.593791
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(-4, 1)
+shape = SubResource("CapsuleShape2D_ooxnm")
 
 [node name="Sheep2" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(2240, 3548)
@@ -19213,9 +19426,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.495231
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep2"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(3, 1)
+shape = SubResource("CircleShape2D_mlcdu")
 
 [node name="Sheep3" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(2357, 3491)
@@ -19227,9 +19439,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.160524
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep3"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(-2, -7)
+shape = SubResource("CapsuleShape2D_grwge")
 
 [node name="Sheep4" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(5776, 2256)
@@ -19241,9 +19452,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.688151
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep4"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_mfmeh")
 
 [node name="Sheep5" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(610, 3369)
@@ -19255,9 +19465,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.179311
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep5"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_qk1f6")
 
 [node name="Sheep6" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(3081, 3992)
@@ -19269,9 +19478,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.366081
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep6"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_f04ge")
 
 [node name="Sheep7" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(3266, 4031)
@@ -19283,9 +19491,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.205297
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep7"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(1, -4)
+shape = SubResource("CircleShape2D_662k6")
 
 [node name="Sheep8" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(5568, 2355)
@@ -19297,9 +19504,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.510086
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep8"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(1, -2)
+shape = SubResource("CircleShape2D_rl3fm")
 
 [node name="Sheep9" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(254, 839)
@@ -19311,9 +19517,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.292274
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep9"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(2, -3)
+shape = SubResource("CircleShape2D_ha2q1")
 
 [node name="Sheep10" type="AnimatableBody2D" parent="TownTilemap/Decoration/Sheeps"]
 position = Vector2(151, 1095)
@@ -19325,9 +19530,8 @@ sprite_frames = SubResource("SpriteFrames_mrjmx")
 frame_progress = 0.0953058
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Sheeps/Sheep10"]
-visible = false
-position = Vector2(2251, 3384)
-shape = SubResource("CapsuleShape2D_icprq")
+position = Vector2(-9, -9)
+shape = SubResource("CircleShape2D_jhe7g")
 
 [node name="In_Construction_Wood_Tower" type="Node" parent="TownTilemap/Decoration"]
 
