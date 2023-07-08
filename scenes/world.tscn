@@ -18915,8 +18915,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt7we"]
-size = Vector2(81.6355, 53.1352)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4sj8"]
+size = Vector2(14.2549, 16.8033)
 
 [sub_resource type="GDScript" id="GDScript_6cv4y"]
 
@@ -19497,66 +19497,66 @@ frame_progress = 0.348381
 position = Vector2(-1, 22)
 shape = SubResource("RectangleShape2D_4qrr6")
 
-[node name="Straw_man" type="Node" parent="TownTilemap/Decoration"]
+[node name="Scarecrow" type="Node" parent="TownTilemap/Decoration"]
 
-[node name="Straw_man" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
+[node name="Scarecrow" type="StaticBody2D" parent="TownTilemap/Decoration/Scarecrow"]
 position = Vector2(827, 1087)
 
-[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Straw_man/Straw_man"]
+[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow"]
 position = Vector2(3, -28)
 scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow"]
 position = Vector2(7, 29)
 scale = Vector2(1.02083, 1.07812)
 shape = SubResource("CircleShape2D_6fcxj")
 
-[node name="Straw_man2" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
+[node name="Scarecrow2" type="StaticBody2D" parent="TownTilemap/Decoration/Scarecrow"]
 position = Vector2(3434, 2502)
 
-[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Straw_man/Straw_man2"]
+[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow2"]
 position = Vector2(-2, -32)
 scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow2"]
 position = Vector2(1, 25)
 shape = SubResource("CapsuleShape2D_0s6ll")
 
-[node name="Straw_man3" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
+[node name="Scarecrow3" type="StaticBody2D" parent="TownTilemap/Decoration/Scarecrow"]
 position = Vector2(2500, 2577)
 
-[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Straw_man/Straw_man3"]
+[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow3"]
 position = Vector2(-2, -29)
 scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow3"]
 position = Vector2(0, 27)
 shape = SubResource("CapsuleShape2D_4oq3e")
 
-[node name="Straw_man4" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
+[node name="Scarecrow4" type="StaticBody2D" parent="TownTilemap/Decoration/Scarecrow"]
 position = Vector2(2087, 3421)
 
-[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Straw_man/Straw_man4"]
+[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow4"]
 position = Vector2(-1, -31)
 scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow4"]
 position = Vector2(1, 31)
 shape = SubResource("CapsuleShape2D_bu1vy")
 
-[node name="Straw_man5" type="StaticBody2D" parent="TownTilemap/Decoration/Straw_man"]
+[node name="Scarecrow5" type="StaticBody2D" parent="TownTilemap/Decoration/Scarecrow"]
 position = Vector2(2058, 413)
 
-[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Straw_man/Straw_man5"]
+[node name="Sprite2D" type="Sprite2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow5"]
 position = Vector2(-1, -22)
 scale = Vector2(1.02083, 1.07812)
 texture = ExtResource("33_c8tx1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Straw_man/Straw_man5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Scarecrow/Scarecrow5"]
 position = Vector2(-1, 38)
 shape = SubResource("CapsuleShape2D_ivikx")
 
@@ -19776,10 +19776,24 @@ sprite_frames = SubResource("SpriteFrames_2cl2l")
 frame_progress = 0.205203
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TownTilemap/Decoration/Wood_Towers/Wood_Tower1"]
-visible = false
-position = Vector2(-17.106, 48.3938)
-scale = Vector2(1.08302, 1.24451)
-shape = SubResource("RectangleShape2D_lt7we")
+position = Vector2(-56.7336, 79.6418)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_m4sj8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TownTilemap/Decoration/Wood_Towers/Wood_Tower1"]
+position = Vector2(-56.4485, 11.4197)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_m4sj8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TownTilemap/Decoration/Wood_Towers/Wood_Tower1"]
+position = Vector2(19.9565, 79.9778)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_m4sj8")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TownTilemap/Decoration/Wood_Towers/Wood_Tower1"]
+position = Vector2(20.5266, 10.7473)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_m4sj8")
 
 [node name="DungeonTilemap" type="TileMap" parent="."]
 position = Vector2(12005.7, 188.3)
