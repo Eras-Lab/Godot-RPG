@@ -4,6 +4,7 @@ const PickUp = preload("res://item/pick_up.tscn")
 
 @onready var garrick_stormwind = $GarrickStormwind
 @onready var freya_swiftwind = $FreyaSwiftwind
+@onready var test_player = $TestPlayer
 
 @onready var dungeon_camera = $DungeonCamera
 @onready var town_camera = $TownCamera
@@ -21,9 +22,11 @@ func toggle_inventories():
 func _unhandled_input(event):
 	if Input.is_action_pressed("inventory"):
 		toggle_inventories()
-	
+
 func _process(delta):
 	change_scene()
+	if global.current_location == global.Location.TOWN:
+		town_camera.global_position = test_player.global_position
 
 func _on_cliffside_transition_point_body_entered(body):
 	if body.has_method("player"):
