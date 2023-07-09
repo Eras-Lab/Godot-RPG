@@ -6,7 +6,6 @@ const speed = 100
 func _physics_process(delta):
 	player_movement(delta)
 
-
 func player_movement(delta):
 	
 	if Input.is_action_pressed("ui_right"):
@@ -26,3 +25,4 @@ func player_movement(delta):
 		velocity.y = 0
 		
 	move_and_slide()
+
