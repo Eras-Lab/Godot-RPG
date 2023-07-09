@@ -20096,7 +20096,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(12772.7, 373.3)
 
 [node name="TownCamera" type="Camera2D" parent="."]
-position = Vector2(447, 1113)
+position = Vector2(545, 238)
 
 [node name="FreyaSwiftwind" parent="." groups=["characters"] instance=ExtResource("49_3ji4y")]
 position = Vector2(350, 264)
@@ -20149,7 +20149,7 @@ position = Vector2(13199.7, 157.3)
 scale = Vector2(1.46761, 1.46761)
 
 [node name="TestPlayer" type="CharacterBody2D" parent="."]
-position = Vector2(526, 1134)
+position = Vector2(575, 293)
 script = ExtResource("49_upbhm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer"]
@@ -20157,7 +20157,7 @@ position = Vector2(-1, 9)
 shape = SubResource("CircleShape2D_ukh7x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestPlayer"]
-position = Vector2(-1, -13)
+position = Vector2(-2, -15)
 scale = Vector2(2.04167, 1.8125)
 sprite_frames = SubResource("SpriteFrames_ilgw7")
 animation = &"idle"
