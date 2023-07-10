@@ -19039,6 +19039,8 @@ position = Vector2(4, 12)
 script = ExtResource("1_c4xv6")
 
 [node name="TownTilemap" type="TileMap" parent="."]
+light_mask = 15
+visibility_layer = 15
 position = Vector2(-392, 97)
 scale = Vector2(1.75381, 1.48779)
 tile_set = SubResource("TileSet_g3bps")
