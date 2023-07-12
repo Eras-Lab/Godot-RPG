@@ -2,8 +2,7 @@ extends Node
 
 class_name player_status
 
-#Make this initialization programable
-
+#New setup with Characters as globally accessible Dictionaries.
 var character1 = {
 	"name": "Garrick Stormwind",
 	"max_health": 300,
@@ -51,7 +50,8 @@ func get_character(num):
 func get_characters():
 	return characters
 	
-#player stats
+#Old player stats, still used for Combat with monsters. 
+#Needs to be removed after Combat is updated to use the dictionaries
 var max_health = 300
 var health = 300
 var attack_damage = 10
