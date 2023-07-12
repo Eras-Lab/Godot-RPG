@@ -61,7 +61,6 @@ var strength = 10
 var constitution = 10
 var dexterity = 10
 var intelligence = 10
-
 var experience = 0
 var gold = 100
 
