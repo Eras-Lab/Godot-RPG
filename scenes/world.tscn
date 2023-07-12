@@ -20103,8 +20103,8 @@ position = Vector2(545, 238)
 [node name="FreyaSwiftwind" parent="." groups=["characters"] instance=ExtResource("49_3ji4y")]
 position = Vector2(350, 264)
 scale = Vector2(2.5, 2.5)
-inventory_data = ExtResource("50_wmyya")
-equip_inventory_data = SubResource("Resource_j7hpl")
+inventory_data = ExtResource("30_s50uc")
+equip_inventory_data = ExtResource("31_3axbw")
 
 [node name="DungeonCollisions" type="StaticBody2D" parent="."]
 visible = false

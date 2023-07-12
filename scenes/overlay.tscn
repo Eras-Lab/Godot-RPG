@@ -1,0 +1,680 @@
+[gd_scene load_steps=19 format=3 uid="uid://cym3wajrsc0g0"]
+
+[ext_resource type="Script" path="res://scenes/overlay.gd" id="1_jalr2"]
+[ext_resource type="FontFile" uid="uid://bwvakuxccdj5" path="res://art/fonts/Old_Standard_TT/OldStandardTT-Bold.ttf" id="2_h48rx"]
+[ext_resource type="PackedScene" uid="uid://do1yubo7ebqbh" path="res://inventory/inventory.tscn" id="3_sx1bg"]
+[ext_resource type="FontFile" uid="uid://bysyu7keabi2f" path="res://art/fonts/Old_Standard_TT/OldStandardTT-Regular.ttf" id="3_uvi0y"]
+[ext_resource type="Texture2D" uid="uid://clo8kybcrsm3l" path="res://item/#1 - Transparent Icons.png" id="5_tepha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3eou"]
+bg_color = Color(0, 0, 0, 0.745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o26mn"]
+bg_color = Color(0.6, 0.6, 0.6, 0.45098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gry7x"]
+bg_color = Color(0.6, 0.6, 0.6, 0.45098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h8phm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cffys"]
+bg_color = Color(0.6, 0.6, 0.6, 0.45098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_86n0v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra72o"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1n6f"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcfi1"]
+atlas = ExtResource("5_tepha")
+region = Rect2(320, 384, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aysco"]
+atlas = ExtResource("5_tepha")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icuew"]
+atlas = ExtResource("5_tepha")
+region = Rect2(320, 384, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foj1c"]
+bg_color = Color(1, 1, 1, 0.196078)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0deop"]
+
+[node name="Overlay" type="CanvasLayer"]
+visible = false
+follow_viewport_enabled = true
+script = ExtResource("1_jalr2")
+metadata/_edit_horizontal_guides_ = [588.0, 575.0]
+
+[node name="Background" type="Panel" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1078.0
+offset_bottom = 613.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l3eou")
+
+[node name="Character1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 533.0
+offset_top = 56.0
+offset_right = 573.0
+offset_bottom = 96.0
+
+[node name="StatsPanel" type="Panel" parent="Character1"]
+layout_mode = 2
+offset_left = -347.0
+offset_top = 215.0
+offset_right = -97.0
+offset_bottom = 515.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o26mn")
+
+[node name="Stats" type="Label" parent="Character1/StatsPanel"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 250.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Attributes"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="Character1/StatsPanel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 60.0
+offset_right = 250.0
+offset_bottom = 310.0
+
+[node name="Stamina" type="Label" parent="Character1/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Strength" type="Label" parent="Character1/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Constitution" type="Label" parent="Character1/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Dexterity" type="Label" parent="Character1/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Intelligence" type="Label" parent="Character1/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="AttackDamage" type="Label" parent="Character1/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Defense" type="Label" parent="Character1/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="NameContainer" type="Control" parent="Character1"]
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -12.0
+offset_right = 79.0
+offset_bottom = 28.0
+
+[node name="Name" type="Label" parent="Character1/NameContainer"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 211.0
+offset_bottom = 36.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h48rx")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="InventoryPanel" type="Panel" parent="Character1"]
+layout_mode = 0
+offset_left = -55.0
+offset_top = 55.0
+offset_right = 245.0
+offset_bottom = 375.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gry7x")
+
+[node name="Label" type="Label" parent="Character1/InventoryPanel"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="Inventory" parent="Character1/InventoryPanel" instance=ExtResource("3_sx1bg")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 30.0
+offset_right = 308.0
+offset_bottom = 430.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h8phm")
+
+[node name="EquippedItemsPanel" type="Panel" parent="Character1"]
+layout_mode = 0
+offset_left = -55.0
+offset_top = 395.0
+offset_right = 245.0
+offset_bottom = 515.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cffys")
+
+[node name="Label" type="Label" parent="Character1/EquippedItemsPanel"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Equipped Items"
+horizontal_alignment = 1
+
+[node name="EquippedItems" parent="Character1/EquippedItemsPanel" instance=ExtResource("3_sx1bg")]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 30.0
+offset_right = 308.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_86n0v")
+
+[node name="Health" type="Control" parent="Character1"]
+anchors_preset = 0
+offset_left = -341.0
+offset_top = 60.0
+offset_right = -141.0
+offset_bottom = 100.0
+
+[node name="Label" type="Label" parent="Character1/Health"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Health"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="Character1/Health"]
+modulate = Color(0.188235, 0.67451, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.225
+anchor_top = 6.05
+anchor_right = -9.225
+anchor_bottom = 6.05
+offset_left = 1845.0
+offset_top = -212.0
+offset_right = 2045.0
+offset_bottom = -185.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ra72o")
+fill_mode = 1
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="Character1/Health"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 200.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="Experience" type="Control" parent="Character1"]
+anchors_preset = 0
+offset_left = -341.0
+offset_top = 130.0
+offset_right = -141.0
+offset_bottom = 170.0
+
+[node name="Label" type="Label" parent="Character1/Experience"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Experience"
+horizontal_alignment = 1
+
+[node name="ExpBar" type="ProgressBar" parent="Character1/Experience"]
+modulate = Color(0.794105, 0.436912, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.015
+anchor_top = -1.525
+anchor_right = -11.015
+anchor_bottom = -1.525
+offset_left = 2203.0
+offset_top = 91.0
+offset_right = 2403.0
+offset_bottom = 118.0
+theme_override_styles/background = SubResource("StyleBoxFlat_h1n6f")
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="Character1/Experience"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 200.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="Gold" type="Control" parent="Character1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Character1/Gold"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 67.0
+offset_right = 318.0
+offset_bottom = 107.0
+texture = SubResource("AtlasTexture_gcfi1")
+
+[node name="Value" type="Label" parent="Character1/Gold"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 78.0
+offset_right = 360.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Kills" type="Control" parent="Character1"]
+anchors_preset = 0
+offset_top = 59.0
+offset_right = 40.0
+offset_bottom = 99.0
+
+[node name="TextureRect" type="TextureRect" parent="Character1/Kills"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 67.0
+offset_right = 318.0
+offset_bottom = 107.0
+texture = SubResource("AtlasTexture_aysco")
+
+[node name="Value" type="Label" parent="Character1/Kills"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 78.0
+offset_right = 360.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+text = "Monsters Killed: 5"
+
+[node name="Character2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 533.0
+offset_top = 56.0
+offset_right = 573.0
+offset_bottom = 96.0
+
+[node name="StatsPanel" type="Panel" parent="Character2"]
+layout_mode = 2
+offset_left = -347.0
+offset_top = 215.0
+offset_right = -97.0
+offset_bottom = 515.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o26mn")
+
+[node name="Stats" type="Label" parent="Character2/StatsPanel"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 250.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Attributes"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="Character2/StatsPanel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 60.0
+offset_right = 250.0
+offset_bottom = 310.0
+
+[node name="Stamina" type="Label" parent="Character2/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Strength" type="Label" parent="Character2/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Constitution" type="Label" parent="Character2/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Dexterity" type="Label" parent="Character2/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Intelligence" type="Label" parent="Character2/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="AttackDamage" type="Label" parent="Character2/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Defense" type="Label" parent="Character2/StatsPanel/StatsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="NameContainer" type="Control" parent="Character2"]
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -12.0
+offset_right = 79.0
+offset_bottom = 28.0
+
+[node name="Name" type="Label" parent="Character2/NameContainer"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 211.0
+offset_bottom = 36.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h48rx")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="InventoryPanel" type="Panel" parent="Character2"]
+layout_mode = 0
+offset_left = -55.0
+offset_top = 55.0
+offset_right = 245.0
+offset_bottom = 375.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gry7x")
+
+[node name="Label" type="Label" parent="Character2/InventoryPanel"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="Inventory" parent="Character2/InventoryPanel" instance=ExtResource("3_sx1bg")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 30.0
+offset_right = 308.0
+offset_bottom = 430.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h8phm")
+
+[node name="EquippedItemsPanel" type="Panel" parent="Character2"]
+layout_mode = 0
+offset_left = -55.0
+offset_top = 395.0
+offset_right = 245.0
+offset_bottom = 515.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cffys")
+
+[node name="Label" type="Label" parent="Character2/EquippedItemsPanel"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Equipped Items"
+horizontal_alignment = 1
+
+[node name="EquippedItems" parent="Character2/EquippedItemsPanel" instance=ExtResource("3_sx1bg")]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 30.0
+offset_right = 308.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_86n0v")
+
+[node name="Health" type="Control" parent="Character2"]
+anchors_preset = 0
+offset_left = -341.0
+offset_top = 60.0
+offset_right = -141.0
+offset_bottom = 100.0
+
+[node name="Label" type="Label" parent="Character2/Health"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Health"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="Character2/Health"]
+modulate = Color(0.188235, 0.67451, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.225
+anchor_top = 6.05
+anchor_right = -9.225
+anchor_bottom = 6.05
+offset_left = 1845.0
+offset_top = -212.0
+offset_right = 2045.0
+offset_bottom = -185.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ra72o")
+fill_mode = 1
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="Character2/Health"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 200.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="Experience" type="Control" parent="Character2"]
+anchors_preset = 0
+offset_left = -341.0
+offset_top = 130.0
+offset_right = -141.0
+offset_bottom = 170.0
+
+[node name="Label" type="Label" parent="Character2/Experience"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Experience"
+horizontal_alignment = 1
+
+[node name="ExpBar" type="ProgressBar" parent="Character2/Experience"]
+modulate = Color(0.794105, 0.436912, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.015
+anchor_top = -1.525
+anchor_right = -11.015
+anchor_bottom = -1.525
+offset_left = 2203.0
+offset_top = 91.0
+offset_right = 2403.0
+offset_bottom = 118.0
+theme_override_styles/background = SubResource("StyleBoxFlat_h1n6f")
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="Label" parent="Character2/Experience"]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 200.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="Gold" type="Control" parent="Character2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Character2/Gold"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 67.0
+offset_right = 318.0
+offset_bottom = 107.0
+texture = SubResource("AtlasTexture_icuew")
+
+[node name="Value" type="Label" parent="Character2/Gold"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 78.0
+offset_right = 360.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+
+[node name="Kills" type="Control" parent="Character2"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 59.0
+offset_right = 40.0
+offset_bottom = 99.0
+
+[node name="TextureRect" type="TextureRect" parent="Character2/Kills"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 67.0
+offset_right = 318.0
+offset_bottom = 107.0
+texture = SubResource("AtlasTexture_aysco")
+
+[node name="Value" type="Label" parent="Character2/Kills"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 78.0
+offset_right = 360.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 18
+text = "Monsters Killed: 5"
+
+[node name="ButtonBar" type="Panel" parent="."]
+offset_right = 150.0
+offset_bottom = 612.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_foj1c")
+
+[node name="Buttons" type="Control" parent="ButtonBar"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 25.0
+offset_top = 202.0
+offset_right = 175.0
+offset_bottom = 242.0
+
+[node name="ToggleCharacter2" type="Button" parent="ButtonBar/Buttons"]
+layout_mode = 2
+offset_top = 80.0
+offset_right = 100.0
+offset_bottom = 130.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Freya"
+
+[node name="ToggleCharacter1" type="Button" parent="ButtonBar/Buttons"]
+material = SubResource("ShaderMaterial_0deop")
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 50.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_uvi0y")
+theme_override_font_sizes/font_size = 20
+text = "Garrick"
+
+[connection signal="pressed" from="ButtonBar/Buttons/ToggleCharacter2" to="." method="_on_toggle_character_2_pressed"]
+[connection signal="pressed" from="ButtonBar/Buttons/ToggleCharacter1" to="." method="_on_toggle_character_1_pressed"]

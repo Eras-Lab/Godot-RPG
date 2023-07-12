@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal toggle_inventory
+
 
 @export var inventory_data: InventoryData
 @export var equip_inventory_data: InventoryDataEquip
@@ -10,7 +10,7 @@ signal toggle_inventory
 @onready var crafting = $Crafting
 
 var sword_recipe = preload("res://item/recipes/sword_recipe.tres")
-
+var characterNum = 1
 var enemy
 var enemy_attack_cooldown = true
 var walking_towards = "none"
@@ -55,13 +55,9 @@ var external_currency_manager = null
 
 func _ready():
 	PlayerManager.set_player(self)
-	health_bar.max_value = player_status.max_health
+	health_bar.max_value = PlayerStatus.characters[characterNum].max_health
 	$AnimatedSprite2D.play("front_idle")
 	#battle_status.walk_towards("Building5")
-	
-	
-	character_inventory.set_inventory_data(inventory_data)
-	equip_inventory.set_inventory_data(equip_inventory_data)
 	
 	# Initialize MARKET
 	# store and tx manager have to be initialized
@@ -115,9 +111,9 @@ func _physics_process(delta):
 	if global.current_location == global.Location.DUNGEON:
 		battle_status.go_and_attack(enemy)
 
-	if player_status.health <= 0:
+	if PlayerStatus.characters[characterNum].health <= 0:
 		player_alive = false
-		player_status.health = 0
+		PlayerStatus.characters[characterNum].health = 0
 		print("player has died")
 		self.queue_free()
 		
@@ -160,10 +156,6 @@ func current_camera():
 		$world_camera.enabled = false
 		$cliffside_camera.enabled = true
 
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("inventory"):
-		toggle_inventory.emit()
-		
 func get_drop_position():
 	var dir = current_dir
 	
@@ -179,7 +171,7 @@ func get_drop_position():
 		return position + Vector2(0, 35)
 		
 func update_healthbar():
-	health_bar.value = player_status.health
+	health_bar.value = PlayerStatus.characters[characterNum].health
 
 
 func is_player():
