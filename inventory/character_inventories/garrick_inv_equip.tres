@@ -21,5 +21,5 @@ quantity = 1
 
 [resource]
 script = ExtResource("1_2bhf2")
-slot_datas = [SubResource("Resource_uy224"), SubResource("Resource_v6ad8"), SubResource("Resource_fuxgd"), SubResource("Resource_kmoft")]
+slot_datas = Array[ExtResource("2_0xinn")]([SubResource("Resource_uy224"), SubResource("Resource_v6ad8"), SubResource("Resource_fuxgd"), SubResource("Resource_kmoft")])
 player = 0
