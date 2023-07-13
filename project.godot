@@ -19,6 +19,8 @@ config/icon="res://art/icon.svg"
 
 global="*res://scripts/global.gd"
 PlayerManager="*res://player/player_manager.gd"
+Overlay="*res://scenes/overlay.tscn"
+PlayerStatus="*res://scripts/player_scripts/player_status.gd"
 
 [display]
 

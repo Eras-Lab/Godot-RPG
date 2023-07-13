@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="InventoryDataEquip" load_steps=7 format=3 uid="uid://cudp1dpk0bk08"]
+
+[ext_resource type="Script" path="res://inventory/inventory_data_equip.gd" id="1_2bhf2"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="2_0xinn"]
+
+[sub_resource type="Resource" id="Resource_uy224"]
+script = ExtResource("2_0xinn")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_v6ad8"]
+script = ExtResource("2_0xinn")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_fuxgd"]
+script = ExtResource("2_0xinn")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_kmoft"]
+script = ExtResource("2_0xinn")
+quantity = 1
+
+[resource]
+script = ExtResource("1_2bhf2")
+slot_datas = Array[ExtResource("2_0xinn")]([SubResource("Resource_uy224"), SubResource("Resource_v6ad8"), SubResource("Resource_fuxgd"), SubResource("Resource_kmoft")])
+player = 0

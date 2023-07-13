@@ -12,17 +12,7 @@ const PickUp = preload("res://item/pick_up.tscn")
 func _ready():
 	global.current_location = global.Location.TOWN
 	town_camera.make_current()
-
-func toggle_inventories():
-	var inventory = garrick_stormwind.get_node("InventoryInterface")
-	inventory.visible = not inventory.visible
 	
-	#will add inventories for other characters here as well
-
-func _unhandled_input(event):
-	if Input.is_action_pressed("inventory"):
-		toggle_inventories()
-
 func _process(delta):
 	change_scene()
 	if global.current_location == global.Location.TOWN:

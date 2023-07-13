@@ -9,6 +9,7 @@ signal toggle_inventory
 
 var sword_recipe = preload("res://item/recipes/sword_recipe.tres")
 
+var characterNum = 2
 var enemy
 var enemy_attack_cooldown = true
 var walking_towards = "none"
@@ -50,7 +51,7 @@ var external_currency_manager = null
 
 func _ready():
 	PlayerManager.players.push_back(self)
-	health_bar.max_value = player_status.max_health
+	health_bar.max_value = PlayerStatus.characters[characterNum].max_health
 	$AnimatedSprite2D.play("front_idle")
 	
 	#craft Iron Sword
@@ -99,9 +100,9 @@ func _physics_process(delta):
 	if global.current_location == global.Location.DUNGEON:
 		battle_status.go_and_attack(enemy)
 
-	if player_status.health <= 0:
+	if PlayerStatus.characters[characterNum].health <= 0:
 		player_alive = false
-		player_status.health = 0
+		PlayerStatus.characters[characterNum].health = 0
 		print("player has died")
 		self.queue_free()
 	
@@ -161,7 +162,7 @@ func get_drop_position():
 		return position + Vector2(0, 35)
 
 func update_healthbar():
-	health_bar.value = player_status.health
+	health_bar.value = PlayerStatus.characters[characterNum].health
 
 func _on_req_completed(result, response_code, headers, body):
 	pass
