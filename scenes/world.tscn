@@ -20258,10 +20258,11 @@ shape = SubResource("RectangleShape2D_gxnmt")
 [node name="Dungeon" type="Node2D" parent="."]
 
 [node name="teleport_to_dungeon" type="Button" parent="."]
-offset_left = 832.0
-offset_top = 221.0
-offset_right = 959.0
-offset_bottom = 252.0
+visible = false
+offset_left = 6350.0
+offset_top = 1980.0
+offset_right = 6477.0
+offset_bottom = 2011.0
 action_mode = 0
 text = "Go To Dungeon"
 
@@ -20339,15 +20340,15 @@ position = Vector2(13199.7, 157.3)
 scale = Vector2(1.46761, 1.46761)
 
 [node name="TestPlayer" type="CharacterBody2D" parent="."]
-position = Vector2(1561, 1404)
+position = Vector2(634, 298)
 script = ExtResource("49_upbhm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer"]
-position = Vector2(-1, 9)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_ukh7x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestPlayer"]
-position = Vector2(4.00006, 9)
+position = Vector2(5, -5)
 scale = Vector2(0.813151, 0.70638)
 sprite_frames = SubResource("SpriteFrames_ilgw7")
 animation = &"front_walk"
